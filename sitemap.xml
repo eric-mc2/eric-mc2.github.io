@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/publications/shachter-structure/</loc>
+    <loc>https://eric-mc2.github.io/publications/shachter-structure/</loc>
     <lastmod>2024-02-29T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://eric-mc2.github.io/</loc>
     <lastmod>2024-02-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/publications/</loc>
+    <loc>https://eric-mc2.github.io/publications/</loc>
     <lastmod>2024-02-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://eric-mc2.github.io/tags/</loc>
   </url>
 </urlset>
