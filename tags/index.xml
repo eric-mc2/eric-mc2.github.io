@@ -6,6 +6,77 @@
     <description>Recent content in Tags on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 13 Nov 2024 11:07:59 -0600</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amazon S3</title>
+      <link>https://eric-mc2.github.io/tags/amazon-s3/</link>
+      <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/amazon-s3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Science</title>
+      <link>https://eric-mc2.github.io/tags/data-science/</link>
+      <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Geopandas</title>
+      <link>https://eric-mc2.github.io/tags/geopandas/</link>
+      <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/geopandas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Open Data</title>
+      <link>https://eric-mc2.github.io/tags/open-data/</link>
+      <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/open-data/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Panel Data</title>
+      <link>https://eric-mc2.github.io/tags/panel-data/</link>
+      <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/panel-data/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Socrata</title>
+      <link>https://eric-mc2.github.io/tags/socrata/</link>
+      <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/socrata/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Network Analysis</title>
+      <link>https://eric-mc2.github.io/tags/network-analysis/</link>
+      <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://eric-mc2.github.io/tags/network-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NLP</title>
+      <link>https://eric-mc2.github.io/tags/nlp/</link>
+      <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://eric-mc2.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SNA</title>
+      <link>https://eric-mc2.github.io/tags/sna/</link>
+      <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://eric-mc2.github.io/tags/sna/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Social Media Analysis</title>
+      <link>https://eric-mc2.github.io/tags/social-media-analysis/</link>
+      <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://eric-mc2.github.io/tags/social-media-analysis/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
