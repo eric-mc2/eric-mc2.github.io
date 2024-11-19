@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Socrata on Eric Chandler</title>
-    <link>https://eric-mc2.github.io/tags/socrata/</link>
-    <description>Recent content in Socrata on Eric Chandler</description>
+    <title>Urban Science on Eric Chandler</title>
+    <link>https://eric-mc2.github.io/tags/urban-science/</link>
+    <description>Recent content in Urban Science on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Nov 2024 11:07:59 -0600</lastBuildDate>
-    <atom:link href="https://eric-mc2.github.io/tags/socrata/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://eric-mc2.github.io/tags/urban-science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chicago Transit Ridership Panel</title>
       <link>https://eric-mc2.github.io/projects/transit-panel/</link>

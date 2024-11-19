@@ -6,13 +6,20 @@
     <description>Recent content in Projects on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Nov 2024 11:07:59 -0600</lastBuildDate>
+    <lastBuildDate>Tue, 19 Nov 2024 10:47:51 -0600</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Do Democrats Really Support Public Transit?</title>
+      <link>https://eric-mc2.github.io/projects/dnc-effect/</link>
+      <pubDate>Tue, 19 Nov 2024 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/projects/dnc-effect/</guid>
+      <description>A few weeks ago I fumbled an interview question on statistical modeling. That hurt my pride, so I decided to take on a little modeling project.&#xA;Economists don&amp;rsquo;t usually get to run their own controlled experiments, but they seem to keep their ears perked for cases when a policy is implemented with some randomness. That&amp;rsquo;s what I&amp;rsquo;m doing here.&#xA;I exploit the exogeneous shock of the 2024 Democratic National Convention in Chicago, (ie.</description>
+    </item>
+    <item>
       <title>Chicago Transit Ridership Panel</title>
-      <link>https://eric-mc2.github.io/projects/dnc-transit/</link>
+      <link>https://eric-mc2.github.io/projects/transit-panel/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/projects/dnc-transit/</guid>
+      <guid>https://eric-mc2.github.io/projects/transit-panel/</guid>
       <description>This page describes the steps I took to create a panel dataset of ridership across different Chicago transit systems. I did this to practice econometric modeling.&#xA;Transit modes and data sources Included modes&#xA;Train, Bus, Rideshares - from the City of Chicago (used Socrata API and sodapy python package) Bikeshares aka Divvy Bikes - from Lyft (used s3fs python package to access public Amazon S3 bucket) Excluded modes&#xA;Metra commuter rail (public data is available but too coarsely aggregated) Pace city-suburb bus link (have not checked availability) Walking / Biking (vendored data is available &amp;ndash; ie cell phone location data &amp;ndash; but would be hard to isolate from other transit modalities) Driving (public data is available &amp;ndash; ie road segment usage &amp;ndash; but haven&amp;rsquo;t seriously looked yet) Extra data</description>
     </item>
   </channel>

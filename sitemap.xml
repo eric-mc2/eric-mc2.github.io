@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://eric-mc2.github.io/projects/dnc-transit/</loc>
+    <loc>https://eric-mc2.github.io/projects/dnc-effect/</loc>
+    <lastmod>2024-11-19T10:47:51-06:00</lastmod>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>https://eric-mc2.github.io/projects/transit-panel/</loc>
     <lastmod>2024-11-13T11:07:59-06:00</lastmod>
     <priority>0.8</priority>
   </url><url>
@@ -10,16 +14,25 @@
     <lastmod>2024-02-29T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url><url>
+    <loc>https://eric-mc2.github.io/tags/data-science/</loc>
+    <lastmod>2024-11-19T10:47:51-06:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/econometrics/</loc>
+    <lastmod>2024-11-19T10:47:51-06:00</lastmod>
+  </url><url>
     <loc>https://eric-mc2.github.io/</loc>
-    <lastmod>2024-11-13T15:32:38-06:00</lastmod>
+    <lastmod>2024-11-19T10:47:51-06:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/panel-data/</loc>
+    <lastmod>2024-11-19T10:47:51-06:00</lastmod>
   </url><url>
     <loc>https://eric-mc2.github.io/projects/</loc>
-    <lastmod>2024-11-13T15:32:38-06:00</lastmod>
+    <lastmod>2024-11-19T10:47:51-06:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/</loc>
+    <lastmod>2024-11-19T10:47:51-06:00</lastmod>
   </url><url>
     <loc>https://eric-mc2.github.io/tags/amazon-s3/</loc>
-    <lastmod>2024-11-13T11:07:59-06:00</lastmod>
-  </url><url>
-    <loc>https://eric-mc2.github.io/tags/data-science/</loc>
     <lastmod>2024-11-13T11:07:59-06:00</lastmod>
   </url><url>
     <loc>https://eric-mc2.github.io/tags/geopandas/</loc>
@@ -28,13 +41,10 @@
     <loc>https://eric-mc2.github.io/tags/open-data/</loc>
     <lastmod>2024-11-13T11:07:59-06:00</lastmod>
   </url><url>
-    <loc>https://eric-mc2.github.io/tags/panel-data/</loc>
-    <lastmod>2024-11-13T11:07:59-06:00</lastmod>
-  </url><url>
     <loc>https://eric-mc2.github.io/tags/socrata/</loc>
     <lastmod>2024-11-13T11:07:59-06:00</lastmod>
   </url><url>
-    <loc>https://eric-mc2.github.io/tags/</loc>
+    <loc>https://eric-mc2.github.io/tags/urban-science/</loc>
     <lastmod>2024-11-13T11:07:59-06:00</lastmod>
   </url><url>
     <loc>https://eric-mc2.github.io/tags/network-analysis/</loc>

@@ -10,9 +10,9 @@
     <atom:link href="https://eric-mc2.github.io/tags/open-data/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chicago Transit Ridership Panel</title>
-      <link>https://eric-mc2.github.io/projects/dnc-transit/</link>
+      <link>https://eric-mc2.github.io/projects/transit-panel/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/projects/dnc-transit/</guid>
+      <guid>https://eric-mc2.github.io/projects/transit-panel/</guid>
       <description>This page describes the steps I took to create a panel dataset of ridership across different Chicago transit systems. I did this to practice econometric modeling.&#xA;Transit modes and data sources Included modes&#xA;Train, Bus, Rideshares - from the City of Chicago (used Socrata API and sodapy python package) Bikeshares aka Divvy Bikes - from Lyft (used s3fs python package to access public Amazon S3 bucket) Excluded modes&#xA;Metra commuter rail (public data is available but too coarsely aggregated) Pace city-suburb bus link (have not checked availability) Walking / Biking (vendored data is available &amp;ndash; ie cell phone location data &amp;ndash; but would be hard to isolate from other transit modalities) Driving (public data is available &amp;ndash; ie road segment usage &amp;ndash; but haven&amp;rsquo;t seriously looked yet) Extra data</description>
     </item>
   </channel>

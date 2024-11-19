@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Panel Data on Eric Chandler</title>
-    <link>https://eric-mc2.github.io/tags/panel-data/</link>
-    <description>Recent content in Panel Data on Eric Chandler</description>
+    <title>Econometrics on Eric Chandler</title>
+    <link>https://eric-mc2.github.io/tags/econometrics/</link>
+    <description>Recent content in Econometrics on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 19 Nov 2024 10:47:51 -0600</lastBuildDate>
-    <atom:link href="https://eric-mc2.github.io/tags/panel-data/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://eric-mc2.github.io/tags/econometrics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Do Democrats Really Support Public Transit?</title>
       <link>https://eric-mc2.github.io/projects/dnc-effect/</link>

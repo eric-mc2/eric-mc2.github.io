@@ -6,20 +6,34 @@
     <description>Recent content in Tags on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Nov 2024 11:07:59 -0600</lastBuildDate>
+    <lastBuildDate>Tue, 19 Nov 2024 10:47:51 -0600</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Science</title>
+      <link>https://eric-mc2.github.io/tags/data-science/</link>
+      <pubDate>Tue, 19 Nov 2024 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Econometrics</title>
+      <link>https://eric-mc2.github.io/tags/econometrics/</link>
+      <pubDate>Tue, 19 Nov 2024 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/econometrics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Panel Data</title>
+      <link>https://eric-mc2.github.io/tags/panel-data/</link>
+      <pubDate>Tue, 19 Nov 2024 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/panel-data/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Amazon S3</title>
       <link>https://eric-mc2.github.io/tags/amazon-s3/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
       <guid>https://eric-mc2.github.io/tags/amazon-s3/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data Science</title>
-      <link>https://eric-mc2.github.io/tags/data-science/</link>
-      <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/tags/data-science/</guid>
       <description></description>
     </item>
     <item>
@@ -37,17 +51,17 @@
       <description></description>
     </item>
     <item>
-      <title>Panel Data</title>
-      <link>https://eric-mc2.github.io/tags/panel-data/</link>
-      <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/tags/panel-data/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Socrata</title>
       <link>https://eric-mc2.github.io/tags/socrata/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
       <guid>https://eric-mc2.github.io/tags/socrata/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Urban Science</title>
+      <link>https://eric-mc2.github.io/tags/urban-science/</link>
+      <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/urban-science/</guid>
       <description></description>
     </item>
     <item>

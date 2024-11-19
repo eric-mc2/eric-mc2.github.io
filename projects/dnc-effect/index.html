@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Eric Chandler | Publications</title>
-  <meta name="description" content="">
+  <title>Eric Chandler | Do Democrats Really Support Public Transit?</title>
+  <meta name="description" content="A half-serious econometric model">
 
   
   
     <meta property="og:image" content="https://eric-mc2.github.io/img/headshot.png" />
-    <meta property="og:title" content="Eric Chandler | Publications" />   
+    <meta property="og:title" content="Eric Chandler | Do Democrats Really Support Public Transit?" />   
   
-  <meta property="og:description" content="" />
+  <meta property="og:description" content="A half-serious econometric model" />
   <meta name="author" content="Eric Chandler">
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -38,6 +38,18 @@
     
     
     
+    
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)']]                  
+    }
+  };
+</script>
+
+
     
   
 </head>
@@ -86,13 +98,20 @@
 
 
 
+
+
 <li class="breadcrumb-item">
   <a href="https://eric-mc2.github.io/">Eric Chandler</a>
 </li>
 
 
+<li class="breadcrumb-item">
+  <a href="https://eric-mc2.github.io/projects/">Projects</a>
+</li>
+
+
 <li class="breadcrumb-item active">
-  <a href="https://eric-mc2.github.io/publications/">Publications</a>
+  <a href="https://eric-mc2.github.io/projects/dnc-effect/">Do Democrats Really Support Public Transit?</a>
 </li>
 
   </ol>
@@ -101,30 +120,120 @@
 
 
 
-<section class="resume-section p-3 p-lg-5 d-flex flex-column">
-  <div class="my-auto" id="projects-content">
-    <h1 id="publications">Publications</h1>
-    <p></p>
-    
-      
-        
+<section class="project-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">Do Democrats Really Support Public Transit?</span></h2>
+    <p>Project link: <a href="https://github.com/eric-mc2/DNCTransit">https://github.com/eric-mc2/DNCTransit</a></p>
+    <p>A few weeks ago I fumbled an interview question on statistical modeling. That
+hurt my pride, so I decided to take on a little modeling project.</p>
+<p>Economists don&rsquo;t usually get to run their own controlled experiments, but they seem to
+keep their ears perked for cases when a policy is implemented with <em>some</em>
+randomness. That&rsquo;s what I&rsquo;m doing here.</p>
+<blockquote>
+<p><em>I exploit the exogeneous shock of the 2024 Democratic National Convention in Chicago, (ie. the addition of tens of thousands of politically active Democrats) to test whether a statistically significant change in public transit is observed.</em></p>
+</blockquote>
+<p>Supposing this setup is statistically valid (FOOTNOTE), I expect public transit
+ridership to <em>increase</em> due to the DNC. This is because the Democratic coalition
+generally lives in urban areas, supports &ldquo;green&rdquo; policy, government spending, etc.</p>
+<p>I don&rsquo;t really have a stake in whether Democrats in general use transit or not,
+but I like this setup for a few reasons:</p>
+<ul>
+<li>if <em>NO</em> effect is found, that is also interesting
+<ul>
+<li>it suggests a gap between talk and action in the Democratic leadership</li>
+<li>(usually null results are boring)</li>
+</ul>
+</li>
+<li>the premise is kinda click-baity</li>
+<li>if the setup is not statistically valid, I can practice demonstrating that too
+<ul>
+<li>(poorly tested statistics can have lasting effects on society)</li>
+</ul>
+</li>
+</ul>
+<h1 id="the-data">The data</h1>
+<p>I have a panel dataset of transit ridership among train (CTA), bus (CTA), rideshare (uber, lyft, etc),
+and bikeshare (Divvy). The data is aggregated to daily ridership totals and spatially
+aggregated three different ways:</p>
+<ul>
+<li>Per Station: train, bike</li>
+<li>Per Route: train, bus</li>
+<li>Per Census Tract: train, bike, uber</li>
+</ul>
+<p>See my <a href="./transit-panel.md">Transit Panel</a> post for how this dataset was constructed.</p>
+<h2 id="points-of-interest">Points of Interest</h2>
+<p>I use the City of Chicago buildings shapefile to find the footprint of the
+United Center and McCormick Place, the two official sites of the DNC. Proximity
+to these locations will be one of the main exploratory variables in the model.</p>
+<!-- raw HTML omitted -->
+<p>I compute a buffer around each building and find all intersecting transit stations, routes, and tracts.
+For robustness, I computed 400m, 800m, and 1600m buffers. To pick which catchement size to use, I was forced to choose
+one mile buffer, because the smaller sizes had too few intersecting stations and routes.</p>
+<p>
+  <figure>
+    <img src="/img/panel_sample.jpeg" alt="Transit serving catchement">
+    <figcaption>Bus ridership is not known per stop.</figcaption>
+  </figure>
+</p>
+<p>To test the sensitivity of this specification, I modeled:</p>
+$$\text{rides}_i \sim \text{within 400m}_i + \text{within 800m}_i + \text{within 1600m}_i$$
+<p>I found that the effect was not monotonic as the buffer size increased. (Note that
+this equation specifies the marginal contribution of increasing the buffer size).
+In other words, the results will be very sensitive to the choice of buffer size.</p>
+<h1 id="why-you-shouldnt-trust-this">Why you shouldn&rsquo;t trust this</h1>
+<p><strong>Power</strong></p>
+<ul>
+<li>a few thousand riders is a drop in the bucket compared to normal trends</li>
+</ul>
+<p><strong>Selection Bias</strong></p>
+<ul>
+<li>the convention centers were explicitly chosen for their ability to accomodate visitors via transit
+<ul>
+<li>i don&rsquo;t think this is bad because we dont really need external validity. we don&rsquo;t actually
+expect other sites in Chicago to have a similar response.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Spillover into control</strong></p>
+<ul>
+<li>DNC visitors might stay in chicago longer than the official convention dates,
+which would attenuate any effect
+<ul>
+<li>we can mitigate this by using placebo dates or by an event study design</li>
+</ul>
+</li>
+<li>DNC visitors may visit other parts of the city, attenuating the effect
+<ul>
+<li>we can mitigate this by maybe searching for spikes in other areas
+(but introduces a multiple testing issue)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Spillover into treatment</strong></p>
+<ul>
+<li>drawing buffers around the event centers weakens our identification strategy
+(marginally nearby transit might be spuriously related to the DNC itself)</li>
+</ul>
+<p><strong>Confounding Variables</strong></p>
+<ul>
+<li>the security perimeter around the event centers may actually suppress ridership
+<ul>
+<li>we can mitigate this by drawing larger buffers, but this weakens our identification strategy
+(transit outside the perimeter might be spuriously correlated)</li>
+</ul>
+</li>
+</ul>
 
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/data-science">data science</a></li>
+    
+      <li><a class="tag" href="/tags/econometrics">econometrics</a></li>
+    
+      <li><a class="tag" href="/tags/panel-data">panel data</a></li>
+    
+</ul>
 
-
-<div class="summary-item d-flex flex-column flex-md-row mb-5">
-    <div class="publication-content mr-auto pe-4">  
-        <h3 class="mb-0">Paper - <a href="https://eric-mc2.github.io/publications/shachter-structure/">The Social Structure of Private Donations to Police</a></h3>
-        <span class="text-primary">February 2024</span>
-        <div>What is the scale and structure of private donations to police departments?</div>
-    </div>
-    <div class="summary-img text-md-right">
-        <img src="/img/shachter-structure.png"/>
-    </div>
-    
-</div>
-      
-    
-    
   </div>
 </section>
 
