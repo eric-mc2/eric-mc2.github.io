@@ -1210,7 +1210,148 @@ ignore their IDs.</p>
 20% of data that is tightly spatially grouped do indeed represent unique stations.
 The other 80% of the data can be unioned into clusters that contain up to 7818
 points.</p>
-<!-- raw HTML omitted -->
+<p>The buffer union method suffers from a transitivity issue:</p>
+<p>$$
+\text{dist}(A,B) &lt; d, \text{dist}(B,C) &lt; d \not \Rightarrow \text{dist}(A,C) &lt; d
+$$</p>
+<p>We can see that step 5 helps mitigate this issue.</p>
+
+
+<div id="/json/spatial-bike-clusters.json" class="leaflet" style="height:500px;"></div>
+<script>
+    function get_bounds(fig) {
+        if ('lat' in fig['data'][0]) {
+            
+            var minLat = Math.min(...fig.data.flatMap(d => 
+            d.lat.filter(val => val != null && !isNaN(val))
+            ));
+            var maxLat = Math.max(...fig.data.flatMap(d => 
+                d.lat.filter(val => val != null && !isNaN(val))
+            ));
+            var minLon = Math.min(...fig.data.flatMap(d => 
+                d.lon.filter(val => val != null && !isNaN(val))
+            ));
+            var maxLon = Math.max(...fig.data.flatMap(d => 
+                d.lon.filter(val => val != null && !isNaN(val))
+            ));
+        } else if ('geojson' in fig['data'][0]) {
+            
+            const lons = fig['data']
+                .flatMap(d => d['geojson']['features'])
+                .flatMap(f => f['geometry']['coordinates'])
+                .flatMap(cc => cc.map(([x, y]) => x))
+                .filter(x => x != null && !isNaN(x));
+            const lats = fig['data']
+                .flatMap(d => d['geojson']['features'])
+                .flatMap(f => f['geometry']['coordinates'])
+                .flatMap(cc => cc.map(([x, y]) => y))
+                .filter(y => y != null && !isNaN(y));
+            var minLat = Math.min(...lats);
+            var maxLat = Math.max(...lats);
+            var minLon = Math.min(...lons);
+            var maxLon = Math.max(...lons);
+        }
+        return [minLat, maxLat, minLon, maxLon]
+    }
+
+    fetch("/json/spatial-bike-clusters.json")
+    .then(response => response.json())
+    .then(fig => {
+        
+        const [minLat, maxLat, minLon, maxLon] = get_bounds(fig)
+        const centerLat = (minLat + maxLat) / 2
+        const centerLon = (minLon + maxLon) / 2
+        const map = L.map("\/json\/spatial-bike-clusters.json").setView([centerLat, centerLon], 10);
+        
+        
+        L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
+        
+        
+        
+        
+        
+        
+        if (fig.data[0]['type'] === "choropleth") {
+            var layerControl = L.control.layers(null, {}, { collapsed: false }).addTo(map);
+            var layers = {};  
+        }
+        
+        
+        fig.data.forEach((trace, traceIndex) => {
+            if (trace.type === 'scattergeo' || trace.type === 'scatter') {
+                
+                const latitudes = trace.lat;
+                const longitudes = trace.lon;
+                const color = trace.line?.color || 'blue';
+                const weight = trace.line?.width || 2;
+                
+                let points = [];
+                
+                for (let i = 0; i < latitudes.length; i++) {
+                    const lat = latitudes[i];
+                    const lon = longitudes[i];
+                    
+                    if (lat != null && lon != null && !isNaN(lat) && !isNaN(lon)) {
+                        
+                        points.push([lat, lon]);
+                    } else if (points.length) {
+                        
+                        L.polyline(points, { color, weight }).addTo(map);
+                        points = []; 
+                    }
+                }
+                
+                
+                if (points.length) {
+                    L.polyline(points, { color, weight }).addTo(map);
+                }
+            }
+            else if (trace.type === 'scattermap') {
+                
+                const color = trace.marker?.color || 'blue';
+                const points = trace.lat
+                                .map((lat,i) => [trace.lon[i], lat])
+                                .filter(([lon,lat]) => lon != null && !isNaN(lon));
+                for (const [lon,lat] of points) {
+                    L.circle([lat,lon], {'color': color, 'radius': 20}).addTo(map);
+                }
+                
+            }
+            else if (trace.type === 'choropleth') {
+                const facetName = trace.name || `Layer ${traceIndex + 1}`;
+
+                const layer = L.geoJSON(trace.geojson, {
+                    style: feature => ({
+                        fillColor: feature.properties.cmap,
+                        weight: 1,
+                        opacity: 1,
+                        color: 'white',
+                        fillOpacity: 0.7
+                    })}).addTo(map);
+                
+                
+                layerControl.addOverlay(layer, facetName);
+                layers[facetName] = layer;
+
+                
+                if (traceIndex === 0) {
+                    layer.addTo(map);
+                }
+            }
+        });
+
+        
+        map.on('overlayadd', e => {
+            Object.entries(layers).forEach(([name, layer]) => {
+                if (name !== e.name) {
+                    map.removeLayer(layer);
+                    layerControl.removeLayer(layer);
+                    layerControl.addOverlay(layer, name);
+                }
+            })
+        });
+    });
+</script>
 <p>I have to conclude that these points actually represent user locations when
 they start/stop trips on their smartphone apps. The drift represents a combination
 of GPS uncertainty among tall downtown buildings, and physical user displacement
@@ -1222,6 +1363,7 @@ and such. The problem is it&rsquo;s live and doesn&rsquo;t span the entire histo
 Given the schema drift issues presented above, I had no confidence the data was
 merge-able with anything but 2024 data. But since I only strictly need 2024 data for
 the models I plan to run, this limitation is acceptable.</p>
+<p><em>Problem solved!</em></p>
 <h3 id="socrata-to-data-frames">Socrata to Data Frames</h3>
 <p>As far as I could tell, the Socrata SoQL API returned all data as lists of lists of strings. Since I was making a lot of Socrata calls, I extended the Socrata client like so:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sodapy <span style="color:#f92672">import</span> Socrata
