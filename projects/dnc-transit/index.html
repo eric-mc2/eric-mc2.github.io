@@ -1217,7 +1217,7 @@ $$</p>
 <p>We can see that step 5 helps mitigate this issue.</p>
 
 
-<div id="/json/spatial-bike-clusters.json" class="leaflet" style="height:500px;"></div>
+<div id="/json/bike-spatial-cluster.json" class="leaflet" style="height:500px;"></div>
 <script>
     function get_bounds(fig) {
         if ('lat' in fig['data'][0]) {
@@ -1254,14 +1254,14 @@ $$</p>
         return [minLat, maxLat, minLon, maxLon]
     }
 
-    fetch("/json/spatial-bike-clusters.json")
+    fetch("/json/bike-spatial-cluster.json")
     .then(response => response.json())
     .then(fig => {
         
         const [minLat, maxLat, minLon, maxLon] = get_bounds(fig)
         const centerLat = (minLat + maxLat) / 2
         const centerLon = (minLon + maxLon) / 2
-        const map = L.map("\/json\/spatial-bike-clusters.json").setView([centerLat, centerLon], 10);
+        const map = L.map("\/json\/bike-spatial-cluster.json").setView([centerLat, centerLon], 10);
         
         
         L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
