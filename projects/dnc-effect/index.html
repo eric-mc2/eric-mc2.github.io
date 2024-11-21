@@ -126,28 +126,28 @@
     <p>Project link: <a href="https://github.com/eric-mc2/DNCTransit">https://github.com/eric-mc2/DNCTransit</a></p>
     <p>A few weeks ago I fumbled an interview question on statistical modeling. That
 hurt my pride, so I decided to take on a little modeling project.</p>
-<p>Economists don&rsquo;t usually get to run their own controlled experiments, but they seem to
-keep their ears perked for cases when a policy is implemented with <em>some</em>
-randomness. That&rsquo;s what I&rsquo;m doing here.</p>
+<p>I&rsquo;ll follow the standard economic practice of creating a quasi-experiment
+out of a policy implemented with <em>some</em>
+randomness.</p>
 <blockquote>
 <p><em>I exploit the exogeneous shock of the 2024 Democratic National Convention in Chicago, (ie. the addition of tens of thousands of politically active Democrats) to test whether a statistically significant change in public transit is observed.</em></p>
 </blockquote>
 <p>Supposing this setup is statistically valid (FOOTNOTE), I expect public transit
 ridership to <em>increase</em> due to the DNC. This is because the Democratic coalition
 generally lives in urban areas, supports &ldquo;green&rdquo; policy, government spending, etc.</p>
-<p>I don&rsquo;t really have a stake in whether Democrats in general use transit or not,
+<p><em><strong>Disclaimer</strong></em>: I don&rsquo;t really have a stake in whether Democrats in general use transit or not,
 but I like this setup for a few reasons:</p>
 <ul>
 <li>if <em>NO</em> effect is found, that is also interesting
 <ul>
 <li>it suggests a gap between talk and action in the Democratic leadership</li>
-<li>(usually null results are boring)</li>
+<li>(in most experiments null results are boring)</li>
 </ul>
 </li>
 <li>the premise is kinda click-baity</li>
 <li>if the setup is not statistically valid, I can practice demonstrating that too
 <ul>
-<li>(poorly tested statistics can have lasting effects on society)</li>
+<li>(poorly tested statistics can have lasting effects on society!)</li>
 </ul>
 </li>
 </ul>
@@ -172,7 +172,7 @@ one mile buffer, because the smaller sizes had too few intersecting stations and
 <p>
   <figure>
     <img src="/img/panel_sample.jpeg" alt="Transit serving catchement">
-    <figcaption>Bus ridership is not known per stop.</figcaption>
+    <figcaption>Fig: Bus ridership is not known per stop.</figcaption>
   </figure>
 </p>
 <p>To test the sensitivity of this specification, I modeled:</p>
@@ -180,6 +180,18 @@ $$\text{rides}_i \sim \text{within 400m}_i + \text{within 800m}_i + \text{within
 <p>I found that the effect was not monotonic as the buffer size increased. (Note that
 this equation specifies the marginal contribution of increasing the buffer size).
 In other words, the results will be very sensitive to the choice of buffer size.</p>
+<h1 id="todo">TODO:</h1>
+<p><em>This blog post isn&rsquo;t finished!</em> I still have to write-up:</p>
+<ul>
+<li>initial time series plots</li>
+<li>power analysis (minimum statistically detectable effect)</li>
+<li>regression models</li>
+<li>robustness checks and extra models checking assumptions of regressions</li>
+</ul>
+<h1 id="at-first-glance">At First Glance</h1>
+<p>The <a href="https://cdn.choosechicago.com/uploads/2024/10/TE-DNC-Impact.pdf">report</a> says 50k delegates spent $58.7M off-site.</p>
+<p>Let&rsquo;s simulate a 50k spike in transit and graph that compared to nominal levels.</p>
+<!-- raw HTML omitted -->
 <h1 id="why-you-shouldnt-trust-this">Why you shouldn&rsquo;t trust this</h1>
 <p><strong>Power</strong></p>
 <ul>
