@@ -46,18 +46,6 @@
     crossorigin=""></script>
     
     
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-<script>
-  MathJax = {
-    tex: {
-      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
-      inlineMath: [['\\(', '\\)']]                  
-    }
-  };
-</script>
-
-
-    
   
 </head>
 <body id="page-top">
@@ -133,140 +121,12 @@
     <p>Project link: <a href="URL%20linked%20from%20project%20details%20page">URL linked from project details page</a></p>
     
 
-<div id="/dataviz/routes.json" class="leaflet" style="height:500px;"></div>
-<script>
-    function get_bounds(fig) {
-        if ('lat' in fig['data'][0]) {
-            
-            var minLat = Math.min(...fig.data.flatMap(d => 
-            d.lat.filter(val => val != null && !isNaN(val))
-            ));
-            var maxLat = Math.max(...fig.data.flatMap(d => 
-                d.lat.filter(val => val != null && !isNaN(val))
-            ));
-            var minLon = Math.min(...fig.data.flatMap(d => 
-                d.lon.filter(val => val != null && !isNaN(val))
-            ));
-            var maxLon = Math.max(...fig.data.flatMap(d => 
-                d.lon.filter(val => val != null && !isNaN(val))
-            ));
-        } else if ('geojson' in fig['data'][0]) {
-            
-            const lons = fig['data']
-                .flatMap(d => d['geojson']['features'])
-                .flatMap(f => f['geometry']['coordinates'])
-                .flatMap(cc => cc.map(([x, y]) => x))
-                .filter(x => x != null && !isNaN(x));
-            const lats = fig['data']
-                .flatMap(d => d['geojson']['features'])
-                .flatMap(f => f['geometry']['coordinates'])
-                .flatMap(cc => cc.map(([x, y]) => y))
-                .filter(y => y != null && !isNaN(y));
-            var minLat = Math.min(...lats);
-            var maxLat = Math.max(...lats);
-            var minLon = Math.min(...lons);
-            var maxLon = Math.max(...lons);
-        }
-        return [minLat, maxLat, minLon, maxLon]
-    }
-
-    fetch("/dataviz/routes.json")
-    .then(response => response.json())
-    .then(fig => {
-        
-        const [minLat, maxLat, minLon, maxLon] = get_bounds(fig)
-        const centerLat = (minLat + maxLat) / 2
-        const centerLon = (minLon + maxLon) / 2
-        const map = L.map("\/dataviz\/routes.json").setView([centerLat, centerLon], 10);
-        
-        
-        L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
-        
-        
-        
-        
-        
-        
-        if (fig.data[0]['type'] === "choropleth") {
-            var layerControl = L.control.layers(null, {}, { collapsed: false }).addTo(map);
-            var layers = {};  
-        }
-        
-        
-        fig.data.forEach((trace, traceIndex) => {
-            if (trace.type === 'scattergeo' || trace.type === 'scatter') {
-                
-                const latitudes = trace.lat;
-                const longitudes = trace.lon;
-                const color = trace.line?.color || 'blue';
-                const weight = trace.line?.width || 2;
-                
-                let points = [];
-                
-                for (let i = 0; i < latitudes.length; i++) {
-                    const lat = latitudes[i];
-                    const lon = longitudes[i];
-                    
-                    if (lat != null && lon != null && !isNaN(lat) && !isNaN(lon)) {
-                        
-                        points.push([lat, lon]);
-                    } else if (points.length) {
-                        
-                        L.polyline(points, { color, weight }).addTo(map);
-                        points = []; 
-                    }
-                }
-                
-                
-                if (points.length) {
-                    L.polyline(points, { color, weight }).addTo(map);
-                }
-            }
-            else if (trace.type === 'scattermap') {
-                
-                const color = trace.marker?.color || 'blue';
-                const points = trace.lat
-                                .map((lat,i) => [trace.lon[i], lat])
-                                .filter(([lon,lat]) => lon != null && !isNaN(lon));
-                for (const [lon,lat] of points) {
-                    L.circle([lat,lon], {'color': color, 'radius': 20}).addTo(map);
-                }
-                
-            }
-            else if (trace.type === 'choropleth') {
-                const facetName = trace.name || `Layer ${traceIndex + 1}`;
-
-                const layer = L.geoJSON(trace.geojson, {
-                    style: feature => ({
-                        fillColor: feature.properties.cmap,
-                        weight: 1,
-                        opacity: 1,
-                        color: 'white',
-                        fillOpacity: 0.7
-                    })}).addTo(map);
-                
-                
-                layerControl.addOverlay(layer, facetName);
-                layers[facetName] = layer;
-
-                
-                if (traceIndex === 0) {
-                    layer.addTo(map);
-                }
-            }
-        });
-
-        
-        map.on('overlayadd', e => {
-            Object.entries(layers).forEach(([name, layer]) => {
-                if (name !== e.name) {
-                    map.removeLayer(layer);
-                    layerControl.removeLayer(layer);
-                    layerControl.addOverlay(layer, name);
-                }
-            })
-        });
-    });
+<div id="/json/bus-route-rides.json" class="leaflet" style="height:500px;"></div>
+<script type="module">
+    import { plot as leafletcustomplot} from "/js/leaflet_custom.js";
+    fetch("/json/bus-route-rides.json")
+        .then(response => response.json())
+        .then(fig => leafletcustomplot(fig, "\/json\/bus-route-rides.json"));
 </script>
 
     <ul class="tags">

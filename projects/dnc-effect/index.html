@@ -37,6 +37,9 @@
   
     
     
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+    
     
     
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
@@ -151,8 +154,31 @@ but I like this setup for a few reasons:</p>
 </ul>
 </li>
 </ul>
+<h1 id="at-first-glance">At First Glance</h1>
+<p>The <a href="https://cdn.choosechicago.com/uploads/2024/10/TE-DNC-Impact.pdf">report</a>
+says 50,000 delegates visited and spent $58.7M within Chicago off-site of the convention itself.
+This would be a small blip in city-wide average daily CTA ridership (800,000).</p>
+<p>But the convention event is localised to the United Center and McCormick place.
+When we only look at CTA routes serving this part of the city, the average
+daily ridership reduces to 325,000. An influx
+of 50,000 riders would mean a 15% day-over-day increase in this area.</p>
+<p>Breaking this down further, daily ridership is 136k for bus routes and 189,000 for train lines.
+Selecting only nearby train <em>stations</em> (similar data is not available for bus <em>stops</em>),
+average daily boardings are 11,000. To round out this picture,
+there are 6,000 and 33,000 average daily bike and rideshare
+trips in areas near the United Center and McCormick place.</p>
+<p>With these totals in mind, I&rsquo;d expect the DNC delegation to significantly increase
+ridership nearby the convention centers, no matter what transit mode they choose.</p>
+
+
+<div id="/json/avg-daily-rides.json" class="plotly" style="height:500px;"></div>
+<script type="module">
+    import {plot as plotlycustomplot} from "/js/plotly_custom.js";
+    d3.json("/json/avg-daily-rides.json")
+        .then(fig => plotlycustomplot(fig, "\/json\/avg-daily-rides.json"));
+</script>
 <h1 id="the-data">The data</h1>
-<p>I have a panel dataset of transit ridership among train (CTA), bus (CTA), rideshare (uber, lyft, etc),
+<p>I have <a href="../transit-panel/index.html">constructed a panel dataset</a> of transit ridership among train (CTA), bus (CTA), rideshare (uber, lyft, etc),
 and bikeshare (Divvy). The data is aggregated to daily ridership totals and spatially
 aggregated three different ways:</p>
 <ul>
@@ -160,11 +186,11 @@ aggregated three different ways:</p>
 <li>Per Route: train, bus</li>
 <li>Per Census Tract: train, bike, uber</li>
 </ul>
-<p>See my <a href="./transit-panel.md">Transit Panel</a> post for how this dataset was constructed.</p>
 <h2 id="points-of-interest">Points of Interest</h2>
+<p><strong>Convention Centers</strong></p>
 <p>I use the City of Chicago buildings shapefile to find the footprint of the
 United Center and McCormick Place, the two official sites of the DNC. Proximity
-to these locations will be one of the main exploratory variables in the model.</p>
+to these locations will constitute the &ldquo;treatment&rdquo; group in the model.</p>
 <!-- raw HTML omitted -->
 <p>I compute a buffer around each building and find all intersecting transit stations, routes, and tracts.
 For robustness, I computed 400m, 800m, and 1600m buffers. To pick which catchement size to use, I was forced to choose
@@ -180,6 +206,61 @@ $$\text{rides}_i \sim \text{within 400m}_i + \text{within 800m}_i + \text{within
 <p>I found that the effect was not monotonic as the buffer size increased. (Note that
 this equation specifies the marginal contribution of increasing the buffer size).
 In other words, the results will be very sensitive to the choice of buffer size.</p>
+<p><strong>Airport</strong></p>
+<p>I coded CTA stations/lines serving O&rsquo;Hare and Midway airports. I plan to include
+as part of the treatment group in an alternate model specification.</p>
+<h2 id="time-like-features">Time-like Features</h2>
+<p><strong>Conference Dates</strong></p>
+<p>The DNC itself occurs between August 19-22. This constitutes the &ldquo;treatment period&rdquo;
+in the model. For a robustness check I will consider extending this period by
+1 or 2 days (travel/tourism days). I may also run the model with random placebo
+dates, or perhaps dates aligned with major concerts such as Lollapalooza, Suenos Festival, etc.</p>
+<p><strong>Day of the Week</strong></p>
+<p>Commuting patterns have strong weekday/weekend polarity. CTA ridership is drastically
+higher on weekdays, while on weekends Uber ridership is higher. An ordinal
+Day of the Week variable, or binary weekday/weekend variable is an important regression
+control to include.</p>
+<!-- raw HTML omitted -->
+<h2 id="spatial-aggregation">Spatial Aggregation</h2>
+<p><strong>Train Stops -&gt; Lines</strong></p>
+<p>There are two sources of uncertainty in aggregating station-level data to line-level data.
+First, this data does not indicate the direction of travel (e.g. N vs S). As a result,
+this interpretation of line ridership disregards direction and assumes passengers
+are equally likely to be anywhere along the line. Second,
+the data does not indicate the actual line boarded at hub stations serving multiple lines.
+To approximate this choice, I simply divide each station total by the number
+of lines served by the station.</p>
+<p><strong>Lines vs Point of Interest</strong></p>
+<p>I code a <em>binary</em> variable indicating if train lines, bus routes, or tracts
+<em>intersect</em> a point of interest (convention
+centers or airports). This lends to the simplistic interpretation that the line
+<em>&ldquo;serves&rdquo;</em> the point of interest.</p>
+<p>Obviously this leaves a lot of uncertainty unaddressed. How far does the line
+travel away from the point of interest? What proportion of the line is somewhat
+&ldquo;close&rdquo; to the point of interest? How is ridership distributed along the line?
+With out a better model of rider destinations (ideally a source-destination matrix),
+I can&rsquo;t really address this with more accuracy.</p>
+<p><strong>Bus Routes vs Tracts</strong></p>
+<p>Bus ridership is only known at the line-level, so I have to <em>disaggregate</em>
+to the tract level. I use the &ldquo;equal-ridership along the route&rdquo; assumption:
+I divide total route ridership equally per stop, such that tract ridership
+equals total route ridership / number of (intersecting) stops per tract.</p>
+<p><strong>Gravity and Catchement Models</strong></p>
+<p>A real urban mobility researcher would probably use some kind of diffusion
+model, saying that rider origins are normally distributed around each station.
+This might be more realistic but I don&rsquo;t have the capacity to estimate and
+incorporate this kind of complexity.</p>
+<h2 id="other-spatial-features">Other Spatial Features</h2>
+<p><strong>Transit Density</strong></p>
+<p>For the tract-level dataset, I spatially join tracts vs train stations and bus stops
+to find the distance to the nearest transit option. Could be a helpful covariate.</p>
+<p><strong>Location</strong></p>
+<p>I include the stop/line/tract centroid longitude and latitude as a quadratic
+term in the model to capture basic city-wide demographic factors:</p>
+$$
+\sim \beta_1\text{lon} + \beta_2\text{lat} + \beta_3\text{lon}*\text{lat} + \beta_4\text{lon}^2 + \beta_5\text{lat}^2
+$$
+<p>(For numeric stability, I scale lon/lat to zero-mean unit variance.)</p>
 <h1 id="todo">TODO:</h1>
 <p><em>This blog post isn&rsquo;t finished!</em> I still have to write-up:</p>
 <ul>
@@ -189,9 +270,24 @@ In other words, the results will be very sensitive to the choice of buffer size.
 <li>robustness checks and extra models checking assumptions of regressions</li>
 </ul>
 <p>^^ Most of that work is already completed in <a href="https://github.com/eric-mc2/DNCTransit/tree/main/notebooks/exploratory/2024/11/gut-check.ipynb">these</a> <a href="https://github.com/eric-mc2/DNCTransit/tree/main/notebooks/exploratory/2024/11/panel-models.ipynb">notebooks</a>.</p>
-<h1 id="at-first-glance">At First Glance</h1>
-<p>The <a href="https://cdn.choosechicago.com/uploads/2024/10/TE-DNC-Impact.pdf">report</a> says 50k delegates spent $58.7M off-site.</p>
-<p>Let&rsquo;s simulate a 50k spike in transit and graph that compared to nominal levels.</p>
+<h1 id="the-sample">The Sample</h1>
+<p><strong>Weekends</strong></p>
+<p>Since the DNC itself only occurs during weekdays, it is perfectly co-linear with
+a weekday variable, breaking the regression procedure. To fix this co-linearity
+problem, I will drop observations on Friday, Saturday, and Sunday from the model.
+(Ridership on these days doesn&rsquo;t convey any information about the &ldquo;treatment&rdquo;
+because the DNC doesn&rsquo;t even happen on these days.)</p>
+<p>For this same reason, I use <em>daily</em> observations. Aggregating the data to weeks
+would include extraneous variance due to weekends. It would also <em>attenuate</em> the
+treatment effect since the DNC only occurs on 4/7 days of the week &ndash; the other
+3/7 days would require a form of &ldquo;<a href="https://en.wikipedia.org/wiki/Local_average_treatment_effect#Non-compliance_framework">noncompliance</a>&rdquo; correction.</p>
+<p><strong>Baseline Dates</strong></p>
+<p>I use data from the summer months, June, July, and August. Restricting the data
+to this set makes sense for two reasons. First, I avoid needing to incorporate
+more complex modeling of seasonality. Second, transit has been on a long-term
+rebound since the pandemic, which is less noticeable on short time-scales:
+I avoid needing to incorporate a parameter to account for this long-term trend.</p>
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <h1 id="why-you-shouldnt-trust-this">Why you shouldn&rsquo;t trust this</h1>
 <p><strong>Power</strong></p>
