@@ -179,12 +179,13 @@ ridership nearby the convention centers, no matter what transit mode they choose
 </script>
 <h1 id="the-data">The data</h1>
 <p>I have <a href="../transit-panel/index.html">constructed a panel dataset</a> of transit ridership among train (CTA), bus (CTA), rideshare (uber, lyft, etc),
-and bikeshare (Divvy). The data is aggregated to daily ridership totals and spatially
-aggregated three different ways:</p>
+and bikeshare (Divvy). The data is aggregated to daily ridership totals at
+different spatial aggregations:</p>
 <ul>
 <li>Per Station: train, bike</li>
 <li>Per Route: train, bus</li>
 <li>Per Census Tract: train, bike, uber</li>
+<li>Per Community Area: train, bike, uber</li>
 </ul>
 <h2 id="points-of-interest">Points of Interest</h2>
 <p><strong>Convention Centers</strong></p>
@@ -197,8 +198,8 @@ For robustness, I computed 400m, 800m, and 1600m buffers. To pick which catcheme
 one mile buffer, because the smaller sizes had too few intersecting stations and routes.</p>
 <p>
   <figure>
-    <img src="/img/panel_sample.jpeg" alt="Transit serving catchement">
-    <figcaption>Fig: Bus ridership is not known per stop.</figcaption>
+    <img src="/img/panel_sample.jpeg" alt="Bus ridership is not known per stop.">
+    <figcaption>Fig: Transit serving convention areas.</figcaption>
   </figure>
 </p>
 <p>To test the sensitivity of this specification, I modeled:</p>
@@ -217,10 +218,16 @@ in the model. For a robustness check I will consider extending this period by
 dates, or perhaps dates aligned with major concerts such as Lollapalooza, Suenos Festival, etc.</p>
 <p><strong>Day of the Week</strong></p>
 <p>Commuting patterns have strong weekday/weekend polarity. CTA ridership is drastically
-higher on weekdays, while on weekends Uber ridership is higher. An ordinal
-Day of the Week variable, or binary weekday/weekend variable is an important regression
-control to include.</p>
-<!-- raw HTML omitted -->
+higher on weekdays, while on weekends Uber ridership is higher. I&rsquo;ll need to control
+for this in the regression.</p>
+
+
+<div id="/json/scaled-ts.json" class="plotly" style="height:500px;"></div>
+<script type="module">
+    import {plot as plotlycustomplot} from "/js/plotly_custom.js";
+    d3.json("/json/scaled-ts.json")
+        .then(fig => plotlycustomplot(fig, "\/json\/scaled-ts.json"));
+</script>
 <h2 id="spatial-aggregation">Spatial Aggregation</h2>
 <p><strong>Train Stops -&gt; Lines</strong></p>
 <p>There are two sources of uncertainty in aggregating station-level data to line-level data.
@@ -240,11 +247,6 @@ travel away from the point of interest? What proportion of the line is somewhat
 &ldquo;close&rdquo; to the point of interest? How is ridership distributed along the line?
 With out a better model of rider destinations (ideally a source-destination matrix),
 I can&rsquo;t really address this with more accuracy.</p>
-<p><strong>Bus Routes vs Tracts</strong></p>
-<p>Bus ridership is only known at the line-level, so I have to <em>disaggregate</em>
-to the tract level. I use the &ldquo;equal-ridership along the route&rdquo; assumption:
-I divide total route ridership equally per stop, such that tract ridership
-equals total route ridership / number of (intersecting) stops per tract.</p>
 <p><strong>Gravity and Catchement Models</strong></p>
 <p>A real urban mobility researcher would probably use some kind of diffusion
 model, saying that rider origins are normally distributed around each station.
@@ -261,15 +263,6 @@ $$
 \sim \beta_1\text{lon} + \beta_2\text{lat} + \beta_3\text{lon}*\text{lat} + \beta_4\text{lon}^2 + \beta_5\text{lat}^2
 $$
 <p>(For numeric stability, I scale lon/lat to zero-mean unit variance.)</p>
-<h1 id="todo">TODO:</h1>
-<p><em>This blog post isn&rsquo;t finished!</em> I still have to write-up:</p>
-<ul>
-<li>initial time series plots</li>
-<li>power analysis (minimum statistically detectable effect)</li>
-<li>regression models</li>
-<li>robustness checks and extra models checking assumptions of regressions</li>
-</ul>
-<p>^^ Most of that work is already completed in <a href="https://github.com/eric-mc2/DNCTransit/tree/main/notebooks/exploratory/2024/11/gut-check.ipynb">these</a> <a href="https://github.com/eric-mc2/DNCTransit/tree/main/notebooks/exploratory/2024/11/panel-models.ipynb">notebooks</a>.</p>
 <h1 id="the-sample">The Sample</h1>
 <p><strong>Weekends</strong></p>
 <p>Since the DNC itself only occurs during weekdays, it is perfectly co-linear with
@@ -287,12 +280,49 @@ to this set makes sense for two reasons. First, I avoid needing to incorporate
 more complex modeling of seasonality. Second, transit has been on a long-term
 rebound since the pandemic, which is less noticeable on short time-scales:
 I avoid needing to incorporate a parameter to account for this long-term trend.</p>
+<p><strong>Boardings vs Trips</strong></p>
+<p>CTA train and bus data only provides the locations where riders <em>board</em> transit,
+not where they <em>exit</em>. Bike and rideshare data provides per-trip board <em>and</em> exit
+locations. For strict parity, I&rsquo;d want to only consider <em>boarding</em> locations, but
+keeping the exit data gives a fuller picture of transit usage. In this scheme,
+bike and rideshare data are double-counted compared to train and bus: this
+isn&rsquo;t an issue for regression as the difference in scale will be absorbed
+by the &ldquo;transit&rdquo; coefficient.</p>
+<h2 id="baseline-characteristics">Baseline Characteristics</h2>
+<p>Here&rsquo;s a basic summary of the panel:</p>
+
+
+<div id="/json/baseline-table.json" class="plotly" style="height:500px;"></div>
+<script type="module">
+    import {plot as plotlycustomplot} from "/js/plotly_custom.js";
+    d3.json("/json/baseline-table.json")
+        .then(fig => plotlycustomplot(fig, "\/json\/baseline-table.json"));
+</script>
 <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<h1 id="todo">TODO:</h1>
+<p><em>This blog post isn&rsquo;t finished!</em> I still have to write-up:</p>
+<ul>
+<li>power analysis (minimum statistically detectable effect)</li>
+<li>regression models</li>
+<li>robustness checks and checking model assumptions</li>
+</ul>
+<p>^^ Most of that work is already completed in <a href="https://github.com/eric-mc2/DNCTransit/tree/main/notebooks/exploratory/2024/11/gut-check.ipynb">these</a> <a href="https://github.com/eric-mc2/DNCTransit/tree/main/notebooks/exploratory/2024/11/panel-models.ipynb">notebooks</a>.</p>
 <h1 id="why-you-shouldnt-trust-this">Why you shouldn&rsquo;t trust this</h1>
 <p><strong>Power</strong></p>
 <ul>
-<li>a few thousand riders is a drop in the bucket compared to normal trends</li>
+<li>may not have enough relevant observations to precisely estimate effect of DNC</li>
+</ul>
+<p><strong>Treatment Mis-Specification</strong></p>
+<ul>
+<li>assumes riders cannot transfer train lines</li>
+</ul>
+<p><strong>Control Mis-Specification</strong></p>
+<ul>
+<li>the control group should be &ldquo;like&rdquo; the treatment group, but I use the entire
+city as a comparison. it&rsquo;s not apples-to-apples. a better control group might
+be a handful of the major event/cultural institutions like Soldier Field,
+Wrigley Field, Guaranteed Rate Field, Art Institute. or finding matched pairs
+based on covaraites.</li>
 </ul>
 <p><strong>Selection Bias</strong></p>
 <ul>
