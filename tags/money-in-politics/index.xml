@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Money in Politics on Eric Chandler</title>
+    <link>https://eric-mc2.github.io/tags/money-in-politics/</link>
+    <description>Recent content in Money in Politics on Eric Chandler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Dec 2024 00:00:00 -0600</lastBuildDate>
+    <atom:link href="https://eric-mc2.github.io/tags/money-in-politics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>527 Network Explorer</title>
+      <link>https://eric-mc2.github.io/projects/527-explorer/</link>
+      <pubDate>Tue, 03 Dec 2024 00:00:00 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/projects/527-explorer/</guid>
+      <description>527 Explorer Network visualization of ProPublica&amp;rsquo;s 527 Explorer, built with Observable Framework.&#xA;Demo (so far &amp;hellip;)&#xA;Why make this? This project is in part, an extension of my prior research into nonprofit donations networks.&#xA;I would like to write my own opinionated d3.js layout that deals with the scale-free and core-periphery characteristics of these networks. Having code to query and visualize a donations dataset was a first step.&#xA;I also have ambitions to create better looking interactive visualizations, and was curious by the interactivity provided by Observable.</description>
+    </item>
+  </channel>
+</rss>
