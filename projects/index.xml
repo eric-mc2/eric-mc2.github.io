@@ -2,66 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Eric Chandler</title>
-    <link>http://localhost:1313/projects/</link>
+    <link>https://eric-mc2.github.io/projects/</link>
     <description>Recent content in Projects on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Dec 2024 00:00:00 -0600</lastBuildDate>
-    <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://eric-mc2.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>527 Network Explorer</title>
-      <link>http://localhost:1313/projects/527-explorer/</link>
+      <link>https://eric-mc2.github.io/projects/527-explorer/</link>
       <pubDate>Tue, 03 Dec 2024 00:00:00 -0600</pubDate>
-      <guid>http://localhost:1313/projects/527-explorer/</guid>
+      <guid>https://eric-mc2.github.io/projects/527-explorer/</guid>
       <description>527 Explorer Network visualization of ProPublica&amp;rsquo;s 527 Explorer, built with Observable Framework.&#xA;Demo (so far &amp;hellip;)&#xA;Why make this? This project is in part, an extension of my prior research into nonprofit donations networks.&#xA;I would like to write my own opinionated d3.js layout that deals with the scale-free and core-periphery characteristics of these networks. Having code to query and visualize a donations dataset was a first step.&#xA;I also have ambitions to create better looking interactive visualizations, and was curious by the interactivity provided by Observable.</description>
     </item>
     <item>
       <title>Do Democrats Really Support Public Transit?</title>
-      <link>http://localhost:1313/projects/dnc-effect/</link>
+      <link>https://eric-mc2.github.io/projects/dnc-effect/</link>
       <pubDate>Tue, 19 Nov 2024 10:47:51 -0600</pubDate>
-      <guid>http://localhost:1313/projects/dnc-effect/</guid>
+      <guid>https://eric-mc2.github.io/projects/dnc-effect/</guid>
       <description>A few weeks ago I fumbled an interview question on statistical modeling. That hurt my pride, so I decided to take on a little modeling project.&#xA;I&amp;rsquo;ll follow the standard economic practice of creating a quasi-experiment out of a policy implemented with some randomness.&#xA;I exploit the exogeneous shock of the 2024 Democratic National Convention in Chicago, (ie. the addition of tens of thousands of politically active Democrats) to test whether a statistically significant change in public transit is observed.</description>
     </item>
     <item>
-      <title>Cors Test</title>
-      <link>http://localhost:1313/projects/cors/</link>
-      <pubDate>Wed, 13 Nov 2024 15:32:38 -0600</pubDate>
-      <guid>http://localhost:1313/projects/cors/</guid>
-      <description> </description>
-    </item>
-    <item>
-      <title>Debug</title>
-      <link>http://localhost:1313/projects/debug/</link>
-      <pubDate>Wed, 13 Nov 2024 15:32:38 -0600</pubDate>
-      <guid>http://localhost:1313/projects/debug/</guid>
-      <description>Baseline Characteristics Markdown:&#xA;Not Near DNC Near DNC P-Value community areas 173 23 CA-days 12683 1749 daily rides, mean (SD) 3779.0 (9628.5) 6389.9 (9083.1) &amp;lt;0.001 transit, n (%) bike 69 (39.9) 8 (34.8) 0.534 train 35 (20.2) 7 (30.4) uber 69 (39.9) 8 (34.8) lat, mean (SD) -0.1 (1.1) 0.2 (0.3) 0.016 long, mean (SD) -0.0 (1.1) 0.2 (0.5) 0.060 HTML:&#xA;Not Near DNC Near DNC P-Value community areas, mean (SD) 173 23 CA-days, mean (SD) 12683 1749 daily rides, mean (SD) 3779.</description>
-    </item>
-    <item>
-      <title>Leaflet</title>
-      <link>http://localhost:1313/projects/leaflet-example/</link>
-      <pubDate>Wed, 13 Nov 2024 15:32:38 -0600</pubDate>
-      <guid>http://localhost:1313/projects/leaflet-example/</guid>
-      <description> </description>
-    </item>
-    <item>
-      <title>Markdown Table</title>
-      <link>http://localhost:1313/projects/markdown-table/</link>
-      <pubDate>Wed, 13 Nov 2024 15:32:38 -0600</pubDate>
-      <guid>http://localhost:1313/projects/markdown-table/</guid>
-      <description>Example Not Near DNC Near DNC P-Value community areas, mean (SD) 173 23 CA-days, mean (SD) 12683 1749 daily rides, mean (SD) 3779.0 (9628.5) 6389.9 (9083.1) &amp;lt;0.001 transit, n (%) bike 69 (39.9) 8 (34.8) 0.534 train 35 (20.2) 7 (30.4) uber 69 (39.9) 8 (34.8) lat, mean (SD) -0.1 (1.1) 0.2 (0.3) 0.016 long, mean (SD) -0.0 (1.1) 0.2 (0.5) 0.060 </description>
-    </item>
-    <item>
-      <title>Plotly</title>
-      <link>http://localhost:1313/projects/plotly-example/</link>
-      <pubDate>Wed, 13 Nov 2024 15:32:38 -0600</pubDate>
-      <guid>http://localhost:1313/projects/plotly-example/</guid>
-      <description> </description>
-    </item>
-    <item>
       <title>Chicago Transit Ridership Panel</title>
-      <link>http://localhost:1313/projects/transit-panel/</link>
+      <link>https://eric-mc2.github.io/projects/transit-panel/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>http://localhost:1313/projects/transit-panel/</guid>
+      <guid>https://eric-mc2.github.io/projects/transit-panel/</guid>
       <description>This page describes the steps I took to create a panel dataset of ridership across different Chicago transit systems. I did this to practice econometric modeling.&#xA;Transit modes and data sources Included modes&#xA;Train, Bus, Rideshares - from the City of Chicago (used Socrata API and sodapy python package) Bikeshares aka Divvy Bikes - from Lyft (used s3fs python package to access public Amazon S3 bucket) Excluded modes&#xA;Metra commuter rail (public data is available but too coarsely aggregated) Pace city-suburb bus link (have not checked availability) Walking / Biking (vendored data is available &amp;ndash; ie cell phone location data &amp;ndash; but would be hard to isolate from other transit modalities) Driving (public data is available &amp;ndash; ie road segment usage &amp;ndash; but haven&amp;rsquo;t seriously looked yet) Extra data</description>
     </item>
   </channel>

@@ -2,129 +2,115 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Eric Chandler</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://eric-mc2.github.io/tags/</link>
     <description>Recent content in Tags on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Dec 2024 00:00:00 -0600</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://eric-mc2.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>D3</title>
-      <link>http://localhost:1313/tags/d3/</link>
+      <link>https://eric-mc2.github.io/tags/d3/</link>
       <pubDate>Tue, 03 Dec 2024 00:00:00 -0600</pubDate>
-      <guid>http://localhost:1313/tags/d3/</guid>
+      <guid>https://eric-mc2.github.io/tags/d3/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Science</title>
-      <link>http://localhost:1313/tags/data-science/</link>
+      <link>https://eric-mc2.github.io/tags/data-science/</link>
       <pubDate>Tue, 03 Dec 2024 00:00:00 -0600</pubDate>
-      <guid>http://localhost:1313/tags/data-science/</guid>
+      <guid>https://eric-mc2.github.io/tags/data-science/</guid>
       <description></description>
     </item>
     <item>
       <title>Money in Politics</title>
-      <link>http://localhost:1313/tags/money-in-politics/</link>
+      <link>https://eric-mc2.github.io/tags/money-in-politics/</link>
       <pubDate>Tue, 03 Dec 2024 00:00:00 -0600</pubDate>
-      <guid>http://localhost:1313/tags/money-in-politics/</guid>
+      <guid>https://eric-mc2.github.io/tags/money-in-politics/</guid>
       <description></description>
     </item>
     <item>
       <title>Typescript</title>
-      <link>http://localhost:1313/tags/typescript/</link>
+      <link>https://eric-mc2.github.io/tags/typescript/</link>
       <pubDate>Tue, 03 Dec 2024 00:00:00 -0600</pubDate>
-      <guid>http://localhost:1313/tags/typescript/</guid>
+      <guid>https://eric-mc2.github.io/tags/typescript/</guid>
       <description></description>
     </item>
     <item>
       <title>Econometrics</title>
-      <link>http://localhost:1313/tags/econometrics/</link>
+      <link>https://eric-mc2.github.io/tags/econometrics/</link>
       <pubDate>Tue, 19 Nov 2024 10:47:51 -0600</pubDate>
-      <guid>http://localhost:1313/tags/econometrics/</guid>
+      <guid>https://eric-mc2.github.io/tags/econometrics/</guid>
       <description></description>
     </item>
     <item>
       <title>Panel Data</title>
-      <link>http://localhost:1313/tags/panel-data/</link>
+      <link>https://eric-mc2.github.io/tags/panel-data/</link>
       <pubDate>Tue, 19 Nov 2024 10:47:51 -0600</pubDate>
-      <guid>http://localhost:1313/tags/panel-data/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Leaflet</title>
-      <link>http://localhost:1313/tags/leaflet/</link>
-      <pubDate>Wed, 13 Nov 2024 15:32:38 -0600</pubDate>
-      <guid>http://localhost:1313/tags/leaflet/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Plotly</title>
-      <link>http://localhost:1313/tags/plotly/</link>
-      <pubDate>Wed, 13 Nov 2024 15:32:38 -0600</pubDate>
-      <guid>http://localhost:1313/tags/plotly/</guid>
+      <guid>https://eric-mc2.github.io/tags/panel-data/</guid>
       <description></description>
     </item>
     <item>
       <title>Amazon S3</title>
-      <link>http://localhost:1313/tags/amazon-s3/</link>
+      <link>https://eric-mc2.github.io/tags/amazon-s3/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>http://localhost:1313/tags/amazon-s3/</guid>
+      <guid>https://eric-mc2.github.io/tags/amazon-s3/</guid>
       <description></description>
     </item>
     <item>
       <title>Geopandas</title>
-      <link>http://localhost:1313/tags/geopandas/</link>
+      <link>https://eric-mc2.github.io/tags/geopandas/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>http://localhost:1313/tags/geopandas/</guid>
+      <guid>https://eric-mc2.github.io/tags/geopandas/</guid>
       <description></description>
     </item>
     <item>
       <title>Open Data</title>
-      <link>http://localhost:1313/tags/open-data/</link>
+      <link>https://eric-mc2.github.io/tags/open-data/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>http://localhost:1313/tags/open-data/</guid>
+      <guid>https://eric-mc2.github.io/tags/open-data/</guid>
       <description></description>
     </item>
     <item>
       <title>Socrata</title>
-      <link>http://localhost:1313/tags/socrata/</link>
+      <link>https://eric-mc2.github.io/tags/socrata/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>http://localhost:1313/tags/socrata/</guid>
+      <guid>https://eric-mc2.github.io/tags/socrata/</guid>
       <description></description>
     </item>
     <item>
       <title>Urban Science</title>
-      <link>http://localhost:1313/tags/urban-science/</link>
+      <link>https://eric-mc2.github.io/tags/urban-science/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>http://localhost:1313/tags/urban-science/</guid>
+      <guid>https://eric-mc2.github.io/tags/urban-science/</guid>
       <description></description>
     </item>
     <item>
       <title>Network Analysis</title>
-      <link>http://localhost:1313/tags/network-analysis/</link>
+      <link>https://eric-mc2.github.io/tags/network-analysis/</link>
       <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/network-analysis/</guid>
+      <guid>https://eric-mc2.github.io/tags/network-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>NLP</title>
-      <link>http://localhost:1313/tags/nlp/</link>
+      <link>https://eric-mc2.github.io/tags/nlp/</link>
       <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/nlp/</guid>
+      <guid>https://eric-mc2.github.io/tags/nlp/</guid>
       <description></description>
     </item>
     <item>
       <title>SNA</title>
-      <link>http://localhost:1313/tags/sna/</link>
+      <link>https://eric-mc2.github.io/tags/sna/</link>
       <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/sna/</guid>
+      <guid>https://eric-mc2.github.io/tags/sna/</guid>
       <description></description>
     </item>
     <item>
       <title>Social Media Analysis</title>
-      <link>http://localhost:1313/tags/social-media-analysis/</link>
+      <link>https://eric-mc2.github.io/tags/social-media-analysis/</link>
       <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/social-media-analysis/</guid>
+      <guid>https://eric-mc2.github.io/tags/social-media-analysis/</guid>
       <description></description>
     </item>
   </channel>

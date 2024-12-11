@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Geopandas on Eric Chandler</title>
-    <link>http://localhost:1313/tags/geopandas/</link>
+    <link>https://eric-mc2.github.io/tags/geopandas/</link>
     <description>Recent content in Geopandas on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Nov 2024 11:07:59 -0600</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/geopandas/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://eric-mc2.github.io/tags/geopandas/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chicago Transit Ridership Panel</title>
-      <link>http://localhost:1313/projects/transit-panel/</link>
+      <link>https://eric-mc2.github.io/projects/transit-panel/</link>
       <pubDate>Wed, 13 Nov 2024 11:07:59 -0600</pubDate>
-      <guid>http://localhost:1313/projects/transit-panel/</guid>
+      <guid>https://eric-mc2.github.io/projects/transit-panel/</guid>
       <description>This page describes the steps I took to create a panel dataset of ridership across different Chicago transit systems. I did this to practice econometric modeling.&#xA;Transit modes and data sources Included modes&#xA;Train, Bus, Rideshares - from the City of Chicago (used Socrata API and sodapy python package) Bikeshares aka Divvy Bikes - from Lyft (used s3fs python package to access public Amazon S3 bucket) Excluded modes&#xA;Metra commuter rail (public data is available but too coarsely aggregated) Pace city-suburb bus link (have not checked availability) Walking / Biking (vendored data is available &amp;ndash; ie cell phone location data &amp;ndash; but would be hard to isolate from other transit modalities) Driving (public data is available &amp;ndash; ie road segment usage &amp;ndash; but haven&amp;rsquo;t seriously looked yet) Extra data</description>
     </item>
   </channel>
