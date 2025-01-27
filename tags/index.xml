@@ -6,20 +6,55 @@
     <description>Recent content in Tags on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Dec 2024 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 27 Dec 2024 00:00:00 -0600</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>D3</title>
-      <link>https://eric-mc2.github.io/tags/d3/</link>
-      <pubDate>Tue, 03 Dec 2024 00:00:00 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/tags/d3/</guid>
+      <title>Dashboard</title>
+      <link>https://eric-mc2.github.io/tags/dashboard/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/dashboard/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Science</title>
       <link>https://eric-mc2.github.io/tags/data-science/</link>
-      <pubDate>Tue, 03 Dec 2024 00:00:00 -0600</pubDate>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 -0600</pubDate>
       <guid>https://eric-mc2.github.io/tags/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Visualization</title>
+      <link>https://eric-mc2.github.io/tags/data-visualization/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/data-visualization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Javascript</title>
+      <link>https://eric-mc2.github.io/tags/javascript/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Observable Framework</title>
+      <link>https://eric-mc2.github.io/tags/observable-framework/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/observable-framework/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Storytelling</title>
+      <link>https://eric-mc2.github.io/tags/storytelling/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/storytelling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>D3</title>
+      <link>https://eric-mc2.github.io/tags/d3/</link>
+      <pubDate>Tue, 03 Dec 2024 00:00:00 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/d3/</guid>
       <description></description>
     </item>
     <item>

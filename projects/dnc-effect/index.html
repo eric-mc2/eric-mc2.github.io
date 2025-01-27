@@ -385,6 +385,8 @@ by adding a &ldquo;transit mode&rdquo; coefficient.</p>
 <p>We can see that the two groups are quite different before the DNC week. I will
 circle back to this issue.</p>
 <p><strong>Statistical Power</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>Before running the regression, I want to do a <em>slightly</em> more rigorous version
 of the time series <a href="#at-first-glance">gut check</a>. First, I&rsquo;ll look at the distribution of
 daily ridership and ask: what is the minimum number of additional rides to
@@ -484,69 +486,69 @@ effects during the DNC.</p>
 <tbody>
 <tr>
 <td>During DNC</td>
-<td>-0.0588***</td>
-<td>-0.0841***</td>
-<td>0.0287***</td>
+<td>-0.0139</td>
+<td>-0.0777**</td>
+<td>-0.3525***</td>
 </tr>
 <tr>
 <td></td>
-<td>(0.0066)</td>
-<td>(0.0148)</td>
-<td>(0.0069)</td>
+<td>(0.0263)</td>
+<td>(0.0323)</td>
+<td>(0.0355)</td>
 </tr>
 <tr>
 <td>time</td>
-<td>0.0013***</td>
-<td>0.0014***</td>
-<td>-0.0001</td>
+<td>0.0001</td>
+<td>0.0022***</td>
+<td>0.0133***</td>
 </tr>
 <tr>
 <td></td>
 <td>(0.0001)</td>
 <td>(0.0002)</td>
-<td>(0.0001)</td>
+<td>(0.0002)</td>
 </tr>
 <tr>
 <td>dotw</td>
-<td>0.0485***</td>
-<td>0.1022***</td>
-<td>0.0591***</td>
+<td>0.0499***</td>
+<td>0.1334***</td>
+<td>0.0629***</td>
 </tr>
 <tr>
 <td></td>
-<td>(0.0037)</td>
-<td>(0.0083)</td>
-<td>(0.0039)</td>
+<td>(0.0135)</td>
+<td>(0.0174)</td>
+<td>(0.0174)</td>
 </tr>
 <tr>
 <td>dotw**2</td>
-<td>0.0229***</td>
-<td>-0.0234***</td>
-<td>-0.0080***</td>
+<td>0.0296***</td>
+<td>-0.0272***</td>
+<td>-0.0147***</td>
 </tr>
 <tr>
 <td></td>
-<td>(0.0009)</td>
-<td>(0.0020)</td>
-<td>(0.0009)</td>
+<td>(0.0031)</td>
+<td>(0.0040)</td>
+<td>(0.0040)</td>
 </tr>
 <tr>
 <td>R-squared</td>
-<td>0.9515</td>
-<td>0.9017</td>
-<td>0.9488</td>
+<td>0.9222</td>
+<td>0.9362</td>
+<td>0.8249</td>
 </tr>
 <tr>
 <td>R-squared Adj.</td>
-<td>0.9506</td>
-<td>0.9001</td>
-<td>0.9473</td>
+<td>0.9209</td>
+<td>0.9347</td>
+<td>0.8209</td>
 </tr>
 <tr>
 <td>N</td>
-<td>65226.0</td>
-<td>7910.0</td>
-<td>53053.0</td>
+<td>6295.0</td>
+<td>978.0</td>
+<td>5586.0</td>
 </tr>
 </tbody>
 </table>
@@ -575,81 +577,93 @@ $$ \log{rides_{it}} \sim \beta_0 + \beta_1 \text{DNC}_t + \beta_2 \text{nearby}_
 <tbody>
 <tr>
 <td>Near DNC</td>
-<td>0.6665***</td>
-<td>-0.6557***</td>
-<td>0.2384***</td>
+<td>-0.1049**</td>
+<td>-0.1585</td>
+<td>-0.7144***</td>
 </tr>
 <tr>
 <td></td>
-<td>(0.0252)</td>
-<td>(0.0392)</td>
-<td>(0.0178)</td>
+<td>(0.0491)</td>
+<td>(0.1033)</td>
+<td>(0.0512)</td>
 </tr>
 <tr>
 <td>During DNC</td>
-<td>-0.0729***</td>
-<td>-0.1079***</td>
-<td>0.0282</td>
+<td>-0.1700*</td>
+<td>-0.2570**</td>
+<td>-0.4747***</td>
 </tr>
 <tr>
 <td></td>
-<td>(0.0213)</td>
-<td>(0.0412)</td>
-<td>(0.0177)</td>
+<td>(0.0924)</td>
+<td>(0.1288)</td>
+<td>(0.0803)</td>
 </tr>
 <tr>
 <td>Near DNC:During DNC</td>
-<td>0.1854*</td>
-<td>0.6845***</td>
-<td>0.2428***</td>
+<td>0.3725***</td>
+<td>0.2242</td>
+<td>0.3581***</td>
 </tr>
 <tr>
 <td></td>
-<td>(0.0996)</td>
-<td>(0.1512)</td>
-<td>(0.0724)</td>
+<td>(0.1222)</td>
+<td>(0.1678)</td>
+<td>(0.1041)</td>
 </tr>
 <tr>
 <td>time</td>
-<td>0.0015***</td>
-<td>0.0008</td>
-<td>0.0002</td>
+<td>-0.0005*</td>
+<td>0.0020***</td>
+<td>0.0116***</td>
 </tr>
 <tr>
 <td></td>
 <td>(0.0003)</td>
 <td>(0.0005)</td>
-<td>(0.0002)</td>
+<td>(0.0004)</td>
 </tr>
 <tr>
 <td>dotw</td>
-<td>0.1285***</td>
-<td>0.0095</td>
-<td>0.0224***</td>
+<td>0.0607*</td>
+<td>0.1470***</td>
+<td>0.0484*</td>
 </tr>
 <tr>
 <td></td>
-<td>(0.0033)</td>
-<td>(0.0064)</td>
-<td>(0.0028)</td>
+<td>(0.0323)</td>
+<td>(0.0477)</td>
+<td>(0.0286)</td>
+</tr>
+<tr>
+<td>dotw**2</td>
+<td>0.0266***</td>
+<td>-0.0312***</td>
+<td>-0.0108</td>
+</tr>
+<tr>
+<td></td>
+<td>(0.0074)</td>
+<td>(0.0110)</td>
+<td>(0.0066)</td>
 </tr>
 <tr>
 <td>R-squared</td>
-<td>0.5019</td>
-<td>0.2668</td>
-<td>0.6635</td>
+<td>0.5531</td>
+<td>0.5164</td>
+<td>0.5162</td>
 </tr>
 <tr>
 <td>R-squared Adj.</td>
-<td>0.5018</td>
-<td>0.2658</td>
-<td>0.6634</td>
+<td>0.5522</td>
+<td>0.5109</td>
+<td>0.5152</td>
 </tr>
 <tr>
 <td>N</td>
-<td>65226.0</td>
-<td>7910.0</td>
-<td>53053.0</td>
+<td>6295.0</td>
+<td>978.0</td>
+<td>5586.0</td>
 </tr>
 </tbody>
 </table>
@@ -660,70 +674,27 @@ more heavily transited on Uber and bikes and less on trains. They agree directio
 with the fixed effect model: that Uber and train ridership drops city-wide during the DNC
 by roughly similar percentages. And most importantly, they show that ridership
 in areas near the DNC during the DNC increases by a huge 18%, 68%, and 24%.</p>
-<h1 id="todo">TODO:</h1>
-<p><em>This blog post isn&rsquo;t finished!</em> I still have to write-up:</p>
-<ul>
-<li>checking model assumptions
-<ul>
-<li>e.g. parallel trends in diff-in-diff</li>
-</ul>
-</li>
-<li>robustness checks</li>
-</ul>
-<h1 id="why-you-shouldnt-trust-this">Why you shouldn&rsquo;t trust this</h1>
-<p><strong>Control Mis-Specification</strong></p>
-<ul>
-<li>the control group should be &ldquo;like&rdquo; the treatment group, but I use the entire
-city as a comparison. it&rsquo;s not apples-to-apples. a better control group might
-be a handful of the major event/cultural institutions like Soldier Field,
-Wrigley Field, Guaranteed Rate Field, Art Institute. or finding matched pairs
-based on covaraites.</li>
-</ul>
-<p><strong>Selection Bias</strong></p>
-<ul>
-<li>the convention centers were explicitly chosen for their ability to accomodate visitors via transit
-<ul>
-<li>i don&rsquo;t think this is bad because we dont really need external validity. we don&rsquo;t actually
-expect other sites in Chicago to have a similar response.</li>
-</ul>
-</li>
-</ul>
-<p><strong>Spillover into control</strong></p>
-<ul>
-<li>DNC visitors might stay in chicago longer than the official convention dates,
-which would attenuate any effect
-<ul>
-<li>we can mitigate this by using placebo dates or by an event study design</li>
-</ul>
-</li>
-<li>DNC visitors may visit other parts of the city, attenuating the effect
-<ul>
-<li>we can mitigate this by maybe searching for spikes in other areas
-(but introduces a multiple testing issue)</li>
-</ul>
-</li>
-</ul>
-<p><strong>Spillover into treatment</strong></p>
-<ul>
-<li>drawing buffers around the event centers weakens our identification strategy
-(marginally nearby transit might be spuriously related to the DNC itself)</li>
-</ul>
-<p><strong>Confounding Variables</strong></p>
-<ul>
-<li>the security perimeter around the event centers may actually suppress ridership
-<ul>
-<li>we can mitigate this by drawing larger buffers, but this weakens our identification strategy
-(transit outside the perimeter might be spuriously correlated)</li>
-</ul>
-</li>
-</ul>
-<p><strong>Gravity and Catchement Models</strong></p>
-<ul>
-<li>A real urban mobility researcher would probably use some kind of diffusion
-model, saying that rider origins are normally distributed around each station.
-This might be more realistic but I don&rsquo;t have the capacity to estimate and
-incorporate this kind of complexity.</li>
-</ul>
+<h3 id="parallel-trends">Parallel Trends</h3>
+<p>The diff-in-diff model operates on the &ldquo;parallel trends&rdquo; assumption: the
+control group and (unobserved) counterfactual treatment group must have similar
+slopes during the treatment period. In practice, since we cannot observe the counterfactual group,
+we check whether the treatment and control groups have similar slopes prior to treatment.
+And we ask &ldquo;do we believe this relationship would hold in the next period&rdquo;?</p>
+<p>Plotting (normalized) rides, the parallel trends
+assumption looks believable: ridership across both groups is steady in the long-term,
+and shows similar patterns on a weekly scale.</p>
+<p>We also don&rsquo;t see any anticipatory effects leading up to the DNC event.</p>
+<p>
+  <figure>
+    <img src="/img/parallel_trends.jpeg" alt="Parallel trends assumption">
+    <figcaption>Fig: Parallel trends assumption.</figcaption>
+  </figure>
+</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>TODO</p>
+<h1 id="discussion">Discussion</h1>
+<p>TODO</p>
+<p>In the <a href="../dnc-attendance/index.html">next post</a>, I&rsquo;ll evaluate whether I really find this model believable or not.</p>
 
     <ul class="tags">
     

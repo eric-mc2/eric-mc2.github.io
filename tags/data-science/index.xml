@@ -6,8 +6,15 @@
     <description>Recent content in Data Science on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Dec 2024 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 27 Dec 2024 00:00:00 -0600</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Texas School Reading Scores</title>
+      <link>https://eric-mc2.github.io/projects/3rd-grade-reading/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/projects/3rd-grade-reading/</guid>
+      <description>View app on Observable Cloud&#xA;This was an interview take-home project. The prompt was &amp;ldquo;Make a dashboard for a school district leader, comparing standardized test scores (3rd grade reading level meets grade level) to household income and poverty at the zip code level. Don&amp;rsquo;t do statistical analysis.&amp;rdquo; Links were provided to school-level test scores, school locations, and zip-level Census ACS data.&#xA;Features Search by zip or school district name. Find similar communities based on economic factors (k nearest neighbors).</description>
+    </item>
     <item>
       <title>527 Network Explorer</title>
       <link>https://eric-mc2.github.io/projects/527-explorer/</link>

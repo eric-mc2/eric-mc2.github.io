@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Visualization on Eric Chandler</title>
+    <link>https://eric-mc2.github.io/tags/data-visualization/</link>
+    <description>Recent content in Data Visualization on Eric Chandler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Dec 2024 00:00:00 -0600</lastBuildDate>
+    <atom:link href="https://eric-mc2.github.io/tags/data-visualization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Texas School Reading Scores</title>
+      <link>https://eric-mc2.github.io/projects/3rd-grade-reading/</link>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/projects/3rd-grade-reading/</guid>
+      <description>View app on Observable Cloud&#xA;This was an interview take-home project. The prompt was &amp;ldquo;Make a dashboard for a school district leader, comparing standardized test scores (3rd grade reading level meets grade level) to household income and poverty at the zip code level. Don&amp;rsquo;t do statistical analysis.&amp;rdquo; Links were provided to school-level test scores, school locations, and zip-level Census ACS data.&#xA;Features Search by zip or school district name. Find similar communities based on economic factors (k nearest neighbors).</description>
+    </item>
+  </channel>
+</rss>
