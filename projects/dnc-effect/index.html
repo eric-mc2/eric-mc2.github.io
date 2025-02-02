@@ -127,49 +127,56 @@
 
 <section class="project-section p-3 p-lg-5 d-flex d-column">
   <div class="my-auto">
-    <h2 class="mb-0"><span class="text-primary">Do Democrats Really Support Public Transit?</span></h2>
+    <h1 class="mb-0"><span class="text-primary">Do Democrats Really Support Public Transit?</span></h1>
     <p>Project link: <a href="https://github.com/eric-mc2/DNCTransit">https://github.com/eric-mc2/DNCTransit</a></p>
     <p>A few weeks ago I fumbled an interview question on statistical modeling. That
 hurt my pride, so I decided to take on a little modeling project.</p>
-<p>I&rsquo;ll follow the standard economic practice of creating a quasi-experiment
-out of a policy implemented with <em>some</em>
-randomness.</p>
+<p>With all the local <a href="https://www.chicagotribune.com/2024/08/13/cta-democratic-national-convention-crowds/">hubbub</a> around the DNC security perimeter, I remember mostly staying home to avoid getting snarled in traffic.
+This got me wondering how the rest of the city responded to the convention. How
+did the visiting delegates fare? Did they use public transit? (Chicago
+was picked to highlight its <a href="https://democrats.org/news/dnc-announces-chicago-to-host-2024-democratic-national-convention/">transportation and infrastructure</a>
+after all.)</p>
 <blockquote>
-<p><em>I exploit the exogeneous shock of the 2024 Democratic National Convention in Chicago, (ie. the addition of tens of thousands of politically active Democrats) to test whether a statistically significant change in public transit is observed.</em></p>
+<p><strong>Does the exogeneous shock of the 2024 Democratic National Convention in Chicago induce significant impacts on public transit usage?</strong></p>
 </blockquote>
-<p>Supposing this setup is statistically valid (FOOTNOTE), I expect public transit
+<p>On face value I expect public transit
 ridership to <em>increase</em> due to the DNC. This is because the Democratic coalition
 generally lives in urban areas, supports &ldquo;green&rdquo; policy, government spending, etc.</p>
-<p><em><strong>Disclaimer</strong></em>: I don&rsquo;t really have a stake in whether Democrats in general use transit or not,
+<p><em>Disclaimer</em>: I don&rsquo;t really have a stake in whether Democrats in general use transit or not,
 but I like this setup for a few reasons:</p>
 <ul>
-<li>if <em>NO</em> effect is found, that is also interesting
+<li>if <em>AN</em> effect is found, that is interesting
 <ul>
-<li>it suggests a gap between talk and action in the Democratic leadership</li>
-<li>(in most experiments null results are boring)</li>
+<li>(statistics are designed to be cautious about stating effects)</li>
 </ul>
 </li>
-<li>the premise is kinda click-baity</li>
-<li>if the setup is not statistically valid, I can practice demonstrating that too
+<li>if <em>NO</em> effect is found, that is also interesting
+<ul>
+<li>(it suggests the economic impact was smaller than reported, or that delegates took Ubers!)</li>
+</ul>
+</li>
+<li>if the whole setup is not statistically valid, I can practice critiquing my own bad statistics
 <ul>
 <li>(poorly tested statistics can have lasting effects on society!)</li>
 </ul>
 </li>
 </ul>
 <h1 id="at-first-glance">At First Glance</h1>
-<p>The <a href="https://cdn.choosechicago.com/uploads/2024/10/TE-DNC-Impact.pdf">report</a>
-says 50,000 delegates visited and spent $58.7M within Chicago off-site of the convention itself.
-This would be a small blip in city-wide average daily CTA ridership (800,000).</p>
+<p>Can we even test this? Is the DNC a big enough event compared to normal commuting patterns?</p>
+<p>The <a href="https://cdn.choosechicago.com/uploads/2024/10/TE-DNC-Impact.pdf">official DNC impact report</a>
+says 50,000 delegates visited and spent $58.7M outside of the convention within Chicago.
+The <strong>city-wide</strong> average daily CTA ridership is 790,000 +/- 140,000 so it would be hard to
+detect these extra rides against the normal rhythm of the city.</p>
 <p>But we know convention event is localised to the United Center and McCormick place.
-When we only look at CTA routes serving this part of the city, the average
-daily ridership reduces to 325,000. An influx
-of 50,000 riders would mean a 15% day-over-day increase in this area.</p>
-<p>Breaking this down further, daily ridership for nearby bus routes and train lines
-is 136,000 and 189,000.
-Selecting only nearby train <em>stations</em> (similar data is not available for bus <em>stops</em>),
-average daily boardings are 11,000. To round out this picture,
-there are 6,000 and 33,000 average daily bike and rideshare
-trips in areas near the United Center and McCormick place.</p>
+When we only look at CTA <strong>routes</strong> <em>that pass through these areas</em>, the average
+daily ridership is 325,000 +/- 52,000. This breaks down to 136,000 bus and 189,000 train rides.
+So the anticipated impact is getting more noticeable.</p>
+<p>Selecting only nearby train <strong>stations</strong> (ridership data is not available per bus <strong>stop</strong>),
+average daily boardings are 11,000. Any fraction of those 50,000 delegates ought to
+make a huge spike in this context.</p>
+<p>What are the delegates&rsquo; other travel options? Walking, driving, Metra, biking, and rideshares.
+Data is available for the latter: there are 6,000 and 33,000 average daily <strong>bike</strong> and <strong>rideshare</strong>
+trips in <em>areas</em> near the United Center and McCormick place.</p>
 <p>With these totals in mind, I&rsquo;d expect the DNC delegation to significantly increase
 ridership nearby the convention centers, no matter what transit mode they choose.</p>
 
@@ -181,29 +188,29 @@ ridership nearby the convention centers, no matter what transit mode they choose
         .then(fig => plotlycustomplot(fig, "\/json\/avg-daily-rides.json"));
 </script>
 <h1 id="the-data">The data</h1>
-<p>I have <a href="../transit-panel/index.html">constructed a panel dataset</a> of transit ridership among train (CTA), bus (CTA), rideshare (uber, lyft, etc), and bikeshare (Divvy). The original public data is published at
-varying spatial aggregations:</p>
+<p>The <a href="https://data.cityofchicago.org/">City of Chicago</a> provides daily ridership
+totals for train (CTA), bus (CTA), rideshare (uber, lyft, etc), and bikeshare (Divvy).
+The original data is published at varying spatial aggregations:</p>
 <ul>
 <li>Train: per station</li>
 <li>Bike: per station</li>
 <li>Bus: per route</li>
 <li>Rideshares: per tract / community area</li>
 </ul>
-<p>First I&rsquo;ll create separate models per transit type. Then I&rsquo;ll model train,
-bike, and rideshares jointly at the tract level, since I&rsquo;m interested in
-comparative/substitution effects.</p>
-<p>Unfortunately though busses serve the most
-riders, I will leave them out, since I can&rsquo;t further disaggregate the route-level data.
-Routes that pass near the DNC still extend for miles beyond it.</p>
-<h2 id="points-of-interest">Points of Interest</h2>
+<p>I unified these sources into a <a href="../transit-panel/index.html">panel dataset</a>,
+keeping the nominal spatial unit of each transit mode<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Unfortunately I cannot
+include busses in this analysis because the data is not granular enough to identify
+rides near the convention centers.</p>
+<h2 id="treatment-zone">Treatment Zone</h2>
+<p>The next step is to label transit rides as <em>near</em> or <em>not near</em> the convention centers.</p>
 <p><strong>Convention Centers</strong></p>
 <p>I use the City of Chicago buildings shapefile to find the footprint of the
 United Center and McCormick Place, the two official sites of the DNC. Proximity
 to these locations will constitute the &ldquo;treatment&rdquo; group in the model.</p>
 <!-- raw HTML omitted -->
 <p>I compute a buffer around each building and find all intersecting transit stations, routes, and tracts.
-For robustness, I computed 400m, 800m, and 1600m buffers. To pick which catchement size to use, I was forced to choose
-one mile buffer, because the smaller sizes had too few intersecting stations and routes.</p>
+For robustness, I tested 400m, 800m, and 1600m buffers. To pick which catchement size to use, I was forced to choose
+one mile buffer, because the smaller sizes had too few stations and routes nearby.</p>
 <p>
   <figure>
     <img src="/img/panel_sample.jpeg" alt="Bus ridership is not known per stop.">
@@ -213,33 +220,29 @@ one mile buffer, because the smaller sizes had too few intersecting stations and
 <p>To test the sensitivity of the buffer, I modeled:</p>
 $$\text{rides}_i \sim \text{within 400m}_i + \text{within 800m}_i + \text{within 1600m}_i$$
 <p>Average rides per spatial unit varied irregularly as the buffer size increased,
-meaning results will be very sensitive to the choice of buffer size.</p>
-<p><strong>Community Areas</strong></p>
-<p>One problem with spatial intersects is that it will include areas that barely
-touch the buffer. This is not terrible for tracts: 50% of tract area is actually
-contained within the buffer. For the much larger Chicago community areas, only
-25% of intersected area is within the buffer.</p>
+meaning results are very sensitive to the buffer size.</p>
+<p><strong>Using Community Areas vs Tracts</strong></p>
+<p>I chose to use tract-level data for rideshares. Here&rsquo;s my reasoning. Tracts mean:</p>
+<ul>
+<li>✅ a larger sample size (more units of observation)</li>
+<li>⛔️ more noise (smaller units =&gt; more variation across units/time)</li>
+<li>✅ less bias (smaller units =&gt; 50% less spatial non-compliance on edge of buffer)</li>
+<li>⛔️ fewer rides (smaller units =&gt; 23% more privacy redactions)</li>
+</ul>
+<p>Overall the attenuation bias seemed like the most important consideration<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <p>
   <figure>
     <img src="/img/comms_sample.jpeg" alt="Intersected community areas">
     <figcaption>Fig: Intersected community areas</figcaption>
   </figure>
 </p>
-<p>I&rsquo;d wanted to use the community area aggregation because it contains about 30% more
-uber rides that were redacted at the tract level. But widening the &ldquo;treatment&rdquo;
-area this much is going to bias a statistical model towards showing zero effect.</p>
-<p>As a robustness check, I will run a model excluding tracts that barely touch
-the buffer.</p>
 <h2 id="time-like-features">Time-like Features</h2>
 <p><strong>Conference Dates</strong></p>
 <p>The DNC itself occurs between August 19-22. This constitutes the &ldquo;treatment period&rdquo;
-in the model. For a robustness check I will consider extending this period by
-1 or 2 days (travel/tourism days). I may also run the model with random placebo
-dates, or perhaps dates aligned with major concerts such as Lollapalooza, Suenos Festival, etc.</p>
+in the model<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
 <p><strong>Day of the Week</strong></p>
 <p>Commuting patterns have strong weekday/weekend polarity. CTA ridership is drastically
-higher on weekdays, while on weekends Uber ridership is higher. I&rsquo;ll need to control
-for this in the regression.</p>
+higher on weekdays, while on weekends Uber ridership is higher.</p>
 
 
 <div id="/json/scaled-ts.json" class="plotly" style="height:500px;"></div>
@@ -248,29 +251,26 @@ for this in the regression.</p>
     d3.json("/json/scaled-ts.json")
         .then(fig => plotlycustomplot(fig, "\/json\/scaled-ts.json"));
 </script>
+<p>Due to the restricted time frame of the DNC, I <em>drop observations from Friday - Sunday</em>.
+(Ridership on these days doesn&rsquo;t convey any information about the &ldquo;treatment&rdquo;
+because the DNC only occurs on Monday - Thursday.)</p>
 <h2 id="other-spatial-features">Other Spatial Features</h2>
 <p><strong>Transit Density</strong></p>
-<p>For the tract-level dataset, I coded the distance to the nearest train, bus, and bike stop.
-These distances will help control for varying tract size, commercial density, and
+<p>I coded the distance from the tract centroid to the <em>nearest</em> train, bus, and bike stop.
+These distances will help control for varying transit density, commercial density, and
 transit mode preferences.</p>
+$$
+\sim \beta_1 d(\text{unit}_i, \text{train}) + \beta_2 d(\text{unit}_i, \text{bus}) + \beta_3 d(\text{unit}_i, \text{bike})
+$$
 <p><strong>Location</strong></p>
 <p>I include the stop/tract centroid longitude and latitude as a quadratic
-term in the model to help control for basic city-wide demographic factors:</p>
+term in the model to help control for basic city-wide spatial variation:</p>
 $$
 \sim \beta_1\text{lon} + \beta_2\text{lat} + \beta_3\text{lon}*\text{lat} + \beta_4\text{lon}^2 + \beta_5\text{lat}^2
 $$
 <p>(For numeric stability, I scale lon/lat to zero-mean unit variance.)</p>
-<h2 id="spatial-aggregation">Spatial Aggregation</h2>
-<p><strong>Train Stops -&gt; Lines</strong></p>
-<p>Unfortunately, the CTA does not publish the number of <em>exits</em> per station, so
-I cannot directly count the number of <em>arrivals</em> to the DNC by train.</p>
-<p>I considered aggregating station <em>boardings</em> along each <em>line</em>, but decided against
-it for the same reason I am excluding bus data.</p>
-<p><strong>Stops -&gt; Tracts:</strong></p>
-<p>This is straightforward. Stops cannot belong to more than one tract.</p>
-<p>(You might argue that stops should be represented as cirles, not points, because
-people walk to them. Therefore we should attribute rides to tracts within those circles.
-To keep things simple I will not go to this level of detail.)</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -279,38 +279,85 @@ To keep things simple I will not go to this level of detail.)</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <h1 id="the-sample">The Sample</h1>
-<p><strong>Weekends</strong></p>
-<p>Since the DNC itself only occurs during weekdays, it is perfectly co-linear with
-a weekday variable, breaking the regression procedure. To fix this co-linearity
-problem, I will drop observations on Friday, Saturday, and Sunday from the model.
-(Ridership on these days doesn&rsquo;t convey any information about the &ldquo;treatment&rdquo;
-because the DNC doesn&rsquo;t even happen on these days.)</p>
-<p>For this same reason, I use <em>daily</em> observations. Aggregating the data to weeks
-would include extraneous variance due to weekends. It would also <em>attenuate</em> the
-treatment effect since the DNC only occurs on 4/7 days of the week &ndash; the other
-3/7 days would require correcting for &ldquo;<a href="https://en.wikipedia.org/wiki/Local_average_treatment_effect#Non-compliance_framework">noncompliance</a>&rdquo;.</p>
-<p><strong>Baseline Dates</strong></p>
-<p>I use data from the summer months, June, July, and August. Restricting the data
+<p><strong>Temporal Aggregation</strong></p>
+<p>I keep observations at the <em>daily</em> level. Aggregating to weekly would pull non-DNC
+dates into the treatment period, attenuating the treatment effect.</p>
+<p><strong>Time Frame</strong></p>
+<p>I use data from the <em>summer</em> months, June, July, and August. Restricting the data
 to this set makes sense for two reasons. First, I avoid needing to incorporate
-more complex modeling of seasonality. Second, transit has been on a long-term
-rebound since the pandemic, which is less noticeable on short time-scales:
-I avoid needing to incorporate a parameter to account for this long-term trend.</p>
+more complex modeling of seasonality. Second, transit is on a steady rebound
+reaching 65% of pre-pandemic levels. Though I do model a linear <em>time</em> covariate,
+the rebound suggests that disaggregated transit usage is in flux as commuter preferences
+and capacity continue to adjust. Therefore, previous summers are not a good baseline.</p>
 <p><strong>Boardings vs Trips</strong></p>
 <p>CTA train and bus data only provides the locations where riders <em>board</em> transit,
-not where they <em>exit</em>. Bike and rideshare data provides per-trip board <em>and</em> exit
-locations. For strict parity, I&rsquo;d want to only consider trip <em>boarding</em> locations, but
-I&rsquo;d rather keep the trip exits which give a fuller picture of transit usage. In this scheme,
-bike and rideshare data are double-counted compared to train and bus: this
-isn&rsquo;t an issue for regression as the difference in scale will be absorbed
-by adding a &ldquo;transit mode&rdquo; coefficient.</p>
-<h2 id="baseline-characteristics">Baseline Characteristics</h2>
+not where they <em>exit</em>. Bike and rideshare data provides per-trip <em>board and exit</em>
+locations. For strict parity, I ought to drop <em>exit</em> data, but I won&rsquo;t.
+Keeping it gives a fuller picture of transit usage<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
+<h2 id="pre-regression-checks">Pre-Regression Checks</h2>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<p>Here is a balance table for the tract panel:</p>
+<p><strong>Statistical Power</strong></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Before running the regression, I want to do a <em>slightly</em> more rigorous version
+of the time series <a href="#at-first-glance">gut check</a>. Looking at the distribution of
+daily ridership let&rsquo;s ask: what is the minimum number of additional rides to
+significantly change the mean? First I compute the sample variance and standard error<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, SE,
+to get the minimum detectable effect size:</p>
+$$ \text{MDE} = (z(1-\alpha / 2) + z(\beta)) * SE $$
+<p>Multiplying the MDE by the number of (treated) observations yields the minimum detectable total &ldquo;shock&rdquo;
+to the system.</p>
 
 
-<div id="static/uploads/tract-balance.md" class="scientific-table">
+<div id="static/uploads/mde.md" class="scientific-table">
+    <table>
+<thead>
+<tr>
+<th>Transit</th>
+<th>Mean Rides per Unit per Day (SD)</th>
+<th>Minimum Detectable Change</th>
+<th>Minimum Additional Rides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bike</td>
+<td>50.3 (17.5)</td>
+<td>+151%</td>
+<td>10235</td>
+</tr>
+<tr>
+<td>train</td>
+<td>1482.0 (392.7)</td>
+<td>+227%</td>
+<td>58655</td>
+</tr>
+<tr>
+<td>uber</td>
+<td>753.1 (583.5)</td>
+<td>+142%</td>
+<td>55036</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<p>Let&rsquo;s interpret the first row of this table:</p>
+<ul>
+<li>a bike rack near the DNC will serve an average of 50 rides per day</li>
+<li>ridership would need to increase by 151% to be statistically significant</li>
+<li>this translates to 954 extra rides over the course of the DNC</li>
+<li><em>note</em>: column 1 cannot simply be multiplied by column 2 to produce column 3 (because I log-transform ridership for the model)</li>
+</ul>
+<p>Corraborating the first <a href="#at-first-glance">time series plot</a>, if a decent fraction of
+delegates take transit, this regression design should be able to detect an effect.</p>
+<p><strong>Selection Balance</strong></p>
+<p>Here is a balance table for the three separate transit modes:</p>
+
+
+<div id="static/uploads/balance.md" class="scientific-table">
     <table>
 <thead>
 <tr>
@@ -323,58 +370,212 @@ by adding a &ldquo;transit mode&rdquo; coefficient.</p>
 </thead>
 <tbody>
 <tr>
-<td>tracts</td>
-<td></td>
-<td>1898</td>
-<td>91</td>
-<td></td>
-</tr>
-<tr>
-<td>tract-days</td>
-<td></td>
-<td>113663</td>
-<td>6950</td>
-<td></td>
-</tr>
-<tr>
-<td>daily rides, mean (SD)</td>
-<td></td>
-<td>358.3 (1548.9)</td>
-<td>756.3 (1699.2)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td>transit, n (%)</td>
-<td>bike</td>
-<td>600 (31.6)</td>
-<td>37 (40.7)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
 <td>train</td>
-<td>96 (5.1)</td>
-<td>14 (15.4)</td>
+<td>stations</td>
+<td>114</td>
+<td>8</td>
 <td></td>
 </tr>
 <tr>
 <td></td>
-<td>uber</td>
-<td>1202 (63.3)</td>
-<td>40 (44.0)</td>
+<td>station-days</td>
+<td>6270</td>
+<td>420</td>
 <td></td>
 </tr>
 <tr>
+<td></td>
+<td>daily rides, mean (SD)</td>
+<td>2718.4 (2337.9)</td>
+<td>1482.8 (995.9)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>log(daily rides), mean (SD)</td>
+<td>7.6 (0.8)</td>
+<td>6.8 (1.8)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>bus_distance, mean (SD)</td>
+<td>305.0 (1472.7)</td>
+<td>165.3 (167.7)</td>
+<td>0.354</td>
+</tr>
+<tr>
+<td></td>
+<td>bike_distance, mean (SD)</td>
+<td>387.6 (1535.0)</td>
+<td>288.5 (281.6)</td>
+<td>0.573</td>
+</tr>
+<tr>
+<td></td>
+<td>sqrt(area), mean (SD)</td>
+<td>2521.0 (3723.0)</td>
+<td>3123.8 (3564.8)</td>
+<td>0.657</td>
+</tr>
+<tr>
+<td></td>
 <td>lat, mean (SD)</td>
-<td></td>
-<td>-0.1 (1.2)</td>
-<td>-0.1 (0.2)</td>
-<td>0.208</td>
+<td>-0.1 (0.9)</td>
+<td>-0.3 (0.2)</td>
+<td>0.027</td>
 </tr>
 <tr>
-<td>long, mean (SD)</td>
 <td></td>
-<td>-0.3 (1.4)</td>
+<td>long, mean (SD)</td>
+<td>-0.0 (1.0)</td>
+<td>0.2 (0.4)</td>
+<td>0.296</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bike</td>
+<td>docks</td>
+<td>1459</td>
+<td>47</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>dock-days</td>
+<td>42316</td>
+<td>2568</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>daily rides, mean (SD)</td>
+<td>46.0 (67.7)</td>
+<td>49.5 (34.4)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>log(daily rides), mean (SD)</td>
+<td>2.8 (1.6)</td>
+<td>3.7 (0.8)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>train_distance, mean (SD)</td>
+<td>5007.3 (5396.5)</td>
+<td>1056.5 (1240.4)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>bus_distance, mean (SD)</td>
+<td>146.2 (264.4)</td>
+<td>105.6 (73.5)</td>
+<td>0.002</td>
+</tr>
+<tr>
+<td></td>
+<td>sqrt(area), mean (SD)</td>
+<td>666.9 (1009.0)</td>
+<td>655.0 (420.6)</td>
+<td>0.859</td>
+</tr>
+<tr>
+<td></td>
+<td>lat, mean (SD)</td>
+<td>-0.4 (1.3)</td>
+<td>-0.3 (0.2)</td>
+<td>0.248</td>
+</tr>
+<tr>
+<td></td>
+<td>long, mean (SD)</td>
+<td>-0.3 (1.3)</td>
+<td>0.4 (0.5)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>uber</td>
+<td>tracts</td>
+<td>1196</td>
+<td>40</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>tract-days</td>
+<td>52995</td>
+<td>2189</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>daily rides, mean (SD)</td>
+<td>213.8 (802.3)</td>
+<td>737.9 (1714.9)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>log(daily rides), mean (SD)</td>
+<td>3.8 (1.7)</td>
+<td>5.5 (1.5)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>train_distance, mean (SD)</td>
+<td>15886.8 (19731.6)</td>
+<td>2293.7 (1027.7)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>bus_distance, mean (SD)</td>
+<td>9390.3 (17842.2)</td>
+<td>503.0 (313.2)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>bike_distance, mean (SD)</td>
+<td>10707.4 (18691.3)</td>
+<td>889.5 (504.9)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>sqrt(area), mean (SD)</td>
+<td>1134.0 (691.0)</td>
+<td>784.4 (320.0)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>lat, mean (SD)</td>
+<td>-0.1 (1.4)</td>
+<td>-0.1 (0.2)</td>
+<td>0.153</td>
+</tr>
+<tr>
+<td></td>
+<td>long, mean (SD)</td>
+<td>-0.5 (1.5)</td>
 <td>0.5 (0.3)</td>
 <td>&lt;0.001</td>
 </tr>
@@ -382,319 +583,52 @@ by adding a &ldquo;transit mode&rdquo; coefficient.</p>
 </table>
 
 </div>
-<p>We can see that the two groups are quite different before the DNC week. I will
-circle back to this issue.</p>
-<p><strong>Statistical Power</strong></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Before running the regression, I want to do a <em>slightly</em> more rigorous version
-of the time series <a href="#at-first-glance">gut check</a>. First, I&rsquo;ll look at the distribution of
-daily ridership and ask: what is the minimum number of additional rides to
-significantly change the mean? In math,</p>
-$$ \text{MDE} = (z(1-\alpha / 2) + z(\beta)) \sigma $$
-
-
-<div id="static/uploads/mde.md" class="scientific-table">
-    <table>
-<thead>
-<tr>
-<th>Serves DNC</th>
-<th>Transit</th>
-<th>Mean (SD)</th>
-<th>Minimum Detectable Effect</th>
-<th>MDE Per Attendee</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>bike</td>
-<td>72.8 (181.6)</td>
-<td>12.4</td>
-<td>0.4</td>
-</tr>
-<tr>
-<td>0</td>
-<td>train</td>
-<td>2651.2 (4084.7)</td>
-<td>584</td>
-<td>4.5</td>
-</tr>
-<tr>
-<td>0</td>
-<td>uber</td>
-<td>187.5 (685.8)</td>
-<td>31.1</td>
-<td>2.4</td>
-</tr>
-<tr>
-<td>1</td>
-<td>bike</td>
-<td>177.0 (237.1)</td>
-<td>55.4</td>
-<td>0.2</td>
-</tr>
-<tr>
-<td>1</td>
-<td>train</td>
-<td>2492.9 (2102.1)</td>
-<td>787</td>
-<td>0.9</td>
-</tr>
-<tr>
-<td>1</td>
-<td>uber</td>
-<td>925.3 (1981.5)</td>
-<td>438.9</td>
-<td>1.4</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-<p>This table is saying the tracts near DNC serve a daily average of 925 uber rides.
-That average would need to spike by an additional 438 rides to be statistically significant.
-Which equates to 1.4 rides per DNC attendee over the course of the event &ndash; less than one round trip.</p>
-<p>Corraborating the first <a href="#at-first-glance">time series plot</a>, it looks like the event should be statistically detectable if
-most attendees are commuting.</p>
+<p>The imbalance in ridership, transit service density, and unit size corroborate
+the selection effect at play: the convention sites were chosen for their
+ability to accomodate lots of visitors (duh). These sites are <em>unlike</em> the rest of Chicago.
+Luckily with the diff-in-diff framework, the convention sites partially control for themselves.
+Is that enough to believe in this model? I&rsquo;ll come back to this question later.</p>
 <h1 id="regression">Regression</h1>
-<p>Finally!</p>
-<h2 id="fixed-effects-model">Fixed Effects Model</h2>
-<p>The fixed effects specification is great when you don&rsquo;t have enough control variables.
-It controls for all the ways that units are different at baseline &ndash; all
-time-invariant variables.</p>
-<p>The equation would look like:</p>
-$$ \log(\text{rides}_{it}) \sim \beta_0 + \beta_1\text{DNC}_t + \beta_2 t + \alpha_i $$
-<p>The convenience of FE is also its downside: the qualities of my treatment group and even
-the treatment &ldquo;indicator&rdquo; (distance to DNC) do not vary with time. These factors
-get subsumed in the unit fixed effect term \(\alpha_i\).
-Without being able to isolate the <em>area</em> of the DNC, this equation only shows city-wide
-effects during the DNC.</p>
-<p>With this major caveat in mind, let&rsquo;s run the model (separate models per transit mode):</p>
-
-
-<div id="static/uploads/fe.md" class="scientific-table">
-    <table>
-<thead>
-<tr>
-<th></th>
-<th>FE (Uber)</th>
-<th>FE (Train)</th>
-<th>FE (Bike)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>During DNC</td>
-<td>-0.0139</td>
-<td>-0.0777**</td>
-<td>-0.3525***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0263)</td>
-<td>(0.0323)</td>
-<td>(0.0355)</td>
-</tr>
-<tr>
-<td>time</td>
-<td>0.0001</td>
-<td>0.0022***</td>
-<td>0.0133***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0001)</td>
-<td>(0.0002)</td>
-<td>(0.0002)</td>
-</tr>
-<tr>
-<td>dotw</td>
-<td>0.0499***</td>
-<td>0.1334***</td>
-<td>0.0629***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0135)</td>
-<td>(0.0174)</td>
-<td>(0.0174)</td>
-</tr>
-<tr>
-<td>dotw**2</td>
-<td>0.0296***</td>
-<td>-0.0272***</td>
-<td>-0.0147***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0031)</td>
-<td>(0.0040)</td>
-<td>(0.0040)</td>
-</tr>
-<tr>
-<td>R-squared</td>
-<td>0.9222</td>
-<td>0.9362</td>
-<td>0.8249</td>
-</tr>
-<tr>
-<td>R-squared Adj.</td>
-<td>0.9209</td>
-<td>0.9347</td>
-<td>0.8209</td>
-</tr>
-<tr>
-<td>N</td>
-<td>6295.0</td>
-<td>978.0</td>
-<td>5586.0</td>
-</tr>
-</tbody>
-</table>
-
+<p>This post is already long. I&rsquo;ll present the formal regression model and results
+in the <a href="../dnc-effect-results/index.html">next post</a>.</p>
+<h1 id="footnotes">Footnotes</h1>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Given this approach I will not be able to compare effect sizes <em>between</em> transit modes.
+Not until they are at least at the same aggregation.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Even at the tract level, 50% of &ldquo;nearby&rdquo; tract land area is outside the buffer.
+As a robustness check, I should vary the spatial intersection threshold from 0% to 100% and test
+the sensitivity of the results.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>For a robustness check I should add a 1 or 2 day buffer (travel/tourism days).&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>See <a href="../dnc-attendance/index.html#placebo-test">placebo test</a>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Note this mechanically doubles the ridership levels of bike/rideshare vs train.
+I account for this by running separate models per transit mode, and by reporting percentage
+changes instead of level changes.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>If delegates prefer to commute to the DNC via train and commute back via Uber,
+I&rsquo;d only observe the return trips. This complicates comparisons between transit modes.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>This was more complicated than I expected. The panel is unbalanced in two
+ways, which would underestimate the standard error if unaccounted for. First,
+some units have as much as 12x more observations than other units, due to data availability.
+Second, I&rsquo;ve included 15x more non-DNC days as DNC days, in order to improve the baseline
+estimates. Instead of the typical \(SE = \sigma / \sqrt n\) calculation, I use the
+pooled \(SE = \sigma \sqrt{\sum{1/n_i}}\).&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
 </div>
-<p>The results show a -5.8%, -8.4, and +2.8% change in uber, train, and bike ridership
-during the DNC compared to other summer days.</p>
-<h2 id="difference-in-difference">Difference in Difference</h2>
-<p>The difference in difference model isolates <em>both</em> the <em>area</em> and <em>time</em> of the DNC:</p>
-$$ \log{rides_{it}} \sim \beta_0 + \beta_1 \text{DNC}_t + \beta_2 \text{nearby}_i + 
-    \beta_3 \text{DNC}_t \text{nearby}_i + 
-    X_{it} + u_{it} $$
-<!-- raw HTML omitted -->
-
-
-<div id="static/uploads/did.md" class="scientific-table">
-    <table>
-<thead>
-<tr>
-<th></th>
-<th>DiD (Uber)</th>
-<th>DiD (Train)</th>
-<th>DiD (Bike)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Near DNC</td>
-<td>-0.1049**</td>
-<td>-0.1585</td>
-<td>-0.7144***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0491)</td>
-<td>(0.1033)</td>
-<td>(0.0512)</td>
-</tr>
-<tr>
-<td>During DNC</td>
-<td>-0.1700*</td>
-<td>-0.2570**</td>
-<td>-0.4747***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0924)</td>
-<td>(0.1288)</td>
-<td>(0.0803)</td>
-</tr>
-<tr>
-<td>Near DNC:During DNC</td>
-<td>0.3725***</td>
-<td>0.2242</td>
-<td>0.3581***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.1222)</td>
-<td>(0.1678)</td>
-<td>(0.1041)</td>
-</tr>
-<tr>
-<td>time</td>
-<td>-0.0005*</td>
-<td>0.0020***</td>
-<td>0.0116***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0003)</td>
-<td>(0.0005)</td>
-<td>(0.0004)</td>
-</tr>
-<tr>
-<td>dotw</td>
-<td>0.0607*</td>
-<td>0.1470***</td>
-<td>0.0484*</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0323)</td>
-<td>(0.0477)</td>
-<td>(0.0286)</td>
-</tr>
-<tr>
-<td>dotw**2</td>
-<td>0.0266***</td>
-<td>-0.0312***</td>
-<td>-0.0108</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0074)</td>
-<td>(0.0110)</td>
-<td>(0.0066)</td>
-</tr>
-<tr>
-<td>R-squared</td>
-<td>0.5531</td>
-<td>0.5164</td>
-<td>0.5162</td>
-</tr>
-<tr>
-<td>R-squared Adj.</td>
-<td>0.5522</td>
-<td>0.5109</td>
-<td>0.5152</td>
-</tr>
-<tr>
-<td>N</td>
-<td>6295.0</td>
-<td>978.0</td>
-<td>5586.0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-<p>The results show that at compared to the rest of Chicago, the DNC areas are
-more heavily transited on Uber and bikes and less on trains. They agree directionally
-with the fixed effect model: that Uber and train ridership drops city-wide during the DNC
-by roughly similar percentages. And most importantly, they show that ridership
-in areas near the DNC during the DNC increases by a huge 18%, 68%, and 24%.</p>
-<h3 id="parallel-trends">Parallel Trends</h3>
-<p>The diff-in-diff model operates on the &ldquo;parallel trends&rdquo; assumption: the
-control group and (unobserved) counterfactual treatment group must have similar
-slopes during the treatment period. In practice, since we cannot observe the counterfactual group,
-we check whether the treatment and control groups have similar slopes prior to treatment.
-And we ask &ldquo;do we believe this relationship would hold in the next period&rdquo;?</p>
-<p>Plotting (normalized) rides, the parallel trends
-assumption looks believable: ridership across both groups is steady in the long-term,
-and shows similar patterns on a weekly scale.</p>
-<p>We also don&rsquo;t see any anticipatory effects leading up to the DNC event.</p>
-<p>
-  <figure>
-    <img src="/img/parallel_trends.jpeg" alt="Parallel trends assumption">
-    <figcaption>Fig: Parallel trends assumption.</figcaption>
-  </figure>
-</p>
-<h1 id="conclusion">Conclusion</h1>
-<p>TODO</p>
-<h1 id="discussion">Discussion</h1>
-<p>TODO</p>
-<p>In the <a href="../dnc-attendance/index.html">next post</a>, I&rsquo;ll evaluate whether I really find this model believable or not.</p>
 
     <ul class="tags">
     

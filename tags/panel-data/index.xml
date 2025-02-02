@@ -13,7 +13,7 @@
       <link>https://eric-mc2.github.io/projects/dnc-effect/</link>
       <pubDate>Tue, 19 Nov 2024 10:47:51 -0600</pubDate>
       <guid>https://eric-mc2.github.io/projects/dnc-effect/</guid>
-      <description>A few weeks ago I fumbled an interview question on statistical modeling. That hurt my pride, so I decided to take on a little modeling project.&#xA;I&amp;rsquo;ll follow the standard economic practice of creating a quasi-experiment out of a policy implemented with some randomness.&#xA;I exploit the exogeneous shock of the 2024 Democratic National Convention in Chicago, (ie. the addition of tens of thousands of politically active Democrats) to test whether a statistically significant change in public transit is observed.</description>
+      <description>A few weeks ago I fumbled an interview question on statistical modeling. That hurt my pride, so I decided to take on a little modeling project.&#xA;With all the local hubbub around the DNC security perimeter, I remember mostly staying home to avoid getting snarled in traffic. This got me wondering how the rest of the city responded to the convention. How did the visiting delegates fare? Did they use public transit?</description>
     </item>
   </channel>
 </rss>
