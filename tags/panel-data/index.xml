@@ -6,8 +6,15 @@
     <description>Recent content in Panel Data on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 Nov 2024 10:47:51 -0600</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jan 2025 10:47:51 -0600</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/panel-data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNC Transit Effect? (Part 2)</title>
+      <link>https://eric-mc2.github.io/projects/dnc-effect-results/</link>
+      <pubDate>Wed, 08 Jan 2025 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/projects/dnc-effect-results/</guid>
+      <description>A few weeks ago I fumbled an interview question on statistical modeling. That hurt my pride, so I decided to take on a little modeling project.&#xA;Does the exogeneous shock of the 2024 Democratic National Convention in Chicago induce significant impacts on public transit usage?&#xA;In a previous post, I collected Chicago open transit data and designed a quasi-experiment to measure the causal impact of the DNC on ridership.&#xA;Regression Now for the results &amp;hellip;</description>
+    </item>
     <item>
       <title>Do Democrats Really Support Public Transit?</title>
       <link>https://eric-mc2.github.io/projects/dnc-effect/</link>

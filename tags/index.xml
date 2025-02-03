@@ -6,20 +6,34 @@
     <description>Recent content in Tags on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Dec 2024 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jan 2025 10:47:51 -0600</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Science</title>
+      <link>https://eric-mc2.github.io/tags/data-science/</link>
+      <pubDate>Wed, 08 Jan 2025 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Econometrics</title>
+      <link>https://eric-mc2.github.io/tags/econometrics/</link>
+      <pubDate>Wed, 08 Jan 2025 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/econometrics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Panel Data</title>
+      <link>https://eric-mc2.github.io/tags/panel-data/</link>
+      <pubDate>Wed, 08 Jan 2025 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/panel-data/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Dashboard</title>
       <link>https://eric-mc2.github.io/tags/dashboard/</link>
       <pubDate>Fri, 27 Dec 2024 00:00:00 -0600</pubDate>
       <guid>https://eric-mc2.github.io/tags/dashboard/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data Science</title>
-      <link>https://eric-mc2.github.io/tags/data-science/</link>
-      <pubDate>Fri, 27 Dec 2024 00:00:00 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/tags/data-science/</guid>
       <description></description>
     </item>
     <item>
@@ -69,20 +83,6 @@
       <link>https://eric-mc2.github.io/tags/typescript/</link>
       <pubDate>Tue, 03 Dec 2024 00:00:00 -0600</pubDate>
       <guid>https://eric-mc2.github.io/tags/typescript/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Econometrics</title>
-      <link>https://eric-mc2.github.io/tags/econometrics/</link>
-      <pubDate>Tue, 19 Nov 2024 10:47:51 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/tags/econometrics/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Panel Data</title>
-      <link>https://eric-mc2.github.io/tags/panel-data/</link>
-      <pubDate>Tue, 19 Nov 2024 10:47:51 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/tags/panel-data/</guid>
       <description></description>
     </item>
     <item>
