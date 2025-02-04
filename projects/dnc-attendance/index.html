@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Eric Chandler | DNC Transit Effect? (Part 3)</title>
+  <meta name="description" content="Navigating the challenges of selection bias">
+
+  
+  
+    <meta property="og:image" content="https://eric-mc2.github.io/img/headshot.png" />
+    <meta property="og:title" content="Eric Chandler | DNC Transit Effect? (Part 3)" />   
+  
+  <meta property="og:description" content="Navigating the challenges of selection bias" />
+  <meta name="author" content="Eric Chandler">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Saira+Extra+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Saira+Extra+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"></noscript>
+  <link rel="preload" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" integrity="sha512-JW3fT0YTK7pT7w437SoX6GcW76jOZ6E0jGmrqBAcloC4GKT+njHOY4fX5KxJ9WfIXTkNrAF994525fAHp+KCxg==" crossorigin="anonymous" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" integrity="sha512-JW3fT0YTK7pT7w437SoX6GcW76jOZ6E0jGmrqBAcloC4GKT+njHOY4fX5KxJ9WfIXTkNrAF994525fAHp+KCxg==" crossorigin="anonymous"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous"></noscript>
+  
+  <link rel="preload" href="https://eric-mc2.github.io/css/base.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/base.css"></noscript>
+  <link rel="preload" href="https://eric-mc2.github.io/css/nav.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/nav.css"></noscript> 
+  <link rel="preload" href="https://eric-mc2.github.io/css/content.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/content.css"></noscript>
+    <link rel="preload" href="https://eric-mc2.github.io/css/tables.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/tables.css"></noscript>
+  <link rel="preload" href="https://eric-mc2.github.io/css/tweaks.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/tweaks.css"></noscript>
+  <meta name="generator" content="Hugo 0.123.8">
+  
+    
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+    
+    
+    
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)']]                  
+    }
+  };
+</script>
+
+
+    
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Eric Chandler</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/headshot.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#education">Education</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#experience">Experience</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#projects">Projects</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#publications">Publications</a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</nav>
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://eric-mc2.github.io/">Eric Chandler</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://eric-mc2.github.io/projects/">Projects</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://eric-mc2.github.io/projects/dnc-attendance/">DNC Transit Effect? (Part 3)</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="project-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h1 class="mb-0"><span class="text-primary">DNC Transit Effect? (Part 3)</span></h1>
+    <p>Project link: <a href="https://github.com/eric-mc2/DNCTransit">https://github.com/eric-mc2/DNCTransit</a></p>
+    <h1 id="recap">Recap</h1>
+<p>In a <a href="../dnc-effect/index.html">previous post</a> I proposed a statistical model
+to estimate whether the 2024 Chicago DNC affected public transit usage across Chicago.</p>
+<p>The learning objective was to was to try to construct a believable model from a real-life
+event &ndash; or to convince myself that the model is too flawed to be trustworthy.</p>
+<p>I gathered <a href="../transit-panel/index.html">ridership data</a> for train, bike, and rideshares, plus the dates and
+locations of the DNC. Then I <a href="../dnc-effect-results/index.html">estimated</a> two regression models: a fixed-effects model
+and a difference-in-difference model. The results indicate that the DNC caused
+ridership to increase near the convention centers. However, mobility across
+the rest of Chicago also declined during that week.</p>
+<p>Do we belive this design? I&rsquo;ll list several issues that I thought of.</p>
+<h1 id="problems-with-this-model">Problems with this model</h1>
+<p>(Key: 😡 = dealbreaker; 🙁 = bad but maybe fixable; 🫤 = not a dealbreaker)</p>
+<p><strong>Control Mis-Specification - 😡</strong></p>
+<ul>
+<li>the control group should be &ldquo;like&rdquo; the treatment group, but I use the entire
+city as a comparison. it&rsquo;s not apples-to-apples. a better control group might
+be a handful of the major event/cultural institutions like Soldier Field,
+Wrigley Field, Art Institute. or using finding matched pairs based on covariates.</li>
+</ul>
+<p><strong>Selection Bias - 😡</strong></p>
+<ul>
+<li>the convention centers were explicitly chosen for their ability to accomodate visitors (via transit)
+<ul>
+<li>this is mostly a problem for external validity (over-estimating the result if repeated elsewhere),
+which is not the point here</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>Substitutability of Transit - 🙁</strong></p>
+<ul>
+<li>Travelers have different options for transit. Their choice depends on location, time of day,
+distance cost and reliability of other options. I don&rsquo;t like that I&rsquo;m modeling
+these modes independently right now, but unifying them would be a rabbit hole.</li>
+</ul>
+<p><strong>Spillover into control - 🙁</strong></p>
+<ul>
+<li>DNC visitors might stay in chicago longer than the official convention dates,
+which would attenuate any effect
+<ul>
+<li>we can mitigate this by using placebo dates or by an event study design</li>
+</ul>
+</li>
+<li>DNC visitors may visit other parts of the city, attenuating the effect
+<ul>
+<li>we can mitigate this by maybe searching for spikes in other areas
+(but introduces a multiple testing issue)</li>
+</ul>
+</li>
+</ul>
+<p><em>Since the effects were statistically significant, I am not worried about these
+attenuation biases.</em></p>
+<p><strong>Spillover into treatment - 🙁</strong></p>
+<ul>
+<li>drawing buffers around the event centers weakens our identification strategy
+(marginally nearby transit might be spuriously related to the DNC itself)</li>
+</ul>
+<p><em>This concern can be mitigated (for tract-level model) with a robustness check,
+by varying whether the buffer must contrain 100% of tract land area, 75%, 50%, etc.</em></p>
+<p><strong>Confounding Variables - 🙁</strong></p>
+<ul>
+<li>the security perimeter around the event centers may actually suppress ridership</li>
+</ul>
+<p><em>It will be hard to disentagle the security effect (-) from the DNC effect (+).
+One way might be to test the sensitivity of the model to varying buffer sizes
+(smaller than the perimeter, equal to the perimeter, larger than the perimeter).</em></p>
+<p><strong>Gravity and Catchement Models - 🫤</strong></p>
+<ul>
+<li>Theoretically I&rsquo;m interested in true origins and destinations, not the &ldquo;first/last stop&rdquo;
+of transit, which is the data I have. For rideshares, the two are probably the same.
+But for trains and bikes we can assume people need to walk the last mile,
+which may mean crossing census tract boundaries. This is why I haven&rsquo;t
+aggregated station-level ridership to tract level. I&rsquo;d want to model some
+cross-tract spillover e.g. via a gaussian.</li>
+</ul>
+<h1 id="fixing-the-selection-problem">Fixing the Selection Problem</h1>
+<h2 id="matched-pairs">Matched Pairs</h2>
+<p>One way to mitigate selection bias is to choose control units that are &ldquo;like&rdquo;
+treatement units&rsquo; at baseline. I can model</p>
+$$ P(\text{near convention} | X) $$
+<p>and then find other units with high probabilities that were in fact not near the DNC.
+But I don&rsquo;t have great X&rsquo;s to really discern &ldquo;likeness&rdquo;. The best I can think of
+is an area&rsquo;s capacity to handle large crowds. This brings me to the &ldquo;attendance&rdquo; model.</p>
+<h2 id="attendance-model">Attendance Model</h2>
+<p>I&rsquo;ll compare the DNC locations (United Center and McCormick Place) to Chicago&rsquo;s
+other major event venues. I chose Wrigley Field, Guaranteed Rate Field, and Soldier Field
+because per-game sports attendance data is readily available<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. I also pull in
+conference event data for McCormick Place<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>Now the control group is more &ldquo;similar&rdquo; in terms of its transit patterns.
+I&rsquo;ll include event attendance as a term in the regression. The residuals on this term
+will help validate the veracity of the 50,000 delegate claim.</p>
+<p>One drawback of this method is that I can only now compare &ldquo;event days&rdquo;, which
+don&rsquo;t typically overlap (Cubs and White Sox almost always play on opposite weekends).</p>
+<p>I also have a much much smaller sample, so more uncertainty, less statistical power.</p>
+<h2 id="the-attendance-data">The Attendance Data</h2>
+<p>TBD: Data collection and analysis is implemented <a href="https://github.com/eric-mc2/DNCTransit/tree/attend">here</a>
+but need to merge in some methods fixes and write up the results.</p>
+<p>TL/DR: The new model did not pass the parallel trends test or the placebo treatment period test.
+So I&rsquo;ll show those tests and not the regression results.</p>
+<h1 id="footnotes">Footnotes</h1>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>CSV&rsquo;s downloaded from the <a href="https://www.baseball-reference.com/teams/CHC/2024-schedule-scores.shtml">sports-reference</a> family of websites.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Scraping events listed on <a href="https://tradefest.io/en/selection/events-at-mccormick-place-convention-center">tradefest.io</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/data-science">data science</a></li>
+    
+      <li><a class="tag" href="/tags/econometrics">econometrics</a></li>
+    
+      <li><a class="tag" href="/tags/panel-data">panel data</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+    <section><span style="color: #999999;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+      
+    </section>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  
+  <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js" integrity="sha384-EYn4rWu1DHvYD0sSSSbMEtXQmMl58CFJd897806+RT1jJVYbhuZlZMN6yG9nCyFa" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/smoothscroll-anchor-polyfill@1.3.2/dist/index.min.js" integrity="sha384-EY9NBEHCFbZANmPcTm7CgG8OhsFILy0VBLG85pF6OIpP42NVbZVNsFOc23PYTCkB" crossorigin="anonymous"></script>
+  
+  <script async src="/js/resume.js"></script>
+  
+
+  
+
+  
+</body>
+</html>

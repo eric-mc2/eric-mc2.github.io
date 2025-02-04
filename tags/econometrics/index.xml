@@ -6,8 +6,15 @@
     <description>Recent content in Econometrics on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jan 2025 10:47:51 -0600</lastBuildDate>
+    <lastBuildDate>Sat, 01 Feb 2025 10:47:51 -0600</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/econometrics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNC Transit Effect? (Part 3)</title>
+      <link>https://eric-mc2.github.io/projects/dnc-attendance/</link>
+      <pubDate>Sat, 01 Feb 2025 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/projects/dnc-attendance/</guid>
+      <description>Recap In a previous post I proposed a statistical model to estimate whether the 2024 Chicago DNC affected public transit usage across Chicago.&#xA;The learning objective was to was to try to construct a believable model from a real-life event &amp;ndash; or to convince myself that the model is too flawed to be trustworthy.&#xA;I gathered ridership data for train, bike, and rideshares, plus the dates and locations of the DNC.</description>
+    </item>
     <item>
       <title>DNC Transit Effect? (Part 2)</title>
       <link>https://eric-mc2.github.io/projects/dnc-effect-results/</link>
