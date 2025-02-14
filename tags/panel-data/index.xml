@@ -20,7 +20,7 @@
       <link>https://eric-mc2.github.io/projects/dnc-effect-results/</link>
       <pubDate>Wed, 08 Jan 2025 10:47:51 -0600</pubDate>
       <guid>https://eric-mc2.github.io/projects/dnc-effect-results/</guid>
-      <description>A few weeks ago I fumbled an interview question on statistical modeling. That hurt my pride, so I decided to take on a little modeling project.&#xA;Does the exogeneous shock of the 2024 Democratic National Convention in Chicago induce significant impacts on public transit usage?&#xA;In a previous post, I collected Chicago open transit data and designed a quasi-experiment to measure the causal impact of the DNC on ridership.&#xA;Regression Now for the results &amp;hellip;</description>
+      <description>This research project asks:&#xA;Does the exogeneous shock of the 2024 Democratic National Convention in Chicago induce significant impacts on public transit usage?&#xA;In a previous post, I collected Chicago open transit data and designed a quasi-experiment to measure the causal impact of the DNC on ridership.&#xA;Regression Now for the results &amp;hellip;&#xA;Fixed Effects Model The fixed effects specification conveniently eliminates static sources of bias without needing to explicitly measure each and every static variable (in other words it controls for all time-invariant unobserved factors).</description>
     </item>
     <item>
       <title>Do Democrats Really Support Public Transit?</title>

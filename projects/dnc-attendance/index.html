@@ -224,24 +224,394 @@ cross-tract spillover e.g. via a gaussian.</li>
 treatement units&rsquo; at baseline. I can model</p>
 $$ P(\text{near convention} | X) $$
 <p>and then find other units with high probabilities that were in fact not near the DNC.
-But I don&rsquo;t have great X&rsquo;s to really discern &ldquo;likeness&rdquo;. The best I can think of
-is an area&rsquo;s capacity to handle large crowds. This brings me to the &ldquo;attendance&rdquo; model.</p>
+Unfortunately, I don&rsquo;t have a strong theoretical definition of &ldquo;likeness&rdquo;, nor
+the data to measure it. Ideally I&rsquo;d like to operationalize &ldquo;ability to handle large crowds&rdquo;.
+I didn&rsquo;t see maximum fire code capacity in Chicago&rsquo;s building footprint dataset.
+But I can measure attendance at crowded events.</p>
 <h2 id="attendance-model">Attendance Model</h2>
 <p>I&rsquo;ll compare the DNC locations (United Center and McCormick Place) to Chicago&rsquo;s
 other major event venues. I chose Wrigley Field, Guaranteed Rate Field, and Soldier Field
 because per-game sports attendance data is readily available<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. I also pull in
 conference event data for McCormick Place<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <p>Now the control group is more &ldquo;similar&rdquo; in terms of its transit patterns.
-I&rsquo;ll include event attendance as a term in the regression. The residuals on this term
-will help validate the veracity of the 50,000 delegate claim.</p>
-<p>One drawback of this method is that I can only now compare &ldquo;event days&rdquo;, which
-don&rsquo;t typically overlap (Cubs and White Sox almost always play on opposite weekends).</p>
-<p>I also have a much much smaller sample, so more uncertainty, less statistical power.</p>
-<h2 id="the-attendance-data">The Attendance Data</h2>
-<p>TBD: Data collection and analysis is implemented <a href="https://github.com/eric-mc2/DNCTransit/tree/attend">here</a>
-but need to merge in some methods fixes and write up the results.</p>
-<p>TL/DR: The new model did not pass the parallel trends test or the placebo treatment period test.
-So I&rsquo;ll show those tests and not the regression results.</p>
+I&rsquo;ll include event attendance as a variable in the regression.</p>
+<p>One drawback of this method is that I can only now compare &ldquo;event days&rdquo;, drastically
+reducing the sample size. Worse, Soldier Field and Guaranteed Rate Field do not have
+games during the DNC, reducing the active control group just to transit options near
+Wrigley Field.</p>
+<p>
+  <figure>
+    <img src="/img/attendance_timeline.jpeg" alt="Event timeline">
+    <figcaption>Fig: Event timeline.</figcaption>
+  </figure>
+</p>
+<p>The sample sizes are just too small.</p>
+<h2 id="stadium-model">Stadium Model</h2>
+<p>On second thought, using attendance as a regression variable makes it hard to
+interpret our treatment effect. Ceteris peribus, I&rsquo;d be modeling
+the effect of the DNC <em>in excess of the DNC attendees</em>. That&rsquo;s not at all what I want.</p>
+<p>Why not drop the attendance term, but keep the reduced sample of <em>transit near stadiums</em>
+on <em>all game/non-game days</em>. Now the treatment and control are much more similar
+in terms of transit density:</p>
+
+
+<div id="static/uploads/balance-stadium.md" class="scientific-table">
+    <table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>Not Near DNC</th>
+<th>Near DNC</th>
+<th>P-Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>train</td>
+<td>stations</td>
+<td>12</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>station-days</td>
+<td>732</td>
+<td>468</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>daily rides, mean (SD)</td>
+<td>3098.3 (2692.9)</td>
+<td>2093.5 (1985.5)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>log(daily rides), mean (SD)</td>
+<td>7.7 (0.9)</td>
+<td>7.0 (1.8)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>bus_distance, mean (SD)</td>
+<td>230.0 (340.2)</td>
+<td>165.3 (167.7)</td>
+<td>0.580</td>
+</tr>
+<tr>
+<td></td>
+<td>bike_distance, mean (SD)</td>
+<td>232.1 (164.3)</td>
+<td>288.5 (281.6)</td>
+<td>0.620</td>
+</tr>
+<tr>
+<td></td>
+<td>sqrt(area), mean (SD)</td>
+<td>1919.2 (1141.3)</td>
+<td>3123.8 (3564.8)</td>
+<td>0.382</td>
+</tr>
+<tr>
+<td></td>
+<td>lat, mean (SD)</td>
+<td>0.4 (1.2)</td>
+<td>-0.3 (0.3)</td>
+<td>0.073</td>
+</tr>
+<tr>
+<td></td>
+<td>long, mean (SD)</td>
+<td>-0.1 (0.9)</td>
+<td>-0.8 (1.1)</td>
+<td>0.134</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bike</td>
+<td>docks</td>
+<td>75</td>
+<td>47</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>dock-days</td>
+<td>3986</td>
+<td>2846</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>daily rides, mean (SD)</td>
+<td>84.1 (64.9)</td>
+<td>66.7 (55.9)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>log(daily rides), mean (SD)</td>
+<td>4.0 (1.2)</td>
+<td>3.9 (0.9)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>train_distance, mean (SD)</td>
+<td>1232.8 (1050.7)</td>
+<td>1056.5 (1240.4)</td>
+<td>0.420</td>
+</tr>
+<tr>
+<td></td>
+<td>bus_distance, mean (SD)</td>
+<td>140.0 (145.4)</td>
+<td>105.6 (73.5)</td>
+<td>0.087</td>
+</tr>
+<tr>
+<td></td>
+<td>sqrt(area), mean (SD)</td>
+<td>603.4 (215.9)</td>
+<td>734.0 (711.5)</td>
+<td>0.227</td>
+</tr>
+<tr>
+<td></td>
+<td>lat, mean (SD)</td>
+<td>0.3 (1.3)</td>
+<td>-0.4 (0.4)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>long, mean (SD)</td>
+<td>0.0 (0.8)</td>
+<td>-0.2 (1.2)</td>
+<td>0.179</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>uber</td>
+<td>tracts</td>
+<td>64</td>
+<td>40</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>tract-days</td>
+<td>3877</td>
+<td>2428</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>daily rides, mean (SD)</td>
+<td>746.7 (2018.7)</td>
+<td>927.5 (1896.5)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>log(daily rides), mean (SD)</td>
+<td>5.5 (1.5)</td>
+<td>5.7 (1.5)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>train_distance, mean (SD)</td>
+<td>2010.3 (1149.6)</td>
+<td>2293.7 (1027.7)</td>
+<td>0.195</td>
+</tr>
+<tr>
+<td></td>
+<td>bus_distance, mean (SD)</td>
+<td>567.4 (324.9)</td>
+<td>503.0 (313.2)</td>
+<td>0.317</td>
+</tr>
+<tr>
+<td></td>
+<td>bike_distance, mean (SD)</td>
+<td>840.2 (357.8)</td>
+<td>889.5 (504.9)</td>
+<td>0.592</td>
+</tr>
+<tr>
+<td></td>
+<td>sqrt(area), mean (SD)</td>
+<td>608.4 (254.8)</td>
+<td>784.4 (320.0)</td>
+<td>0.004</td>
+</tr>
+<tr>
+<td></td>
+<td>lat, mean (SD)</td>
+<td>0.5 (1.2)</td>
+<td>-0.3 (0.4)</td>
+<td>&lt;0.001</td>
+</tr>
+<tr>
+<td></td>
+<td>long, mean (SD)</td>
+<td>-0.0 (0.7)</td>
+<td>-0.5 (1.2)</td>
+<td>0.028</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<p>I estimate the same difference in difference model as before:</p>
+$$ \log{rides_{it}} \sim \beta_0 + \beta_1 \text{DNC}_t + \beta_2 \text{near DNC}_i + 
+    \beta_3 \text{DNC}_t \text{near DNC}_i +
+    X_{it} + u_{it} $$
+
+
+<div id="static/uploads/did-stadium.md" class="scientific-table">
+    <table>
+<thead>
+<tr>
+<th></th>
+<th>DiD (Uber)</th>
+<th>DiD (Train)</th>
+<th>DiD (Bike)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Near DNC</td>
+<td>0.6760*</td>
+<td>0.1569</td>
+<td>-0.0082</td>
+</tr>
+<tr>
+<td></td>
+<td>(0.3960)</td>
+<td>(0.4565)</td>
+<td>(0.1781)</td>
+</tr>
+<tr>
+<td>During DNC</td>
+<td>-0.1139***</td>
+<td>-0.1447</td>
+<td>-0.0957</td>
+</tr>
+<tr>
+<td></td>
+<td>(0.0412)</td>
+<td>(0.0980)</td>
+<td>(0.0737)</td>
+</tr>
+<tr>
+<td>Near DNC:During DNC</td>
+<td>0.2746***</td>
+<td>0.8982</td>
+<td>0.4492***</td>
+</tr>
+<tr>
+<td></td>
+<td>(0.0854)</td>
+<td>(0.6198)</td>
+<td>(0.1048)</td>
+</tr>
+<tr>
+<td>log(dist to train)</td>
+<td>-0.2957</td>
+<td></td>
+<td>0.1952***</td>
+</tr>
+<tr>
+<td></td>
+<td>(0.1995)</td>
+<td></td>
+<td>(0.0526)</td>
+</tr>
+<tr>
+<td>log(dist to bike)</td>
+<td>0.1554</td>
+<td>0.5530</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>(0.3104)</td>
+<td>(0.3475)</td>
+<td></td>
+</tr>
+<tr>
+<td>log(dist to bus)</td>
+<td>0.2676*</td>
+<td>-0.0356</td>
+<td>-0.0679</td>
+</tr>
+<tr>
+<td></td>
+<td>(0.1437)</td>
+<td>(0.1728)</td>
+<td>(0.1009)</td>
+</tr>
+<tr>
+<td>R-squared</td>
+<td>0.5182</td>
+<td>0.4228</td>
+<td>0.4733</td>
+</tr>
+<tr>
+<td>R-squared Adj.</td>
+<td>0.5170</td>
+<td>0.4159</td>
+<td>0.4722</td>
+</tr>
+<tr>
+<td>N</td>
+<td>6718.0</td>
+<td>1280.0</td>
+<td>7026.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<p>In the control group we observe a (non-causal)
+-10.8%, -13.5% (NS), -9.1% (NS) percentage-point change in rideshare, train, and bike
+rides, which agrees directionally with the un-subsetted data. The
+causal effect of the DNC on rideshares, train, and bike rides
+near the DNC is a +31.6%, +145.5% (NS), and +56.7% percentage-point change,
+an increase in magnitude.</p>
+<p>As a robustness check on this model, I plot the parallel trends and run a placebo
+test, shifting the simulated treatment period back across 8 x 4-day windows.
+38% of the simulated models returned statistically significant main effects,
+but the actual DNC effects (x&rsquo;s) were much larger than the simulated effects (box &amp; whisker).</p>
+<p>
+  <figure>
+    <img src="/img/placebo_stadium.jpeg" alt="Placebo Test">
+    <figcaption>Fig: Placebo Test.</figcaption>
+  </figure>
+</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>I attempt to overcome selection effect bias by a pseudo-matched pairs method,
+comparing transit ridership near large event centers in Chicago. The results
+agree directionally and give credence to the original experimental design.</p>
 <h1 id="footnotes">Footnotes</h1>
 <div class="footnotes" role="doc-endnotes">
 <hr>
