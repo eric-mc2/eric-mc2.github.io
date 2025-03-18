@@ -6,8 +6,15 @@
     <description>Recent content in Projects on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Feb 2025 10:47:51 -0600</lastBuildDate>
+    <lastBuildDate>Tue, 18 Mar 2025 10:34:18 -0500</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Public Safety News Analysis</title>
+      <link>https://eric-mc2.github.io/projects/qjn/</link>
+      <pubDate>Tue, 18 Mar 2025 10:34:18 -0500</pubDate>
+      <guid>https://eric-mc2.github.io/projects/qjn/</guid>
+      <description>I&amp;rsquo;ve been volunteering on a civic technology project measuring the differences between crime news reporting and official victimization rates in Chicago. This research builds on previous reports highlighting disparities in stranger vs intimate partner violence rates compared to the types of cases that are covered.&#xA;How do we measure these differences? Using a database of local media articles, we have enlisted volunteers from across the community to read and annotate whether the articles are crime-related, the types of crimes reported, and their locations.</description>
+    </item>
     <item>
       <title>DNC Transit Effect? (Part 3)</title>
       <link>https://eric-mc2.github.io/projects/dnc-attendance/</link>
