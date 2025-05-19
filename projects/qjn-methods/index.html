@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Eric Chandler | Public Safety News Analysis (Engineering)</title>
+  <meta name="description" content="text analysis implementation">
+
+  
+  
+    <meta property="og:image" content="https://eric-mc2.github.io/img/headshot.png" />
+    <meta property="og:title" content="Eric Chandler | Public Safety News Analysis (Engineering)" />   
+  
+  <meta property="og:description" content="text analysis implementation" />
+  <meta name="author" content="Eric Chandler">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Saira+Extra+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Saira+Extra+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"></noscript>
+  <link rel="preload" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" integrity="sha512-JW3fT0YTK7pT7w437SoX6GcW76jOZ6E0jGmrqBAcloC4GKT+njHOY4fX5KxJ9WfIXTkNrAF994525fAHp+KCxg==" crossorigin="anonymous" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" integrity="sha512-JW3fT0YTK7pT7w437SoX6GcW76jOZ6E0jGmrqBAcloC4GKT+njHOY4fX5KxJ9WfIXTkNrAF994525fAHp+KCxg==" crossorigin="anonymous"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous"></noscript>
+  
+  <link rel="preload" href="https://eric-mc2.github.io/css/base.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/base.css"></noscript>
+  <link rel="preload" href="https://eric-mc2.github.io/css/nav.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/nav.css"></noscript> 
+  <link rel="preload" href="https://eric-mc2.github.io/css/content.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/content.css"></noscript>
+    <link rel="preload" href="https://eric-mc2.github.io/css/tables.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/tables.css"></noscript>
+  <link rel="preload" href="https://eric-mc2.github.io/css/tweaks.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/tweaks.css"></noscript>
+  <meta name="generator" content="Hugo 0.123.8">
+  
+    
+    
+    
+    
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3XT6HHHNVY"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-3XT6HHHNVY', { 'anonymize_ip': false });
+}
+</script>
+
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Eric Chandler</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/headshot.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#education">Education</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#experience">Experience</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#projects">Projects</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#publications">Publications</a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</nav>
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://eric-mc2.github.io/">Eric Chandler</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://eric-mc2.github.io/projects/">Projects</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://eric-mc2.github.io/projects/qjn-methods/">Public Safety News Analysis (Engineering)</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="project-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h1 class="mb-0"><span class="text-primary">Public Safety News Analysis (Engineering)</span></h1>
+    <p>Project link: <a href="https://github.com/eric-mc2/quantify-justice-news-geos/">https://github.com/eric-mc2/quantify-justice-news-geos/</a></p>
+    <p>This post describes the technical implementation of the public safety news <a href="../qjn/index.html">analysis</a>.</p>
+<p><em>Update: I&rsquo;ve implemented a LOT more and need to update the writeup!</em></p>
+<h2 id="training-data">Training Data</h2>
+<p><strong>News articles</strong>:
+I labeled an independent sample to train each task.</p>
+<p><strong>Chicago streets network</strong>:
+I enumerated all blocks and intersections and spatially
+joined these with community area boundaries. I used these
+{location -&gt; community area} mappings as synthetic data
+to train the classifier.</p>
+<h2 id="architecture">Architecture</h2>
+<p><strong>Article Classifier</strong>:
+This is an off-the-shelf uninitialized binary text classification
+model. I only use article titles for classification, since they are
+much shorter and less noisy than article bodies.</p>
+<p><strong>Sentence Classifier</strong>:
+This is an off-the-shelf uninitialized multi-label classification model. This model predicts whether the sentence describes the
+WHO, WHAT, WHERE or WHEN of the crime incident. (I&rsquo;m the
+least confident in this specific task formulation.)</p>
+<p><strong>Location recognition</strong>:
+I extend the pre-trained named entity recognizer with custom pre-
+and post-inference steps. Spacy models are particularly
+easy to combine machine-learning and rules-based pipeline components. Before NER runs, I match on an explicit list of local
+vocabulary terms:</p>
+<ul>
+<li>the &ldquo;sides&rdquo; of the city e.g. North Side, South Side</li>
+<li>all street, neighborhood, and community area names</li>
+</ul>
+<p>After NER runs, I match on conventions that are common to news language:</p>
+<ul>
+<li>&ldquo;1300[number] block of North Webster Ave[street]&rdquo; becomes &ldquo;1300 block of North Webster Ave[block]&rdquo;</li>
+</ul>
+<p>Finally I enhance the NER classification with finer-grained location terms, classifying whether the location is a block, street, intersection, neighborhood, or community area.</p>
+<p><strong>Semantic Relationship</strong>
+I use a naive implementation here. I just include sentences
+that were positive matches for both sentence classification and location entity recognition. I don&rsquo;t utilize the dependency parse
+or SRL models yet.</p>
+<p><strong>Community Area Classification</strong>
+The Chicago streets and neighborhood boundaries gives us an exact mapping of locations to community areas. I leverage this first, before resorting to machine learning. Given the location type provided by the NER stage, I check for an exact match of the location text and emit the associated community area.</p>
+<p>Otherwise I send the location text through a text classification model, returning the predicted community area.</p>
+<h2 id="infrastructure">Infrastructure</h2>
+<p>I&rsquo;m using <a href="https://dagster.io/">Dagster</a> to explicitly
+declare and manage the separate pre-processing, training,
+evaluation, and tuning steps per pipeline stage.</p>
+<p>
+  <img src="/img/dagster-art-relevance.svg" alt="Dagster pipeline">
+</p>
+<h2 id="pipeline">Pipeline</h2>
+<p>I have a bias towards file-centric pipeline declarations like Makefiles and <a href="https://dvc.org/doc/user-guide/pipelines/defining-pipelines">dvc</a>. These methods encourage making your processing code agnostic
+as to <em>where</em> data is located. Especially with dvc, it&rsquo;s very easy to quickly scan the
+order that different files are created and the relationships between inputs, processing, and outputs.</p>
+<h3 id="data-discovery">Data Discovery</h3>
+<p>I follow those concepts in my dagster definitions. First, I define all data paths
+in an external config file, which is organized by stage:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># data_sources.yaml</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#062873;font-weight:bold">raw</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;raw/articles.parquet&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#062873;font-weight:bold">pre_relevance</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;pre_relevance/articles.parquet&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#062873;font-weight:bold">art_relevance</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text_prototype</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;art_relevance/articles_prototype.parquet&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text_preproc</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;art_relevance/articles_preproc.json&#34;</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>Notice how these paths are <em>relative</em>. This allows the data folder itself to
+be environment-specific, which is checked when the config is loaded. (For
+local development it is just &ldquo;./data&rdquo; within the project folder. For running on
+Colab, it is a Google Drive path &ldquo;/gdrive/MyDrive/&hellip;/data&rdquo;).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">scripts.utils</span> <span style="color:#007020;font-weight:bold">import</span> Config
+</span></span><span style="display:flex;"><span>config <span style="color:#666">=</span> Config()
+</span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;raw.article_text&#34;</span>))
+</span></span><span style="display:flex;"><span><span style="color:#4070a0">&#34;/absolute/path/to/project/data/raw/newsarticles.parquet&#34;</span>
+</span></span></code></pre></div><h3 id="stage-declarations">Stage Declarations</h3>
+<p>Next I define my dagster stages. The goal is to make this file really compact
+and to highlight a) the logical stage dependencies and b) the input output
+flows. To achieve this, I separate the actual processing logic to a different
+file <code>operations.py</code>. And as before, the actual data locations are
+isolated and loaded through the config file.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># scripts/art_relevance/assets.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">dagster</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">dg</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">scripts.utils</span> <span style="color:#007020;font-weight:bold">import</span> Config
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">scripts.art_relevance</span> <span style="color:#007020;font-weight:bold">import</span> operations <span style="color:#007020;font-weight:bold">as</span> ops
+</span></span><span style="display:flex;"><span>config <span style="color:#666">=</span> Config()
+</span></span><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@dg.asset</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">extract</span>():
+</span></span><span style="display:flex;"><span>    dep_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;raw.zip&#34;</span>)
+</span></span><span style="display:flex;"><span>    out_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;raw.article_text&#34;</span>)
+</span></span><span style="display:flex;"><span>    ops<span style="color:#666">.</span>extract(dep_path, out_path)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@dg.asset</span>(deps<span style="color:#666">=</span>[extract], description<span style="color:#666">=</span><span style="color:#4070a0">&#34;Filter using external relevance model&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">pre_relevant</span>():
+</span></span><span style="display:flex;"><span>    dep_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;raw.article_text&#34;</span>)
+</span></span><span style="display:flex;"><span>    out_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;pre_relevance.article_text&#34;</span>)
+</span></span><span style="display:flex;"><span>    ops<span style="color:#666">.</span>pre_relevant(dep_path, out_path)
+</span></span></code></pre></div><p>This way the processing functions (ops) can be arbitrarily complicated, but
+<code>assets.py</code> makes it very clear how they should be chained.</p>
+<h2 id="training">Training</h2>
+<p>The volunteer-contributed training data for this project addresses the
+high-level end-to-end task. Unfortunately these data wouldn&rsquo;t be very helpful
+to train each sub-task model because each model sees a different conditional subset of the data.</p>
+<p>The idea is to prototype each sub-model quickly, get a sense of the overall performance,
+get a sense of which sub-units need improvement. As you saw in the dagster diagram,
+I&rsquo;ve inserted a &ldquo;prototype_sampling&rdquo; stage which picks 200 random records to
+use as a working set to develop the first model. I export these to
+<a href="https://labelstud.io/">Label Studio</a> and spend an hour annotating.</p>
+<p>
+  <img src="/img/article_relevance_pos.png" alt="Positive example">
+
+<em>A positive example.</em></p>
+<p>
+  <img src="/img/article_relevance_neg.png" alt="Negative example">
+
+<em>A negative example.</em></p>
+<p>I am using <a href="https://mlflow.org/">MLFlow</a> to track model experiments. I load
+the spacy config file, flatten it like <code>{&quot;nested.key.param1&quot;: val1, &quot;nested.key.param2&quot;: val2}</code>
+and dump the full parameter list into MLFlow. Spacy provides a convenient function
+<code>spacy.util.load_config(path, overrides: dict)</code>
+making it easy to alter the configuration in-memory instead of writing each change
+to disk. Even though 99.9% of the values are unchanged run-to-run,
+this way I&rsquo;m never missing a baseline parameter value if I run a new experiment.</p>
+<p>So far I&rsquo;ve tested limited-scope changes (ie. doesn&rsquo;t require different pre/post processing).
+Besides the &ldquo;quickstart&rdquo; model using the default spacy configs, I&rsquo;m using
+<a href="https://optuna.readthedocs.io/">Optuna</a> for hyperparameter tuning. And of course
+a baseline &ldquo;null_model&rdquo; which simply measures the frequency of positive values
+in the training set and predicts the positive class with that likelihood.</p>
+<p>
+  <img src="/img/mlflow_art_relevance.png" alt="MLFlow logs">
+</p>
+<p>At this point, with only 160 training
+and 20 dev examples, there isn&rsquo;t enough variation in the data itself for the
+hyperparameters to impact the model&rsquo;s performance.</p>
+<h1 id="next-steps---sentence-classifier">Next Steps - Sentence Classifier</h1>
+<p>I will pull a new set of a few hundred articles, filter them through the
+article-classifier prototype, and use the &ldquo;relevant&rdquo; articles to train the next task.
+With this prototype 29% of the articles it passes to the next stage will be irrelevant, meaning more
+wasted time in Label Studio.</p>
+<p>Many articles (e.g. sports) use violence-laden language to describe non-criminal acts. These cases will
+likely confuse the model at the sentence-level, which is why I attempted filtering at the
+article-level. Hopefully these cases will not severely degrade the sentence-level
+model too much.</p>
+<p>On the bright side, this prototype is an improvement over the externally labeled
+<code>pre_relevance</code> stage, which had a precision of 36%. Since the next model is also
+a text classifier, I can re-use a lot of the pipeline and training aparatus from
+this stage.</p>
+
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/machine-learning">machine learning</a></li>
+    
+      <li><a class="tag" href="/tags/data-engineering">data engineering</a></li>
+    
+      <li><a class="tag" href="/tags/spacy">spacy</a></li>
+    
+      <li><a class="tag" href="/tags/nlp">nlp</a></li>
+    
+      <li><a class="tag" href="/tags/dagster">dagster</a></li>
+    
+      <li><a class="tag" href="/tags/mlflow">mlflow</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+    <section><span style="color: #999999;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+      
+    </section>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  
+  <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js" integrity="sha384-EYn4rWu1DHvYD0sSSSbMEtXQmMl58CFJd897806+RT1jJVYbhuZlZMN6yG9nCyFa" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/smoothscroll-anchor-polyfill@1.3.2/dist/index.min.js" integrity="sha384-EY9NBEHCFbZANmPcTm7CgG8OhsFILy0VBLG85pF6OIpP42NVbZVNsFOc23PYTCkB" crossorigin="anonymous"></script>
+  
+  <script async src="/js/resume.js"></script>
+  
+  
+
+  
+  
+</body>
+</html>

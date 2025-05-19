@@ -6,14 +6,21 @@
     <description>Recent content in NLP on Eric Chandler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Mar 2025 10:34:18 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 14 Apr 2025 16:29:12 -0500</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Public Safety News Analysis (Engineering)</title>
+      <link>https://eric-mc2.github.io/projects/qjn-methods/</link>
+      <pubDate>Mon, 14 Apr 2025 16:29:12 -0500</pubDate>
+      <guid>https://eric-mc2.github.io/projects/qjn-methods/</guid>
+      <description>This post describes the technical implementation of the public safety news analysis.&#xA;Update: I&amp;rsquo;ve implemented a LOT more and need to update the writeup!&#xA;Training Data News articles: I labeled an independent sample to train each task.&#xA;Chicago streets network: I enumerated all blocks and intersections and spatially joined these with community area boundaries. I used these {location -&amp;gt; community area} mappings as synthetic data to train the classifier.&#xA;Architecture Article Classifier: This is an off-the-shelf uninitialized binary text classification model.</description>
+    </item>
     <item>
       <title>Public Safety News Analysis</title>
       <link>https://eric-mc2.github.io/projects/qjn/</link>
       <pubDate>Tue, 18 Mar 2025 10:34:18 -0500</pubDate>
       <guid>https://eric-mc2.github.io/projects/qjn/</guid>
-      <description>I&amp;rsquo;ve been volunteering on a civic technology project measuring the differences between crime news reporting and official victimization rates in Chicago. This research builds on previous reports highlighting disparities in stranger vs intimate partner violence rates compared to the types of cases that are covered.&#xA;How do we measure these differences? Using a database of local media articles, we have enlisted volunteers from across the community to read and annotate whether the articles are crime-related, the types of crimes reported, and their locations.</description>
+      <description>Introduction According to Pew Research, crime is the second-most watched news topic besides weather. Over three quarters of U.S. adults say get news about crime sometimes or often.1 How accurate is this information? How does it affect public perceptions on crime? And how, ultimately, does that affect public safety conversations, economic behaviors, and social good.&#xA;Decades of social science research have shown the importance of news coverage in shaping our world views.</description>
     </item>
     <item>
       <title>The Social Structure of Private Donations to Police</title>

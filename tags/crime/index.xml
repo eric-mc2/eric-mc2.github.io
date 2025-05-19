@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Crime on Eric Chandler</title>
+    <link>https://eric-mc2.github.io/tags/crime/</link>
+    <description>Recent content in Crime on Eric Chandler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 18 Mar 2025 10:34:18 -0500</lastBuildDate>
+    <atom:link href="https://eric-mc2.github.io/tags/crime/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Public Safety News Analysis</title>
+      <link>https://eric-mc2.github.io/projects/qjn/</link>
+      <pubDate>Tue, 18 Mar 2025 10:34:18 -0500</pubDate>
+      <guid>https://eric-mc2.github.io/projects/qjn/</guid>
+      <description>Introduction According to Pew Research, crime is the second-most watched news topic besides weather. Over three quarters of U.S. adults say get news about crime sometimes or often.1 How accurate is this information? How does it affect public perceptions on crime? And how, ultimately, does that affect public safety conversations, economic behaviors, and social good.&#xA;Decades of social science research have shown the importance of news coverage in shaping our world views.</description>
+    </item>
+  </channel>
+</rss>
