@@ -13,7 +13,7 @@
       <link>https://eric-mc2.github.io/projects/qjn-methods/</link>
       <pubDate>Mon, 14 Apr 2025 16:29:12 -0500</pubDate>
       <guid>https://eric-mc2.github.io/projects/qjn-methods/</guid>
-      <description>This post describes the technical implementation of the public safety news analysis.&#xA;Update: I&amp;rsquo;ve implemented a LOT more and need to update the writeup!&#xA;Training Data News articles: I labeled an independent sample to train each task.&#xA;Chicago streets network: I enumerated all blocks and intersections and spatially joined these with community area boundaries. I used these {location -&amp;gt; community area} mappings as synthetic data to train the classifier.&#xA;Architecture Article Classifier: This is an off-the-shelf uninitialized binary text classification model.</description>
+      <description>This post describes the technical implementation of the public safety news analysis.&#xA;Research Question What is the spatial distribution of crime news coverage across Chicago?&#xA;I decompose this question into smaller machine learn-able tasks:&#xA;Is the article crime-related? (classification) Which sentences in the article describe the crime incident? (classification) Which words refer to a location? (named entity recognition) Which location words relate to the crime incident? (dependency parsing) Which neighborhood is this in?</description>
     </item>
     <item>
       <title>Public Safety News Analysis</title>

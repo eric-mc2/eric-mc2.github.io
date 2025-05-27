@@ -127,46 +127,67 @@ if (!doNotTrack) {
     <h1 class="mb-0"><span class="text-primary">Public Safety News Analysis (Engineering)</span></h1>
     <p>Project link: <a href="https://github.com/eric-mc2/quantify-justice-news-geos/">https://github.com/eric-mc2/quantify-justice-news-geos/</a></p>
     <p>This post describes the technical implementation of the public safety news <a href="../qjn/index.html">analysis</a>.</p>
-<p><em>Update: I&rsquo;ve implemented a LOT more and need to update the writeup!</em></p>
-<h2 id="training-data">Training Data</h2>
+<h1 id="research-question">Research Question</h1>
+<blockquote>
+<p><em>What is the spatial distribution of crime news coverage across Chicago?</em></p>
+</blockquote>
+<p>I decompose this question into smaller machine learn-able tasks:</p>
+<ol>
+<li>Is the article crime-related? (classification)</li>
+<li>Which sentences in the article describe the crime <em>incident</em>? (classification)</li>
+<li>Which words refer to a location? (named entity recognition)</li>
+<li>Which location words relate to the <em>crime incident</em>? (dependency parsing)</li>
+<li>Which neighborhood is this in? (classification)</li>
+</ol>
+<h1 id="data-sources">Data Sources</h1>
 <p><strong>News articles</strong>:
-I labeled an independent sample to train each task.</p>
-<p><strong>Chicago streets network</strong>:
-I enumerated all blocks and intersections and spatially
-joined these with community area boundaries. I used these
-{location -&gt; community area} mappings as synthetic data
-to train the classifier.</p>
-<h2 id="architecture">Architecture</h2>
+The data is a sample of 713k articles from the Chicago Justice Project&rsquo;s news archive from
+201X onwards.</p>
+<p>News articles serve as training data for all five model stages.</p>
+<p><strong>Chicago geographies</strong>:
+Downloaded community area boundaries, neighborhood boundaries, street network
+from City of Chicago data portal.</p>
+<p>Geometries are used for exact matching and classification when possible. They
+are also used to generate synthetic training data for neighborhood classification.</p>
+<h1 id="models">Models</h1>
 <p><strong>Article Classifier</strong>:
-This is an off-the-shelf uninitialized binary text classification
-model. I only use article titles for classification, since they are
-much shorter and less noisy than article bodies.</p>
+I classify articles as crime-related or not, based off of the <em>article title</em>,
+using Spacy&rsquo;s off-the-shelf binary text classifier (for the proof of concept, a unigram BOW).</p>
+<p>Articles tagged as non-crime-related are passed through the rest of the pipeline
+with no further processing.</p>
 <p><strong>Sentence Classifier</strong>:
-This is an off-the-shelf uninitialized multi-label classification model. This model predicts whether the sentence describes the
-WHO, WHAT, WHERE or WHEN of the crime incident. (I&rsquo;m the
-least confident in this specific task formulation.)</p>
-<p><strong>Location recognition</strong>:
-I extend the pre-trained named entity recognizer with custom pre-
-and post-inference steps. Spacy models are particularly
-easy to combine machine-learning and rules-based pipeline components. Before NER runs, I match on an explicit list of local
-vocabulary terms:</p>
-<ul>
-<li>the &ldquo;sides&rdquo; of the city e.g. North Side, South Side</li>
-<li>all street, neighborhood, and community area names</li>
-</ul>
-<p>After NER runs, I match on conventions that are common to news language:</p>
-<ul>
-<li>&ldquo;1300[number] block of North Webster Ave[street]&rdquo; becomes &ldquo;1300 block of North Webster Ave[block]&rdquo;</li>
-</ul>
-<p>Finally I enhance the NER classification with finer-grained location terms, classifying whether the location is a block, street, intersection, neighborhood, or community area.</p>
-<p><strong>Semantic Relationship</strong>
-I use a naive implementation here. I just include sentences
-that were positive matches for both sentence classification and location entity recognition. I don&rsquo;t utilize the dependency parse
-or SRL models yet.</p>
-<p><strong>Community Area Classification</strong>
-The Chicago streets and neighborhood boundaries gives us an exact mapping of locations to community areas. I leverage this first, before resorting to machine learning. Given the location type provided by the NER stage, I check for an exact match of the location text and emit the associated community area.</p>
-<p>Otherwise I send the location text through a text classification model, returning the predicted community area.</p>
-<h2 id="infrastructure">Infrastructure</h2>
+I classify whether each sentence from the article body describes the WHO, WHAT, HERE, or WHEN of the
+crime <em>incident</em>, using Spacy&rsquo;s off-the-shelf multi-label text classifier
+(for the proof of concept, a unigram BOW).</p>
+<p><strong>Location Recognition</strong>:
+I created a custom Spacy Pipeline component for NER:</p>
+<ol>
+<li>Use Spacy&rsquo;s PhraseMatcher to efficiently check for exact matches against
+a list of all Chicago street names, intersections, address blocks,
+neighborhoods, community areas, and &ldquo;sides&rdquo; (e.g. North Side).</li>
+<li>Run Spacy&rsquo;s pre-trained (tok2vec) NER model to identify more GPE (counties, cities) and FAC (highways, airports) entities.</li>
+<li>Clean up and merge entities.</li>
+<li>Tag entity with fine-grained location type, based on previous matching method.</li>
+</ol>
+<p>This combination of rules-based and machine-learning consistently fixes
+common cases missed by the model, e.g. consolidating &ldquo;(1300)[number] block of (North Webster Ave)[street]&rdquo;
+into &ldquo;(1300 block of North Webster Ave)[street]&rdquo;.</p>
+<p><strong>Dependency Parsing</strong>
+Not implemented yet. For the proof of concept, I include sentences
+that were positive matches for both sentence classification and location entity recognition.</p>
+<p>Sentences that were negative matches for either stage are passed through the rest
+of the pipeline with no further processing.</p>
+<p><strong>Community Area Classification</strong></p>
+<ol>
+<li>Predict neighborhood using Spacy&rsquo;s off-the-shelf multi-class text classification model
+(for proof of concept, bi-gram BOW).
+The training data for this model is half hand-labeled, half synthetic data
+sampled from the city geometries.</li>
+<li>Tag blocks, intersections, and neighborhoods with their known community area,
+based on their spatial relationships.</li>
+<li>Merge labels from machine learning and exact methods.</li>
+</ol>
+<h1 id="infrastructure">Infrastructure</h1>
 <p>I&rsquo;m using <a href="https://dagster.io/">Dagster</a> to explicitly
 declare and manage the separate pre-processing, training,
 evaluation, and tuning steps per pipeline stage.</p>
@@ -174,61 +195,69 @@ evaluation, and tuning steps per pipeline stage.</p>
   <img src="/img/dagster-art-relevance.svg" alt="Dagster pipeline">
 </p>
 <h2 id="pipeline">Pipeline</h2>
-<p>I have a bias towards file-centric pipeline declarations like Makefiles and <a href="https://dvc.org/doc/user-guide/pipelines/defining-pipelines">dvc</a>. These methods encourage making your processing code agnostic
-as to <em>where</em> data is located. Especially with dvc, it&rsquo;s very easy to quickly scan the
-order that different files are created and the relationships between inputs, processing, and outputs.</p>
-<h3 id="data-discovery">Data Discovery</h3>
-<p>I follow those concepts in my dagster definitions. First, I define all data paths
+<p>I have a bias towards file-centric pipeline declarations like Makefiles and <a href="https://dvc.org/doc/user-guide/pipelines/defining-pipelines">dvc</a>, particularly the way these tools abstract <em>where</em> data is located
+away from the code operating on the data.</p>
+<h2 id="data-discovery">Data Discovery</h2>
+<p>My goal is to make it easy to quickly scan the order that data files are created and
+the relationships between inputs, processing scripts, and outputs.
+First, I define all data paths
 in an external config file, which is organized by stage:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># data_sources.yaml</span><span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># pipeline.yaml</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#062873;font-weight:bold">raw</span>:<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;raw/articles.parquet&#34;</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#062873;font-weight:bold">pre_relevance</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;pre_relevance/articles.parquet&#34;</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#062873;font-weight:bold">art_relevance</span>:<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text_prototype</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;art_relevance/articles_prototype.parquet&#34;</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text_preproc</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;art_relevance/articles_preproc.json&#34;</span><span style="color:#bbb">
-</span></span></span></code></pre></div><p>Notice how these paths are <em>relative</em>. This allows the data folder itself to
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text_labeled</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;art_relevance/articles_labeled.jsonl&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text_train</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;art_relevance/articles_train.spacy&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text_test</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;art_relevance/articles_test.spacy&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#062873;font-weight:bold">sent_relevance</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text_labeled</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;sent_relevance/articles_labeled.jsonl&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text_train</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;sent_relevance/articles_train.spacy&#34;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">article_text_test</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;sent_relevance/articles_test.spacy&#34;</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>These paths are <em>relative</em>, allowing the data folder itself to
 be environment-specific, which is checked when the config is loaded. (For
 local development it is just &ldquo;./data&rdquo; within the project folder. For running on
 Colab, it is a Google Drive path &ldquo;/gdrive/MyDrive/&hellip;/data&rdquo;).</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">scripts.utils</span> <span style="color:#007020;font-weight:bold">import</span> Config
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># script.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">scripts.utils</span> <span style="color:#007020;font-weight:bold">import</span> Config
 </span></span><span style="display:flex;"><span>config <span style="color:#666">=</span> Config()
 </span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;raw.article_text&#34;</span>))
 </span></span><span style="display:flex;"><span><span style="color:#4070a0">&#34;/absolute/path/to/project/data/raw/newsarticles.parquet&#34;</span>
-</span></span></code></pre></div><h3 id="stage-declarations">Stage Declarations</h3>
-<p>Next I define my dagster stages. The goal is to make this file really compact
+</span></span></code></pre></div><h2 id="stage-declarations">Stage Declarations</h2>
+<p>My goal is to make this file really compact
 and to highlight a) the logical stage dependencies and b) the input output
 flows. To achieve this, I separate the actual processing logic to a different
 file <code>operations.py</code>. And as before, the actual data locations are
 isolated and loaded through the config file.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># scripts/art_relevance/assets.py</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># scripts/preprocessing/assets.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">dagster</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">dg</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">scripts.utils</span> <span style="color:#007020;font-weight:bold">import</span> Config
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">scripts.preprocessing</span> <span style="color:#007020;font-weight:bold">import</span> operations <span style="color:#007020;font-weight:bold">as</span> ops
+</span></span><span style="display:flex;"><span>config <span style="color:#666">=</span> Config()
+</span></span><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@dg.asset</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">extract</span>(description<span style="color:#666">=</span><span style="color:#4070a0">&#34;Unzip raw data&#34;</span>):
+</span></span><span style="display:flex;"><span>    in_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;raw.zip&#34;</span>)
+</span></span><span style="display:flex;"><span>    out_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;raw.article_text&#34;</span>)
+</span></span><span style="display:flex;"><span>    ops<span style="color:#666">.</span>extract(in_path, out_path)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># scripts/art_relevance/assets.py</span>
 </span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">dagster</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">dg</span>
 </span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">scripts.utils</span> <span style="color:#007020;font-weight:bold">import</span> Config
 </span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">scripts.art_relevance</span> <span style="color:#007020;font-weight:bold">import</span> operations <span style="color:#007020;font-weight:bold">as</span> ops
 </span></span><span style="display:flex;"><span>config <span style="color:#666">=</span> Config()
-</span></span><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@dg.asset</span>
-</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">extract</span>():
-</span></span><span style="display:flex;"><span>    dep_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;raw.zip&#34;</span>)
-</span></span><span style="display:flex;"><span>    out_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;raw.article_text&#34;</span>)
-</span></span><span style="display:flex;"><span>    ops<span style="color:#666">.</span>extract(dep_path, out_path)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@dg.asset</span>(deps<span style="color:#666">=</span>[extract], description<span style="color:#666">=</span><span style="color:#4070a0">&#34;Filter using external relevance model&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">pre_relevant</span>():
-</span></span><span style="display:flex;"><span>    dep_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;raw.article_text&#34;</span>)
-</span></span><span style="display:flex;"><span>    out_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;pre_relevance.article_text&#34;</span>)
-</span></span><span style="display:flex;"><span>    ops<span style="color:#666">.</span>pre_relevant(dep_path, out_path)
-</span></span></code></pre></div><p>This way the processing functions (ops) can be arbitrarily complicated, but
-<code>assets.py</code> makes it very clear how they should be chained.</p>
-<h2 id="training">Training</h2>
-<p>The volunteer-contributed training data for this project addresses the
-high-level end-to-end task. Unfortunately these data wouldn&rsquo;t be very helpful
-to train each sub-task model because each model sees a different conditional subset of the data.</p>
-<p>The idea is to prototype each sub-model quickly, get a sense of the overall performance,
-get a sense of which sub-units need improvement. As you saw in the dagster diagram,
-I&rsquo;ve inserted a &ldquo;prototype_sampling&rdquo; stage which picks 200 random records to
-use as a working set to develop the first model. I export these to
-<a href="https://labelstud.io/">Label Studio</a> and spend an hour annotating.</p>
+</span></span><span style="display:flex;"><span><span style="color:#555;font-weight:bold">@dg.asset</span>(deps<span style="color:#666">=</span>[extract], description<span style="color:#666">=</span><span style="color:#4070a0">&#34;Split labeled data for training.&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">split_train_test</span>():
+</span></span><span style="display:flex;"><span>    in_path <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;art_relevance.article_text_labeled&#34;</span>)
+</span></span><span style="display:flex;"><span>    out_path_train <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;art_relevance.article_text_train&#34;</span>)
+</span></span><span style="display:flex;"><span>    out_path_test <span style="color:#666">=</span> config<span style="color:#666">.</span>get_data_path(<span style="color:#4070a0">&#34;art_relevance.article_text_test&#34;</span>)
+</span></span><span style="display:flex;"><span>    ops<span style="color:#666">.</span>split_train_test(in_path, out_path_train, out_path_test)
+</span></span></code></pre></div><p>This may look like boilerplate, but I like it&rsquo;s cleanliness. The logical separation
+makes it very clear that <code>assets.py</code> is about defining <em>arbitrarily complicated <strong>Dagster</strong></em>
+dependencies, whereas <code>operations.py</code> is about defining <em>arbitrarily complicated <strong>data manipulation</strong></em>.</p>
+<h1 id="training">Training</h1>
+<h2 id="annotation">Annotation</h2>
+<p>My goal is to prototype each sub-model quickly, get a sense of the overall performance,
+get a sense of which model need improvement. I sample an hour&rsquo;s worth of articles
+per model, and annotate them in <a href="https://labelstud.io/">Label Studio</a>.</p>
 <p>
   <img src="/img/article_relevance_pos.png" alt="Positive example">
 
@@ -237,37 +266,31 @@ use as a working set to develop the first model. I export these to
   <img src="/img/article_relevance_neg.png" alt="Negative example">
 
 <em>A negative example.</em></p>
-<p>I am using <a href="https://mlflow.org/">MLFlow</a> to track model experiments. I load
+<h2 id="tuning">Tuning</h2>
+<p>I am using <a href="https://mlflow.org/">MLFlow</a> to track model experiments and
+<a href="https://optuna.readthedocs.io/">Optuna</a> for hyperparameter tuning. I load
 the spacy config file, flatten it like <code>{&quot;nested.key.param1&quot;: val1, &quot;nested.key.param2&quot;: val2}</code>
-and dump the full parameter list into MLFlow. Spacy provides a convenient function
-<code>spacy.util.load_config(path, overrides: dict)</code>
-making it easy to alter the configuration in-memory instead of writing each change
-to disk. Even though 99.9% of the values are unchanged run-to-run,
-this way I&rsquo;m never missing a baseline parameter value if I run a new experiment.</p>
-<p>So far I&rsquo;ve tested limited-scope changes (ie. doesn&rsquo;t require different pre/post processing).
-Besides the &ldquo;quickstart&rdquo; model using the default spacy configs, I&rsquo;m using
-<a href="https://optuna.readthedocs.io/">Optuna</a> for hyperparameter tuning. And of course
-a baseline &ldquo;null_model&rdquo; which simply measures the frequency of positive values
-in the training set and predicts the positive class with that likelihood.</p>
+and dump the full parameter list into MLFlow. This way I&rsquo;m never missing a baseline
+parameter value if I run a new experiment, even though 99.9% of the values are unchanged run-to-run.</p>
+<p>So far, hyper-parameters are not significantly altering performance. This is likely
+due to my small sample size (200-400 examples). The validation set is so tiny
+(holding out 10%), there isn&rsquo;t enough variation in it for the models to predict differently.</p>
+<p>I compare the classification models to a &ldquo;null model&rdquo;: randomly predict the positive class
+according to the frequency of positive values in the training set.</p>
 <p>
   <img src="/img/mlflow_art_relevance.png" alt="MLFlow logs">
 </p>
-<p>At this point, with only 160 training
-and 20 dev examples, there isn&rsquo;t enough variation in the data itself for the
-hyperparameters to impact the model&rsquo;s performance.</p>
-<h1 id="next-steps---sentence-classifier">Next Steps - Sentence Classifier</h1>
-<p>I will pull a new set of a few hundred articles, filter them through the
-article-classifier prototype, and use the &ldquo;relevant&rdquo; articles to train the next task.
-With this prototype 29% of the articles it passes to the next stage will be irrelevant, meaning more
-wasted time in Label Studio.</p>
-<p>Many articles (e.g. sports) use violence-laden language to describe non-criminal acts. These cases will
-likely confuse the model at the sentence-level, which is why I attempted filtering at the
-article-level. Hopefully these cases will not severely degrade the sentence-level
-model too much.</p>
-<p>On the bright side, this prototype is an improvement over the externally labeled
-<code>pre_relevance</code> stage, which had a precision of 36%. Since the next model is also
-a text classifier, I can re-use a lot of the pipeline and training aparatus from
-this stage.</p>
+<h2 id="downstream-models">Downstream Models</h2>
+<p>In production, the sentence classifier will only see sentences from articles which the
+article classifier has labeled as &ldquo;crime-related&rdquo;. In other words, its data
+distribution is conditional on the article classifier. To mirror this aspect
+during training, I take an independent sample from the raw data
+and pass it through the article classifier to filter relevant articles. I pre-process
+the article text, including breaking it into sentences. And annotate the sentences
+by hand in Label Studio.</p>
+<p>
+  <img src="/img/sentence_relevance.png" alt="Conditional data flow">
+</p>
 
     <ul class="tags">
     
@@ -282,6 +305,8 @@ this stage.</p>
       <li><a class="tag" href="/tags/dagster">dagster</a></li>
     
       <li><a class="tag" href="/tags/mlflow">mlflow</a></li>
+    
+      <li><a class="tag" href="/tags/gis">GIS</a></li>
     
 </ul>
 
