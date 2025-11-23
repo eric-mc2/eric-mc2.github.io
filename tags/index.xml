@@ -4,22 +4,43 @@
     <title>Tags on Eric Chandler</title>
     <link>https://eric-mc2.github.io/tags/</link>
     <description>Recent content in Tags on Eric Chandler</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 14 Apr 2025 16:29:12 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 22 Nov 2025 00:00:00 -0500</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Dagster</title>
-      <link>https://eric-mc2.github.io/tags/dagster/</link>
-      <pubDate>Mon, 14 Apr 2025 16:29:12 -0500</pubDate>
-      <guid>https://eric-mc2.github.io/tags/dagster/</guid>
+      <title>Anthropic API</title>
+      <link>https://eric-mc2.github.io/tags/anthropic-api/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 -0500</pubDate>
+      <guid>https://eric-mc2.github.io/tags/anthropic-api/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure Functions</title>
+      <link>https://eric-mc2.github.io/tags/azure-functions/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 -0500</pubDate>
+      <guid>https://eric-mc2.github.io/tags/azure-functions/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Engineering</title>
       <link>https://eric-mc2.github.io/tags/data-engineering/</link>
-      <pubDate>Mon, 14 Apr 2025 16:29:12 -0500</pubDate>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 -0500</pubDate>
       <guid>https://eric-mc2.github.io/tags/data-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Serverless Architecture</title>
+      <link>https://eric-mc2.github.io/tags/serverless-architecture/</link>
+      <pubDate>Sat, 22 Nov 2025 00:00:00 -0500</pubDate>
+      <guid>https://eric-mc2.github.io/tags/serverless-architecture/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dagster</title>
+      <link>https://eric-mc2.github.io/tags/dagster/</link>
+      <pubDate>Mon, 14 Apr 2025 16:29:12 -0500</pubDate>
+      <guid>https://eric-mc2.github.io/tags/dagster/</guid>
       <description></description>
     </item>
     <item>

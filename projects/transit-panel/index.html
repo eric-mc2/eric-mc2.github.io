@@ -41,7 +41,7 @@
     <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/tweaks.css"></noscript>
 
 
-  <meta name="generator" content="Hugo 0.123.8">
+  <meta name="generator" content="Hugo 0.152.2">
   
     
     
@@ -68,17 +68,20 @@
     
   
   
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3XT6HHHNVY"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-3XT6HHHNVY', { 'anonymize_ip': false });
-}
-</script>
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-3XT6HHHNVY"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-3XT6HHHNVY');
+        }
+      </script>
 </head>
 <body id="page-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
@@ -281,75 +284,74 @@ census tract and population, which could serve as useful regression controls lat
 <li>Bike: provides trip-level data: timestamped pickup and dropoffs per ride. pickup and dropoff points are anonymized to their containing census tract.</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>Modality</th>
-<th>Train</th>
-<th>Bus</th>
-<th>Bike</th>
-<th>Uber</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Time granularity</strong></td>
-<td>Daily</td>
-<td>Daily</td>
-<td>Minute</td>
-<td>Minute</td>
-</tr>
-<tr>
-<td><strong>Direction of travel</strong></td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td><strong>Point of departure</strong></td>
-<td>Yes</td>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td><strong>Line of departure</strong></td>
-<td>Inferred</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td><strong>Area of departure</strong></td>
-<td>Yes</td>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td><strong>Point of arrival</strong></td>
-<td>No</td>
-<td>No</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td><strong>Line of arrival</strong></td>
-<td>Inferred</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td><strong>Area of arrival</strong></td>
-<td>Yes</td>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Modality</th>
+          <th>Train</th>
+          <th>Bus</th>
+          <th>Bike</th>
+          <th>Uber</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Time granularity</strong></td>
+          <td>Daily</td>
+          <td>Daily</td>
+          <td>Minute</td>
+          <td>Minute</td>
+      </tr>
+      <tr>
+          <td><strong>Direction of travel</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>Point of departure</strong></td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>Line of departure</strong></td>
+          <td>Inferred</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>Area of departure</strong></td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td><strong>Point of arrival</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>Line of arrival</strong></td>
+          <td>Inferred</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td><strong>Area of arrival</strong></td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
 </table>
-<!-- raw HTML omitted -->
 <p>I aggregated three comparable panels:</p>
 <ul>
 <li>Point: train, bike</li>
@@ -452,7 +454,6 @@ to actually identify station locations.</p>
 </span></span></code></pre></div><p>Based on this method, ~106,000 points can be reduced down to ~1,00 representative
 points, but the remaining ~786,000 points are too dispersed to confidently say
 the refer to the same point.</p>
-<!-- raw HTML omitted -->
 
 
 <div id="/json/bike-clusters.json" class="leaflet" style="height:500px;"></div>
@@ -490,8 +491,7 @@ points.</p>
 <p>The buffer union method suffers from a transitivity issue:</p>
 $$
 \text{dist}(A,B) < d, \text{dist}(B,C) < d \not \Rightarrow \text{dist}(A,C) < d
-$$
-<p>We can see that step 5 helps mitigate this issue.</p>
+$$<p>We can see that step 5 helps mitigate this issue.</p>
 
 
 <div id="/json/bike-spatial-cluster.json" class="leaflet" style="height:500px;"></div>
@@ -513,31 +513,29 @@ Given the schema drift issues presented above, I had no confidence the data was
 merge-able with anything but 2024 data. But since I only strictly need 2024 data for
 the models I plan to run, this limitation is acceptable.</p>
 <p><em>Problem solved!</em></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 <h3 id="socrata-to-data-frames">Socrata to Data Frames</h3>
 <p>As far as I could tell, the Socrata SoQL API returned all data as lists of lists of strings. Since I was making a lot of Socrata calls, I extended the Socrata client like so:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">sodapy</span> <span style="color:#007020;font-weight:bold">import</span> Socrata
 </span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
 </span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">class</span> <span style="color:#0e84b5;font-weight:bold">ChiClient</span>(Socrata):
-</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> __init__(self, timeout: <span style="color:#007020">int</span>):
-</span></span><span style="display:flex;"><span>        <span style="color:#007020">super</span>()<span style="color:#666">.</span>__init__(
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">__init__</span>(<span style="color:#007020">self</span>, timeout: <span style="color:#007020">int</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#007020">super</span>()<span style="color:#666">.</span><span style="color:#06287e">__init__</span>(
 </span></span><span style="display:flex;"><span>            <span style="color:#4070a0">&#34;data.cityofchicago.org&#34;</span>, 
 </span></span><span style="display:flex;"><span>            app_token<span style="color:#666">=</span><span style="color:#007020;font-weight:bold">None</span>,
 </span></span><span style="display:flex;"><span>            timeout<span style="color:#666">=</span>timeout)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">get</span>(self, 
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">get</span>(<span style="color:#007020">self</span>, 
 </span></span><span style="display:flex;"><span>            resource_id: <span style="color:#007020">str</span>, 
 </span></span><span style="display:flex;"><span>            <span style="color:#666">**</span>params) <span style="color:#666">-&gt;</span> pd<span style="color:#666">.</span>DataFrame:
 </span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;&#34;&#34;Collects Socrata response into data frame.&#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>        data <span style="color:#666">=</span> <span style="color:#007020">super</span>()<span style="color:#666">.</span>get(resource_id, <span style="color:#666">**</span>params)
 </span></span><span style="display:flex;"><span>        df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame<span style="color:#666">.</span>from_records(data)
-</span></span><span style="display:flex;"><span>        df <span style="color:#666">=</span> self<span style="color:#666">.</span>fix_coltypes(df, resource_id)
+</span></span><span style="display:flex;"><span>        df <span style="color:#666">=</span> <span style="color:#007020">self</span><span style="color:#666">.</span>fix_coltypes(df, resource_id)
 </span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> df
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">fix_coltypes</span>(self, df: pd<span style="color:#666">.</span>DataFrame, resource_id: <span style="color:#007020">str</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">fix_coltypes</span>(<span style="color:#007020">self</span>, df: pd<span style="color:#666">.</span>DataFrame, resource_id: <span style="color:#007020">str</span>):
 </span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;&#34;&#34;Coerce string data into other dtypes&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        coltypes <span style="color:#666">=</span> self<span style="color:#666">.</span>get_coltypes(resource_id)
+</span></span><span style="display:flex;"><span>        coltypes <span style="color:#666">=</span> <span style="color:#007020">self</span><span style="color:#666">.</span>get_coltypes(resource_id)
 </span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">for</span> col <span style="color:#007020;font-weight:bold">in</span> df<span style="color:#666">.</span>columns:
 </span></span><span style="display:flex;"><span>            <span style="color:#007020;font-weight:bold">if</span> col <span style="color:#007020;font-weight:bold">not</span> <span style="color:#007020;font-weight:bold">in</span> coltypes<span style="color:#666">.</span>keys():
 </span></span><span style="display:flex;"><span>                <span style="color:#60a0b0;font-style:italic"># Column was transformed e.g. SELECT COUNT(col)</span>
@@ -549,9 +547,9 @@ the models I plan to run, this limitation is acceptable.</p>
 </span></span><span style="display:flex;"><span>                df[col] <span style="color:#666">=</span> pd<span style="color:#666">.</span>to_numeric(df[col])
 </span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> df
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">get_coltypes</span>(self, resource_id: <span style="color:#007020">str</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">get_coltypes</span>(<span style="color:#007020">self</span>, resource_id: <span style="color:#007020">str</span>):
 </span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;&#34;&#34;Query basic table metadata&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        meta <span style="color:#666">=</span> self<span style="color:#666">.</span>get_metadata(resource_id)
+</span></span><span style="display:flex;"><span>        meta <span style="color:#666">=</span> <span style="color:#007020">self</span><span style="color:#666">.</span>get_metadata(resource_id)
 </span></span><span style="display:flex;"><span>        colnames <span style="color:#666">=</span> [c[<span style="color:#4070a0">&#39;fieldName&#39;</span>] <span style="color:#007020;font-weight:bold">for</span> c <span style="color:#007020;font-weight:bold">in</span> meta[<span style="color:#4070a0">&#39;columns&#39;</span>]]
 </span></span><span style="display:flex;"><span>        coltypes <span style="color:#666">=</span> [c[<span style="color:#4070a0">&#39;dataTypeName&#39;</span>] <span style="color:#007020;font-weight:bold">for</span> c <span style="color:#007020;font-weight:bold">in</span> meta[<span style="color:#4070a0">&#39;columns&#39;</span>]]
 </span></span><span style="display:flex;"><span>        coltypes <span style="color:#666">=</span> {c: ct <span style="color:#007020;font-weight:bold">for</span> c,ct <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">zip</span>(colnames, coltypes)}

@@ -4,7 +4,7 @@
     <title>Dagster on Eric Chandler</title>
     <link>https://eric-mc2.github.io/tags/dagster/</link>
     <description>Recent content in Dagster on Eric Chandler</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 14 Apr 2025 16:29:12 -0500</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/dagster/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://eric-mc2.github.io/projects/qjn-methods/</link>
       <pubDate>Mon, 14 Apr 2025 16:29:12 -0500</pubDate>
       <guid>https://eric-mc2.github.io/projects/qjn-methods/</guid>
-      <description>This post describes the technical implementation of the public safety news analysis.&#xA;Research Question What is the spatial distribution of crime news coverage across Chicago?&#xA;I decompose this question into smaller machine learn-able tasks:&#xA;Is the article crime-related? (classification) Which sentences in the article describe the crime incident? (classification) Which words refer to a location? (named entity recognition) Which location words relate to the crime incident? (dependency parsing) Which neighborhood is this in?</description>
+      <description>&lt;p&gt;This post describes the technical implementation of the public safety news &lt;a href=&#34;../qjn/index.html&#34;&gt;analysis&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h1 id=&#34;research-question&#34;&gt;Research Question&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;What is the spatial distribution of crime news coverage across Chicago?&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;I decompose this question into smaller machine learn-able tasks:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Is the article crime-related? (classification)&lt;/li&gt;&#xA;&lt;li&gt;Which sentences in the article describe the crime &lt;em&gt;incident&lt;/em&gt;? (classification)&lt;/li&gt;&#xA;&lt;li&gt;Which words refer to a location? (named entity recognition)&lt;/li&gt;&#xA;&lt;li&gt;Which location words relate to the &lt;em&gt;crime incident&lt;/em&gt;? (dependency parsing)&lt;/li&gt;&#xA;&lt;li&gt;Which neighborhood is this in? (classification)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;data-sources&#34;&gt;Data Sources&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;News articles&lt;/strong&gt;:&#xA;The data is a sample of 713k articles from the Chicago Justice Project&amp;rsquo;s news archive from&#xA;201X onwards.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

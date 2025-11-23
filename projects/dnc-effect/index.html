@@ -41,7 +41,7 @@
     <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/tweaks.css"></noscript>
 
 
-  <meta name="generator" content="Hugo 0.123.8">
+  <meta name="generator" content="Hugo 0.152.2">
   
     
     
@@ -64,17 +64,20 @@
     
   
   
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3XT6HHHNVY"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-3XT6HHHNVY', { 'anonymize_ip': false });
-}
-</script>
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-3XT6HHHNVY"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-3XT6HHHNVY');
+        }
+      </script>
 </head>
 <body id="page-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
@@ -225,7 +228,6 @@ rides near the convention centers.</p>
 <p>I use the City of Chicago buildings shapefile to find the footprint of the
 United Center and McCormick Place, the two official sites of the DNC. Proximity
 to these locations will constitute the &ldquo;treatment&rdquo; group in the model.</p>
-<!-- raw HTML omitted -->
 <p>I compute a buffer around each building and find all intersecting transit stations, routes, and tracts.
 For robustness, I tested 400m, 800m, and 1600m buffers. To pick which catchement size to use, I was forced to choose
 one mile buffer, because the smaller sizes had too few stations and routes nearby.</p>
@@ -238,8 +240,7 @@ one mile buffer, because the smaller sizes had too few stations and routes nearb
   </figure>
 </p>
 <p>To test the sensitivity of the buffer, I modeled:</p>
-$$\text{rides}_i \sim \text{within 400m}_i + \text{within 800m}_i + \text{within 1600m}_i$$
-<p>Average rides per spatial unit varied irregularly as the buffer size increased,
+$$\text{rides}_i \sim \text{within 400m}_i + \text{within 800m}_i + \text{within 1600m}_i$$<p>Average rides per spatial unit varied irregularly as the buffer size increased,
 meaning results are very sensitive to the buffer size.</p>
 <p><strong>Using Community Areas vs Tracts</strong></p>
 <p>I chose to use tract-level data for rideshares. Here&rsquo;s my reasoning. Tracts mean:</p>
@@ -283,23 +284,12 @@ These distances will help control for varying transit density, commercial densit
 transit mode preferences.</p>
 $$
 \sim \beta_1 d(\text{unit}_i, \text{train}) + \beta_2 d(\text{unit}_i, \text{bus}) + \beta_3 d(\text{unit}_i, \text{bike})
-$$
-<p><strong>Location</strong></p>
+$$<p><strong>Location</strong></p>
 <p>I include the stop/tract centroid longitude and latitude as a quadratic
 term in the model to help control for basic city-wide spatial variation:</p>
 $$
 \sim \beta_1\text{lon} + \beta_2\text{lat} + \beta_3\text{lon}*\text{lat} + \beta_4\text{lon}^2 + \beta_5\text{lat}^2
-$$
-<p>(For numeric stability, I scale lon/lat to zero-mean unit variance.)</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+$$<p>(For numeric stability, I scale lon/lat to zero-mean unit variance.)</p>
 <h1 id="the-sample">The Sample</h1>
 <p><strong>Temporal Aggregation</strong></p>
 <p>I keep observations at the <em>daily</em> level. Aggregating to weekly would pull non-DNC
@@ -317,52 +307,46 @@ not where they <em>exit</em>. Bike and rideshare data provides per-trip <em>boar
 locations. For strict parity, I ought to drop <em>exit</em> data, but I won&rsquo;t.
 Keeping it gives a fuller picture of transit usage<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
 <h2 id="pre-regression-checks">Pre-Regression Checks</h2>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 <p><strong>Statistical Power</strong></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 <p>Before running the regression, I want to do a <em>slightly</em> more rigorous version
 of the time series <a href="#at-first-glance">gut check</a>. Looking at the distribution of
 daily ridership let&rsquo;s ask: what is the minimum number of additional rides to
 significantly change the mean? First I compute the sample variance and standard error<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>, SE,
 to get the minimum detectable effect size:</p>
-$$ \text{MDE} = (z(1-\alpha / 2) + z(\beta)) * SE $$
-<p>Multiplying the MDE by the number of (treated) observations yields the minimum detectable total &ldquo;shock&rdquo;
+$$ \text{MDE} = (z(1-\alpha / 2) + z(\beta)) * SE $$<p>Multiplying the MDE by the number of (treated) observations yields the minimum detectable total &ldquo;shock&rdquo;
 to the system.</p>
 
 
 <div id="static/uploads/mde.md" class="scientific-table">
     <table>
-<thead>
-<tr>
-<th>Transit</th>
-<th>Mean Rides per Unit per Day (SD)</th>
-<th>Minimum Detectable Change</th>
-<th>Minimum Additional Rides</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bike</td>
-<td>50.3 (17.5)</td>
-<td>+151%</td>
-<td>10235</td>
-</tr>
-<tr>
-<td>train</td>
-<td>1482.0 (392.7)</td>
-<td>+227%</td>
-<td>58655</td>
-</tr>
-<tr>
-<td>uber</td>
-<td>753.1 (583.5)</td>
-<td>+142%</td>
-<td>55036</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Transit</th>
+          <th>Mean Rides per Unit per Day (SD)</th>
+          <th>Minimum Detectable Change</th>
+          <th>Minimum Additional Rides</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>bike</td>
+          <td>50.3 (17.5)</td>
+          <td>+151%</td>
+          <td>10235</td>
+      </tr>
+      <tr>
+          <td>train</td>
+          <td>1482.0 (392.7)</td>
+          <td>+227%</td>
+          <td>58655</td>
+      </tr>
+      <tr>
+          <td>uber</td>
+          <td>753.1 (583.5)</td>
+          <td>+142%</td>
+          <td>55036</td>
+      </tr>
+  </tbody>
 </table>
 
 </div>
@@ -381,227 +365,227 @@ delegates take transit, this regression design should be able to detect an effec
 
 <div id="static/uploads/balance.md" class="scientific-table">
     <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th>Not Near DNC</th>
-<th>Near DNC</th>
-<th>P-Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>train</td>
-<td>stations</td>
-<td>114</td>
-<td>8</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>station-days</td>
-<td>6270</td>
-<td>420</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>daily rides, mean (SD)</td>
-<td>2718.4 (2337.9)</td>
-<td>1482.8 (995.9)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>log(daily rides), mean (SD)</td>
-<td>7.6 (0.8)</td>
-<td>6.8 (1.8)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>bus_distance, mean (SD)</td>
-<td>305.0 (1472.7)</td>
-<td>165.3 (167.7)</td>
-<td>0.354</td>
-</tr>
-<tr>
-<td></td>
-<td>bike_distance, mean (SD)</td>
-<td>387.6 (1535.0)</td>
-<td>288.5 (281.6)</td>
-<td>0.573</td>
-</tr>
-<tr>
-<td></td>
-<td>sqrt(area), mean (SD)</td>
-<td>2521.0 (3723.0)</td>
-<td>3123.8 (3564.8)</td>
-<td>0.657</td>
-</tr>
-<tr>
-<td></td>
-<td>lat, mean (SD)</td>
-<td>-0.1 (0.9)</td>
-<td>-0.3 (0.2)</td>
-<td>0.027</td>
-</tr>
-<tr>
-<td></td>
-<td>long, mean (SD)</td>
-<td>-0.0 (1.0)</td>
-<td>0.2 (0.4)</td>
-<td>0.296</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>bike</td>
-<td>docks</td>
-<td>1459</td>
-<td>47</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>dock-days</td>
-<td>42316</td>
-<td>2568</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>daily rides, mean (SD)</td>
-<td>46.0 (67.7)</td>
-<td>49.5 (34.4)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>log(daily rides), mean (SD)</td>
-<td>2.8 (1.6)</td>
-<td>3.7 (0.8)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>train_distance, mean (SD)</td>
-<td>5007.3 (5396.5)</td>
-<td>1056.5 (1240.4)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>bus_distance, mean (SD)</td>
-<td>146.2 (264.4)</td>
-<td>105.6 (73.5)</td>
-<td>0.002</td>
-</tr>
-<tr>
-<td></td>
-<td>sqrt(area), mean (SD)</td>
-<td>666.9 (1009.0)</td>
-<td>655.0 (420.6)</td>
-<td>0.859</td>
-</tr>
-<tr>
-<td></td>
-<td>lat, mean (SD)</td>
-<td>-0.4 (1.3)</td>
-<td>-0.3 (0.2)</td>
-<td>0.248</td>
-</tr>
-<tr>
-<td></td>
-<td>long, mean (SD)</td>
-<td>-0.3 (1.3)</td>
-<td>0.4 (0.5)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>uber</td>
-<td>tracts</td>
-<td>1196</td>
-<td>40</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>tract-days</td>
-<td>52995</td>
-<td>2189</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>daily rides, mean (SD)</td>
-<td>213.8 (802.3)</td>
-<td>737.9 (1714.9)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>log(daily rides), mean (SD)</td>
-<td>3.8 (1.7)</td>
-<td>5.5 (1.5)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>train_distance, mean (SD)</td>
-<td>15886.8 (19731.6)</td>
-<td>2293.7 (1027.7)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>bus_distance, mean (SD)</td>
-<td>9390.3 (17842.2)</td>
-<td>503.0 (313.2)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>bike_distance, mean (SD)</td>
-<td>10707.4 (18691.3)</td>
-<td>889.5 (504.9)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>sqrt(area), mean (SD)</td>
-<td>1134.0 (691.0)</td>
-<td>784.4 (320.0)</td>
-<td>&lt;0.001</td>
-</tr>
-<tr>
-<td></td>
-<td>lat, mean (SD)</td>
-<td>-0.1 (1.4)</td>
-<td>-0.1 (0.2)</td>
-<td>0.153</td>
-</tr>
-<tr>
-<td></td>
-<td>long, mean (SD)</td>
-<td>-0.5 (1.5)</td>
-<td>0.5 (0.3)</td>
-<td>&lt;0.001</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th>Not Near DNC</th>
+          <th>Near DNC</th>
+          <th>P-Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>train</td>
+          <td>stations</td>
+          <td>114</td>
+          <td>8</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>station-days</td>
+          <td>6270</td>
+          <td>420</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>daily rides, mean (SD)</td>
+          <td>2718.4 (2337.9)</td>
+          <td>1482.8 (995.9)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>log(daily rides), mean (SD)</td>
+          <td>7.6 (0.8)</td>
+          <td>6.8 (1.8)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>bus_distance, mean (SD)</td>
+          <td>305.0 (1472.7)</td>
+          <td>165.3 (167.7)</td>
+          <td>0.354</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>bike_distance, mean (SD)</td>
+          <td>387.6 (1535.0)</td>
+          <td>288.5 (281.6)</td>
+          <td>0.573</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>sqrt(area), mean (SD)</td>
+          <td>2521.0 (3723.0)</td>
+          <td>3123.8 (3564.8)</td>
+          <td>0.657</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>lat, mean (SD)</td>
+          <td>-0.1 (0.9)</td>
+          <td>-0.3 (0.2)</td>
+          <td>0.027</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>long, mean (SD)</td>
+          <td>-0.0 (1.0)</td>
+          <td>0.2 (0.4)</td>
+          <td>0.296</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>bike</td>
+          <td>docks</td>
+          <td>1459</td>
+          <td>47</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>dock-days</td>
+          <td>42316</td>
+          <td>2568</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>daily rides, mean (SD)</td>
+          <td>46.0 (67.7)</td>
+          <td>49.5 (34.4)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>log(daily rides), mean (SD)</td>
+          <td>2.8 (1.6)</td>
+          <td>3.7 (0.8)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>train_distance, mean (SD)</td>
+          <td>5007.3 (5396.5)</td>
+          <td>1056.5 (1240.4)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>bus_distance, mean (SD)</td>
+          <td>146.2 (264.4)</td>
+          <td>105.6 (73.5)</td>
+          <td>0.002</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>sqrt(area), mean (SD)</td>
+          <td>666.9 (1009.0)</td>
+          <td>655.0 (420.6)</td>
+          <td>0.859</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>lat, mean (SD)</td>
+          <td>-0.4 (1.3)</td>
+          <td>-0.3 (0.2)</td>
+          <td>0.248</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>long, mean (SD)</td>
+          <td>-0.3 (1.3)</td>
+          <td>0.4 (0.5)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>uber</td>
+          <td>tracts</td>
+          <td>1196</td>
+          <td>40</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>tract-days</td>
+          <td>52995</td>
+          <td>2189</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>daily rides, mean (SD)</td>
+          <td>213.8 (802.3)</td>
+          <td>737.9 (1714.9)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>log(daily rides), mean (SD)</td>
+          <td>3.8 (1.7)</td>
+          <td>5.5 (1.5)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>train_distance, mean (SD)</td>
+          <td>15886.8 (19731.6)</td>
+          <td>2293.7 (1027.7)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>bus_distance, mean (SD)</td>
+          <td>9390.3 (17842.2)</td>
+          <td>503.0 (313.2)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>bike_distance, mean (SD)</td>
+          <td>10707.4 (18691.3)</td>
+          <td>889.5 (504.9)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>sqrt(area), mean (SD)</td>
+          <td>1134.0 (691.0)</td>
+          <td>784.4 (320.0)</td>
+          <td>&lt;0.001</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>lat, mean (SD)</td>
+          <td>-0.1 (1.4)</td>
+          <td>-0.1 (0.2)</td>
+          <td>0.153</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>long, mean (SD)</td>
+          <td>-0.5 (1.5)</td>
+          <td>0.5 (0.3)</td>
+          <td>&lt;0.001</td>
+      </tr>
+  </tbody>
 </table>
 
 </div>

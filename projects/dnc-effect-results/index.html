@@ -41,7 +41,7 @@
     <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/tweaks.css"></noscript>
 
 
-  <meta name="generator" content="Hugo 0.123.8">
+  <meta name="generator" content="Hugo 0.152.2">
   
     
     
@@ -64,17 +64,20 @@
     
   
   
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3XT6HHHNVY"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-3XT6HHHNVY', { 'anonymize_ip': false });
-}
-</script>
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-3XT6HHHNVY"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-3XT6HHHNVY');
+        }
+      </script>
 </head>
 <body id="page-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
@@ -165,8 +168,7 @@ with the treatment variable, then the FE model gives us an unbiased causal
 estimate of the treatment effect.</p>
 <p>The equation includes an indicator for &ldquo;during DNC&rdquo;, day-of-the-week dummies,
 time trend, and unit fixed effects:</p>
-$$ \log(\text{rides}_{it}) \sim \beta_0 + \beta_1\text{DNC}_t + \beta_2 \text{dotw}_t + \beta_3 t + \alpha_i $$
-<p>The convenience of FE is also a downside: many helpful covariates, including
+$$ \log(\text{rides}_{it}) \sim \beta_0 + \beta_1\text{DNC}_t + \beta_2 \text{dotw}_t + \beta_3 t + \alpha_i $$<p>The convenience of FE is also a downside: many helpful covariates, including
 the treatment &ldquo;indicator&rdquo;, distance to DNC, do not vary with time. These factors
 get subsumed in the unit fixed effect term \(\alpha_i\), meaning we can&rsquo;t estimate
 them separately.
@@ -177,106 +179,106 @@ speaks to city-wide effects during the DNC.</p>
 
 <div id="static/uploads/fe.md" class="scientific-table">
     <table>
-<thead>
-<tr>
-<th></th>
-<th>FE (Uber)</th>
-<th>FE (Train)</th>
-<th>FE (Bike)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>During DNC</td>
-<td>-0.0524***</td>
-<td>-0.0814***</td>
-<td>0.0297***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0066)</td>
-<td>(0.0148)</td>
-<td>(0.0069)</td>
-</tr>
-<tr>
-<td>time trend</td>
-<td>0.0013***</td>
-<td>0.0014***</td>
-<td>-0.0000</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0001)</td>
-<td>(0.0002)</td>
-<td>(0.0001)</td>
-</tr>
-<tr>
-<td>Tuesday</td>
-<td>0.1059***</td>
-<td>0.1098***</td>
-<td>0.0274***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0047)</td>
-<td>(0.0105)</td>
-<td>(0.0051)</td>
-</tr>
-<tr>
-<td>Wednesday</td>
-<td>0.2156***</td>
-<td>0.1172***</td>
-<td>0.1199***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0047)</td>
-<td>(0.0105)</td>
-<td>(0.0051)</td>
-</tr>
-<tr>
-<td>Thursday</td>
-<td>0.3314***</td>
-<td>0.0893***</td>
-<td>0.0794***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0047)</td>
-<td>(0.0105)</td>
-<td>(0.0051)</td>
-</tr>
-<tr>
-<td>Friday</td>
-<td>0.5977***</td>
-<td>0.0530***</td>
-<td>0.1148***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0047)</td>
-<td>(0.0106)</td>
-<td>(0.0051)</td>
-</tr>
-<tr>
-<td>R-squared</td>
-<td>0.9505</td>
-<td>0.9019</td>
-<td>0.9470</td>
-</tr>
-<tr>
-<td>R-squared Adj.</td>
-<td>0.9497</td>
-<td>0.9003</td>
-<td>0.9458</td>
-</tr>
-<tr>
-<td>N</td>
-<td>64229.0</td>
-<td>7910.0</td>
-<td>49697.0</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th>FE (Uber)</th>
+          <th>FE (Train)</th>
+          <th>FE (Bike)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>During DNC</td>
+          <td>-0.0524***</td>
+          <td>-0.0814***</td>
+          <td>0.0297***</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0066)</td>
+          <td>(0.0148)</td>
+          <td>(0.0069)</td>
+      </tr>
+      <tr>
+          <td>time trend</td>
+          <td>0.0013***</td>
+          <td>0.0014***</td>
+          <td>-0.0000</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0001)</td>
+          <td>(0.0002)</td>
+          <td>(0.0001)</td>
+      </tr>
+      <tr>
+          <td>Tuesday</td>
+          <td>0.1059***</td>
+          <td>0.1098***</td>
+          <td>0.0274***</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0047)</td>
+          <td>(0.0105)</td>
+          <td>(0.0051)</td>
+      </tr>
+      <tr>
+          <td>Wednesday</td>
+          <td>0.2156***</td>
+          <td>0.1172***</td>
+          <td>0.1199***</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0047)</td>
+          <td>(0.0105)</td>
+          <td>(0.0051)</td>
+      </tr>
+      <tr>
+          <td>Thursday</td>
+          <td>0.3314***</td>
+          <td>0.0893***</td>
+          <td>0.0794***</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0047)</td>
+          <td>(0.0105)</td>
+          <td>(0.0051)</td>
+      </tr>
+      <tr>
+          <td>Friday</td>
+          <td>0.5977***</td>
+          <td>0.0530***</td>
+          <td>0.1148***</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0047)</td>
+          <td>(0.0106)</td>
+          <td>(0.0051)</td>
+      </tr>
+      <tr>
+          <td>R-squared</td>
+          <td>0.9505</td>
+          <td>0.9019</td>
+          <td>0.9470</td>
+      </tr>
+      <tr>
+          <td>R-squared Adj.</td>
+          <td>0.9497</td>
+          <td>0.9003</td>
+          <td>0.9458</td>
+      </tr>
+      <tr>
+          <td>N</td>
+          <td>64229.0</td>
+          <td>7910.0</td>
+          <td>49697.0</td>
+      </tr>
+  </tbody>
 </table>
 
 </div>
@@ -292,122 +294,118 @@ dynamic factors that follow common time-trends between treatment and control gro
 <p>The difference in difference model isolates <em>both</em> the <em>area</em> and <em>time</em> of the DNC.
 First it compares pre/post among the control group.</p>
 $$\Delta \text{not nearby} = E(\text{rides} | \text{not nearby}, \text{during DNC}) 
-    - E(\text{rides} | \text{not nearby}, \text{not during DNC})$$
-<p>Then it compares pre/post among the treatment group.</p>
+    - E(\text{rides} | \text{not nearby}, \text{not during DNC})$$<p>Then it compares pre/post among the treatment group.</p>
 $$\Delta \text{nearby} = E(\text{rides} | \text{nearby}, \text{during DNC}) 
-    - E(\text{rides} | \text{nearby}, \text{not during DNC})$$
-<p>Finally it takes the difference of these comparisons: the change in treatment group
+    - E(\text{rides} | \text{nearby}, \text{not during DNC})$$<p>Finally it takes the difference of these comparisons: the change in treatment group
 vs the change in control group.</p>
-$$\text{DiD} = \Delta \text{nearby} - \Delta \text{not nearby} $$
-<p>In the formal<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> model I include time trend, day-of-the-week dummies, distance to nearest transit, and
+$$\text{DiD} = \Delta \text{nearby} - \Delta \text{not nearby} $$<p>In the formal<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> model I include time trend, day-of-the-week dummies, distance to nearest transit, and
 quadratic lat/long terms<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
 $$ \log{rides_{it}} \sim \beta_0 + \beta_1 \text{DNC}_t + \beta_2 \text{nearby}_i + 
     \beta_3 \text{DNC}_t \text{nearby}_i + 
     X_{it} + u_{it} $$
 
-
 <div id="static/uploads/did.md" class="scientific-table">
     <table>
-<thead>
-<tr>
-<th></th>
-<th>DiD (Uber)</th>
-<th>DiD (Train)</th>
-<th>DiD (Bike)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Near DNC</td>
-<td>0.7979***</td>
-<td>-0.7937</td>
-<td>0.4222***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.2357)</td>
-<td>(0.5147)</td>
-<td>(0.1244)</td>
-</tr>
-<tr>
-<td>During DNC</td>
-<td>-0.0666***</td>
-<td>-0.1221***</td>
-<td>-0.0335</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0143)</td>
-<td>(0.0146)</td>
-<td>(0.0240)</td>
-</tr>
-<tr>
-<td>Near DNC:During DNC</td>
-<td>0.1845**</td>
-<td>0.8550</td>
-<td>0.2998***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0810)</td>
-<td>(0.5248)</td>
-<td>(0.0555)</td>
-</tr>
-<tr>
-<td>log(dist to train)</td>
-<td>-0.3231***</td>
-<td></td>
-<td>-0.1238***</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0563)</td>
-<td></td>
-<td>(0.0215)</td>
-</tr>
-<tr>
-<td>log(dist to bike)</td>
-<td>-0.2997***</td>
-<td>0.2345</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0553)</td>
-<td>(0.1478)</td>
-<td></td>
-</tr>
-<tr>
-<td>log(dist to bus)</td>
-<td>-0.0108</td>
-<td>-0.0730</td>
-<td>0.0236</td>
-</tr>
-<tr>
-<td></td>
-<td>(0.0450)</td>
-<td>(0.0667)</td>
-<td>(0.0275)</td>
-</tr>
-<tr>
-<td>R-squared</td>
-<td>0.5109</td>
-<td>0.2943</td>
-<td>0.6597</td>
-</tr>
-<tr>
-<td>R-squared Adj.</td>
-<td>0.5108</td>
-<td>0.2929</td>
-<td>0.6596</td>
-</tr>
-<tr>
-<td>N</td>
-<td>64231.0</td>
-<td>7910.0</td>
-<td>49704.0</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th>DiD (Uber)</th>
+          <th>DiD (Train)</th>
+          <th>DiD (Bike)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Near DNC</td>
+          <td>0.7979***</td>
+          <td>-0.7937</td>
+          <td>0.4222***</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.2357)</td>
+          <td>(0.5147)</td>
+          <td>(0.1244)</td>
+      </tr>
+      <tr>
+          <td>During DNC</td>
+          <td>-0.0666***</td>
+          <td>-0.1221***</td>
+          <td>-0.0335</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0143)</td>
+          <td>(0.0146)</td>
+          <td>(0.0240)</td>
+      </tr>
+      <tr>
+          <td>Near DNC:During DNC</td>
+          <td>0.1845**</td>
+          <td>0.8550</td>
+          <td>0.2998***</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0810)</td>
+          <td>(0.5248)</td>
+          <td>(0.0555)</td>
+      </tr>
+      <tr>
+          <td>log(dist to train)</td>
+          <td>-0.3231***</td>
+          <td></td>
+          <td>-0.1238***</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0563)</td>
+          <td></td>
+          <td>(0.0215)</td>
+      </tr>
+      <tr>
+          <td>log(dist to bike)</td>
+          <td>-0.2997***</td>
+          <td>0.2345</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0553)</td>
+          <td>(0.1478)</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>log(dist to bus)</td>
+          <td>-0.0108</td>
+          <td>-0.0730</td>
+          <td>0.0236</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>(0.0450)</td>
+          <td>(0.0667)</td>
+          <td>(0.0275)</td>
+      </tr>
+      <tr>
+          <td>R-squared</td>
+          <td>0.5109</td>
+          <td>0.2943</td>
+          <td>0.6597</td>
+      </tr>
+      <tr>
+          <td>R-squared Adj.</td>
+          <td>0.5108</td>
+          <td>0.2929</td>
+          <td>0.6596</td>
+      </tr>
+      <tr>
+          <td>N</td>
+          <td>64231.0</td>
+          <td>7910.0</td>
+          <td>49704.0</td>
+      </tr>
+  </tbody>
 </table>
 
 </div>
@@ -470,8 +468,7 @@ with clustered standard errors per unit.&#160;<a href="#fnref:2" class="footnote
 <li id="fn:4">
 <p>Estimated total impact calculated as:
 </p>
-$$\Delta \text{rides} = (e^\beta - 1) * E(\text{rides}_{it} | \text{Near DNC}_i * \text{Before DNC}_t) * \sum{\text{Near DNC}_i * \text{During DNC}_t}$$
-&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></li>
+$$\Delta \text{rides} = (e^\beta - 1) * E(\text{rides}_{it} | \text{Near DNC}_i * \text{Before DNC}_t) * \sum{\text{Near DNC}_i * \text{During DNC}_t}$$&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></li>
 </ol>
 </div>
 
