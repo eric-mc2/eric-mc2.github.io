@@ -4,7 +4,7 @@
     <title>Leaflet on Eric Chandler</title>
     <link>http://localhost:1313/tags/leaflet/</link>
     <description>Recent content in Leaflet on Eric Chandler</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Nov 2024 15:32:38 -0600</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/leaflet/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/projects/leaflet-example/</link>
       <pubDate>Wed, 13 Nov 2024 15:32:38 -0600</pubDate>
       <guid>http://localhost:1313/projects/leaflet-example/</guid>
-      <description> </description>
+      <description>&lt;div id=&#34;/json/bus-route-rides.json&#34; class=&#34;leaflet&#34; style=&#34;height:500px;&#34;&gt;&lt;/div&gt;&#xA;&lt;script type=&#34;module&#34;&gt;&#xA;    import { plot as leafletcustomplot} from &#34;/js/leaflet_custom.js&#34;;&#xA;    fetch(&#34;/json/bus-route-rides.json&#34;)&#xA;        .then(response =&gt; response.json())&#xA;        .then(fig =&gt; leafletcustomplot(fig, &#34;\/json\/bus-route-rides.json&#34;));&#xA;&lt;/script&gt;</description>
     </item>
   </channel>
 </rss>

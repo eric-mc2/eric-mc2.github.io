@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://eric-mc2.github.io/projects/prompt-tuning/</loc>
+    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
+    <priority>0.8</priority>
+  </url><url>
     <loc>https://eric-mc2.github.io/projects/tos-watch/</loc>
     <lastmod>2025-11-22T00:00:00-05:00</lastmod>
     <priority>0.8</priority>
@@ -42,6 +46,27 @@
     <lastmod>2024-02-29T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url><url>
+    <loc>https://eric-mc2.github.io/tags/ai/</loc>
+    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/</loc>
+    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/llm/</loc>
+    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/model-evaluations/</loc>
+    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/projects/</loc>
+    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/prompt-engineering/</loc>
+    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/</loc>
+    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
+  </url><url>
     <loc>https://eric-mc2.github.io/tags/anthropic-api/</loc>
     <lastmod>2025-11-22T00:00:00-05:00</lastmod>
   </url><url>
@@ -51,16 +76,7 @@
     <loc>https://eric-mc2.github.io/tags/data-engineering/</loc>
     <lastmod>2025-11-22T00:00:00-05:00</lastmod>
   </url><url>
-    <loc>https://eric-mc2.github.io/</loc>
-    <lastmod>2025-11-22T00:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://eric-mc2.github.io/projects/</loc>
-    <lastmod>2025-11-22T00:00:00-05:00</lastmod>
-  </url><url>
     <loc>https://eric-mc2.github.io/tags/serverless-architecture/</loc>
-    <lastmod>2025-11-22T00:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://eric-mc2.github.io/tags/</loc>
     <lastmod>2025-11-22T00:00:00-05:00</lastmod>
   </url><url>
     <loc>https://eric-mc2.github.io/tags/dagster/</loc>

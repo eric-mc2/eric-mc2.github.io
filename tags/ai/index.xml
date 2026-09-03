@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on Eric Chandler</title>
+    <link>https://eric-mc2.github.io/tags/ai/</link>
+    <description>Recent content in AI on Eric Chandler</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 02 Jan 2026 00:00:00 -0500</lastBuildDate>
+    <atom:link href="https://eric-mc2.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lightweight Model Experiment DAGs</title>
+      <link>https://eric-mc2.github.io/projects/prompt-tuning/</link>
+      <pubDate>Fri, 02 Jan 2026 00:00:00 -0500</pubDate>
+      <guid>https://eric-mc2.github.io/projects/prompt-tuning/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Here&amp;rsquo;s how to make your experiment / eval loops resilient to long-term refactoring.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Common problems when running experiments:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;v2 adds a new evaluation metric &amp;hellip; but it&amp;rsquo;s missing from v1&amp;rsquo;s results&lt;/li&gt;&#xA;&lt;li&gt;v2 requires more features &amp;hellip; but these are hard to recompute on v1&amp;rsquo;s inputs&lt;/li&gt;&#xA;&lt;li&gt;v2 re-samples the data &amp;hellip; but it&amp;rsquo;s hard to re-run against v1&amp;rsquo;s model&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The #1 concept: decouple execution from run artifacts. Here&amp;rsquo;s the separation of responsibilities:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

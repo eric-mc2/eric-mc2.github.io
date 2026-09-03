@@ -4,7 +4,7 @@
     <title>Plotly on Eric Chandler</title>
     <link>http://localhost:1313/tags/plotly/</link>
     <description>Recent content in Plotly on Eric Chandler</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Nov 2024 15:32:38 -0600</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/plotly/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/projects/plotly-example/</link>
       <pubDate>Wed, 13 Nov 2024 15:32:38 -0600</pubDate>
       <guid>http://localhost:1313/projects/plotly-example/</guid>
-      <description> </description>
+      <description>&lt;div id=&#34;/json/bus-route-rides.json&#34; class=&#34;plotly&#34; style=&#34;height:500px;&#34;&gt;&lt;/div&gt;&#xA;&lt;script type=&#34;module&#34;&gt;&#xA;    import {plot as plotlycustomplot} from &#34;/js/plotly_custom.js&#34;;&#xA;    d3.json(&#34;/json/bus-route-rides.json&#34;)&#xA;        .then(fig =&gt; plotlycustomplot(fig, &#34;\/json\/bus-route-rides.json&#34;));&#xA;&lt;/script&gt;</description>
     </item>
   </channel>
 </rss>
