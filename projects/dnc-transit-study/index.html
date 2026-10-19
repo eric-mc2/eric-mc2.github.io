@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Eric Chandler | DNC Transit Study</title>
+  <meta name="description" content="Did delegates take Uber or CTA?">
+  
+  
+  <meta property="og:image" content="https://eric-mc2.github.io/img/coef_plot.jpeg" />
+  <meta property="og:title" content="Eric Chandler | DNC Transit Study" />   
+
+  <meta property="og:description" content="Did delegates take Uber or CTA?" />
+  <meta name="author" content="Eric Chandler">
+  
+    
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  
+  
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Saira+Extra+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Saira+Extra+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"></noscript>
+  <link rel="preload" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"></noscript>
+  
+  
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" integrity="sha512-JW3fT0YTK7pT7w437SoX6GcW76jOZ6E0jGmrqBAcloC4GKT+njHOY4fX5KxJ9WfIXTkNrAF994525fAHp+KCxg==" crossorigin="anonymous" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" integrity="sha512-JW3fT0YTK7pT7w437SoX6GcW76jOZ6E0jGmrqBAcloC4GKT+njHOY4fX5KxJ9WfIXTkNrAF994525fAHp+KCxg==" crossorigin="anonymous"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous"></noscript>
+  
+  
+  <link rel="preload" href="https://eric-mc2.github.io/css/base.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/base.css"></noscript>
+  <link rel="preload" href="https://eric-mc2.github.io/css/nav.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/nav.css"></noscript> 
+  <link rel="preload" href="https://eric-mc2.github.io/css/content.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/content.css"></noscript>
+  <link rel="preload" href="https://eric-mc2.github.io/css/tables.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/tables.css"></noscript>
+  <link rel="preload" href="https://eric-mc2.github.io/css/tweaks.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://eric-mc2.github.io/css/tweaks.css"></noscript>
+
+
+  <meta name="generator" content="Hugo 0.152.2">
+  
+    
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+    
+    
+    
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)']]                  
+    }
+  };
+</script>
+
+
+    
+  
+  
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-3XT6HHHNVY"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-3XT6HHHNVY');
+        }
+      </script>
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Eric Chandler</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/headshot.jpeg" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#education">Education</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#experience">Experience</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#projects">Projects</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#publications">Publications</a>
+      </li>
+      
+      
+    </ul>
+  </div>
+</nav>
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://eric-mc2.github.io/">Eric Chandler</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://eric-mc2.github.io/projects/">Projects</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://eric-mc2.github.io/projects/dnc-transit-study/">DNC Transit Study</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="project-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h1 class="mb-0"><span class="text-primary">DNC Transit Study</span></h1>
+    
+    <p><em>Top-Line Result:</em></p>
+<p>Chicago hosted the 2024 Democratic National Convention from August 19-22, with official events primarily at the United Center
+and McCormick Place. Over those four days, 64,000 train rides, 148,000 rideshares, and 10,000 bikeshares occurred
+in proximity to the venues, of which <strong>22,000 train rides, 41,000 rideshares, and 3,000 bikeshares</strong>
+can be attributed to the convention. There is no evidence that convention-goers preferred any transit mode at different
+rates than baseline commuters.</p>
+<h1 id="introduction">Introduction</h1>
+<p>This project aims to measure the partial economic impact of the 2024 Chicago Democratic National Convention. Major spotlight events such as the DNC, the NFL draft, or on a greater scale the Olympics, promise &ldquo;once-in-a-generation
+opportunities for job creation&rdquo; to constituents <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, and raise the profile of a city on the national and global stage.
+Balancing these promises, events face local pushback for expropriating public spaces for long periods and
+to deliver meaningful engagement with local economies. What incentives a city should offer a major corporation,
+such as Amazon<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> or the Bears, for a more permanent investment are a related, and under-studied thread.</p>
+
+
+
+
+<div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; margin: 2.5rem auto 0; max-width: 60rem;">
+  
+    
+    <img src="/img/olympics.jpg" style="width:50%; height:auto; display:block;">
+  
+    
+    <img src="/img/nascar.jpg" style="width:50%; height:auto; display:block;">
+  
+</div>
+<p>In the case of the DNC, much of the local conversation anticipated interruptions due to the heightened security perimeter
+surrounding the event spaces, which cordoned off several blocks (182 acres) to pedestrian and vehicular traffic. Residents
+and businesses inside the perimeter expected security checks and decreased foot traffic,
+while city-wide residents expected backups along I-290 and leading to the I-90 / I-290 interchange.</p>
+
+
+
+
+<div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; margin: 2.5rem auto 0; max-width: 60rem;">
+  
+    
+    <img src="/img/traffic_2.png" style="width:100%; height:auto; display:block;">
+  
+    
+    <img src="/img/security_1.png" style="width:100%; height:auto; display:block;">
+  
+</div>
+
+
+
+
+
+<figure class="centered-image" style="--img-width: 50%;">
+  <img src="/img/dnc_security_map.webp" alt="Security Perimeter" loading="lazy">
+  
+  <figcaption>  </figcaption>
+</figure>
+<p>Chicago&rsquo;s voting history as a Democratic stronghold and its location among Midwestern battleground states
+were cited as primary factors to enter and win its convention bid<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.
+Other cities under consideration included Atlanta, Houston and New York City.
+Chicago&rsquo;s hospitality sector, public transportation, venue capacity, and logistics also gave it an edge up<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.
+With President Biden still seeking re-election at the time of the decision, his achievement with the
+Bipartisan Infrastructure Law was also at the top of the conversation and political platform for the upcoming election.</p>
+<p>Viewing the DNC as a major tourism event promising an economic lift and highlighting green urban solutions,
+my research question focuses on convention-goer&rsquo;s transit choices (Uber vs public transit).
+I employ standard methods from econometrics and social science, validating attendence figures from the official
+<a href="https://cdn.choosechicago.com/uploads/2024/10/TE-DNC-Impact.pdf">impact report</a>, and extending its
+environmental sustainability analysis.</p>
+<blockquote>
+<p><strong>Does the exogeneous shock of the 2024 Democratic National Convention in Chicago significantly impact mobility?</strong></p>
+</blockquote>
+<p>A secondary goal of this project was to experientially<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> learn about statistical modeling in a policy setting. By design,
+this experiment is a win-win. If a significant result is found, that&rsquo;s interesting. If no significant result is found,
+that could be interesting too, especially results like &ldquo;DNC touts green infrastructure, favors Ubers to convention&rdquo;.
+Finally, if the experiment or data is insufficient, that&rsquo;s a learning opportunity to
+design and evaluate better experiments in the future</p>
+<h1 id="data">Data</h1>
+<p>The panel dataset in this project represents daily ridership per transit station.
+I pulled ridership data from the City of Chicago, CTA, RTA, and Divvy data portals to include as many transit
+modes as possible, finally using train, Uber (rideshare), and Divvy (bike) data. Unfortunately
+I could not find (or afford) walking or driving data, and public bus and commuter rail data were too coarse to use.
+In this writeup I&rsquo;ll say &ldquo;Uber&rdquo; as a short-hand for all rideshare operators.</p>
+<p>Train ridership is available as daily station counts of passenger entries. Bike data is available as individual trip-level rows,
+including exact start and end times and start and end points. To match the granularity of train data, I aggregated these
+to daily station (bike dock) counts of trip start-points and endpoints. Uber data is available as individual trip-level
+rows, including exact start and end times and coded by census tract. I aggregated this data to daily tract counts
+of start-points and endpoints. To retain a fuller picture of transit patterns, I kept and consolidated start and end points
+so that all transit modes describe daily rides visiting an area. The train data is comparatively under-counted in this setup.
+For modeling, I kept each transit mode in its natural geometry (fixed train station points, fixed bike dock points, uber census tracts).<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></p>
+
+
+<div id="/static/uploads/data_sources.md" class="scientific-table">
+    <table>
+  <thead>
+      <tr>
+          <th><strong>Modality</strong></th>
+          <th><strong>Included/Excluded</strong></th>
+          <th><strong>Challenges</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Train</td>
+          <td>x</td>
+          <td>easy (Socrata API / sodapy)</td>
+      </tr>
+      <tr>
+          <td>Uber/Lyft</td>
+          <td>x</td>
+          <td>medium (300M rows; query optimization)</td>
+      </tr>
+      <tr>
+          <td>Divvy (bikes)</td>
+          <td>x</td>
+          <td>hard (gps drift; unstable ids)</td>
+      </tr>
+      <tr>
+          <td>Bus</td>
+          <td></td>
+          <td>too coarse</td>
+      </tr>
+      <tr>
+          <td>Metra (commuter rail)</td>
+          <td></td>
+          <td>too coarse</td>
+      </tr>
+      <tr>
+          <td>Walking / Biking</td>
+          <td></td>
+          <td>vendored/unavailable</td>
+      </tr>
+      <tr>
+          <td>Driving</td>
+          <td></td>
+          <td>vendored/unavailable</td>
+      </tr>
+  </tbody>
+</table>
+
+</div>
+<p>Geographic data came from:</p>
+<ul>
+<li>transit routes and stops (Socrata API / sodapy)</li>
+<li>Census tracts (pygris)</li>
+<li>Building footprints (Socrata API / sodapy)</li>
+<li>DNC security perimeter (hand-drawn polygons)</li>
+</ul>
+<h2 id="observed-data-and-treatment-selection">Observed Data and Treatment &ldquo;Selection&rdquo;</h2>
+<p>The panel constitutes the DNC dates (August 18 - 21), plus three months&rsquo; prior, capturing baseline summertime transit patterns.
+I compute the distance of each transit stop and tract centroid to the United Center and McCormick Place buildings.
+Any point within a mile of the building or any tract at least 50% within the mile buffer is considered part of the treatment group. All other
+train stations, bike docks, and census tracts within the Chicago city limits are considered part of the control group.</p>
+
+
+
+
+
+<figure class="centered-image" style="--img-width: 75%;">
+  <img src="/img/perimeters.png" alt="Sample" loading="lazy">
+  
+  <figcaption> 
+Left-to-right close-ups of train, bike, and uber treatment area. 
+Blue = DNC security perimeter and 1 mile buffer. <BR> 
+Red = treatment group. Black = control group. Gray = marginal tracts.
+ </figcaption>
+</figure>
+
+
+<div id="static/uploads/balance.html" class="scientific-table">
+    <table>
+<thead>
+<tr><th>                      </th><th style="text-align: right;">          bike
+Control</th><th style="text-align: right;">          
+Treated</th><th style="text-align: right;">          train
+Control</th><th style="text-align: right;">         
+Treated</th><th style="text-align: right;">          uber
+Control</th><th style="text-align: right;">          
+Treated</th></tr>
+</thead>
+<tbody>
+<tr><td>N units               </td><td style="text-align: right;"> 1549    </td><td style="text-align: right;">  47    </td><td style="text-align: right;">  134    </td><td style="text-align: right;">  8    </td><td style="text-align: right;"> 1232    </td><td style="text-align: right;">  25    </td></tr>
+<tr><td>N unit-days           </td><td style="text-align: right;">76244    </td><td style="text-align: right;">4552    </td><td style="text-align: right;">13132    </td><td style="text-align: right;">714    </td><td style="text-align: right;">96851    </td><td style="text-align: right;">2446    </td></tr>
+<tr><td>N pre                 </td><td style="text-align: right;">73081    </td><td style="text-align: right;">4380    </td><td style="text-align: right;">12596    </td><td style="text-align: right;">682    </td><td style="text-align: right;">92950    </td><td style="text-align: right;">2346    </td></tr>
+<tr><td>N post                </td><td style="text-align: right;"> 3163    </td><td style="text-align: right;"> 172    </td><td style="text-align: right;">  536    </td><td style="text-align: right;"> 32    </td><td style="text-align: right;"> 3901    </td><td style="text-align: right;"> 100    </td></tr>
+<tr><td>Mean log(rides) (pre) </td><td style="text-align: right;">    2.598</td><td style="text-align: right;">   3.582</td><td style="text-align: right;">    7.306</td><td style="text-align: right;">  7.039</td><td style="text-align: right;">    3.829</td><td style="text-align: right;">   5.677</td></tr>
+<tr><td>Mean log(rides) (post)</td><td style="text-align: right;">    2.579</td><td style="text-align: right;">   3.887</td><td style="text-align: right;">    7.35 </td><td style="text-align: right;">  7.386</td><td style="text-align: right;">    3.702</td><td style="text-align: right;">   5.78 </td></tr>
+<tr><td>% complete panel      </td><td style="text-align: right;">    0.274</td><td style="text-align: right;">   0.809</td><td style="text-align: right;">    1    </td><td style="text-align: right;">  0.875</td><td style="text-align: right;">    0.557</td><td style="text-align: right;">   0.88 </td></tr>
+</tbody>
+</table>
+</div>
+<h1 id="power-analysis">Power Analysis</h1>
+<h2 id="back-of-the-envelope">Back of the Envelope</h2>
+<p>A look at the raw transit counts helped specify the design units and treatment designation.
+According to the <a href="https://cdn.choosechicago.com/uploads/2024/10/TE-DNC-Impact.pdf">official DNC impact report</a>,
+<strong>50,000</strong> delegates visited and spent <strong>$58.7M</strong> city-wide. Is this exogeneous shock large enough to be statistically observable?
+Yes, by narrowing the region in which we assume it will have a direct effect.
+If we assume the shock is evenly distributed across the whole city, it would not be observable, as daily aggregate
+CTA train ridership is <strong>589,000 +/- 178,000</strong>. Considering train routes passing through DNC venues, the signal-to-noise
+ratio improves, since those routes serve <strong>189,000</strong> passengers per day. Finally, the exogeneous shock ought to be
+quite noticeable compared to the specific train stations, tracts (Uber rides), and bike stations nearest the venues, as these serve
+<strong>11,000</strong>, <strong>33,000</strong>, and <strong>6,000</strong> daily passengers respectively &ndash; far fewer than the <strong>50,000</strong> additional expected passengers.
+By this back-of-the-envelope math, type II errors are avoidable if &ldquo;treatment&rdquo; is defined in this way.</p>
+<h2 id="minimum-detectable-effect">Minimum Detectable Effect</h2>
+<p>Turning to a more formal analysis. I compute the minimal detectable effect size (MDE) by estimating the classic 2x2
+difference-in-difference contrasts. To express the minimal detectable exogeneous shock,
+I multiply by the pre-treatment baseline outcome and number of treatment days.</p>
+$$\hat \beta = (\overline{logy}_{1,1} - \overline{logy}_{1,0}) - (\overline{logy}_{0,1} - \overline{logy}_{0,0}) $$<p>
+</p>
+$$ \text{MDE}_{\%} = \exp(z_{1-\alpha/2} + z_{1-power}) \exp(SE(\hat \beta)) - 1 $$<p>
+</p>
+$$ \text{MDE}_{\text{total}} =  \text{MDE}_{\%} * \bar y_{1,0} * T_{\text{treat}} $$
+
+<div id="/static/uploads/mde_simple.md" class="scientific-table">
+    
+</div>
+<p>The difference in difference comparison yields more statistical power than the back of the envelope calculation.
+Assuming most delegates use these three observable transit modes, their arrivals far exceed the statistical type II threshold.</p>
+<h1 id="regression-model">Regression Model</h1>
+<p>For the main regression specification, I use a difference-in-difference model with two-way fixed effects,</p>
+$$\log y_{it} = \beta_1 D_{it} + \beta_2 D_{it} M_i + \alpha_i + \gamma' t M_i +  \epsilon_{it} \tag{1}$$<p>where \(y_{it}\) are the number of rides, \(D_{it}\) is the treatment indicator for unit i at time t,
+\(M_i\) indicates the transit mode, \(\alpha_i\) are unit fixed effects, \(\gamma' t M_i\) are time fixed
+effects interacted with transit mode, and \(\epsilon_{it}\) is the idiosyncratic error term. Standard
+errors are clustered two ways per unit and per timestep<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
+<p>Conceptually, diff-in-diff models proceed in three stages. First, the model measures how the control group changes over time.
+Second, the model measures how the treatment group changes over time. Third, it compares the two group&rsquo;s changes.
+If the treatment group changes much more or much less than the control group, then the model rejects the null hypothesis.
+If the two groups&rsquo; trajectories are similar, then the model fails to reject the null hypothesis.</p>
+<p>The fixed effect terms in the equation above exploit the panel data structure (repeated observations of a fixed sample) and ensure that
+each unit is compared to itself and the group average, accountingn for the fact that different transit modes and different
+units have different absolute ridership levels (e.g. central business district traffic is much higher than residential).
+The time x transit fixed effects controls for transit-specific daily shocks (such as service outages or weather)
+which differently affect different transit modes.</p>
+<h2 id="parallel-trends">Parallel Trends</h2>
+<p>To first order, both treatment and control are flat in the pre-event period. The two groups also follow each other&rsquo;s
+high-frequency variation pretty closely. The identifying assumption of difference in difference model is parallel linear
+trends in the pre period. Averaging out the high-frequency variation, this is definitely satisfied.</p>
+
+
+
+
+
+<figure class="centered-image" style="--img-width: 60%;">
+  <img src="/img/parallel_trends.png" alt="Parallel Trends Test" loading="lazy">
+  
+  <figcaption> 
+Daily rides for an average train station, bike dock, and census tract. Gray region denotes DNC event.
+ </figcaption>
+</figure>
+<p>The impact of the DNC is visible during the event period, where the group trends diverge, but the magnitude of this
+change is on par with the typical high-frequency variation of the time series. This begs the question if spurious effects
+exist in the pre-period, and if the event period is also coincidentally &lsquo;significant&rsquo;. I test this condition with a placebo
+test in a following <a href="#Robustness-Checks">section</a> of the report.</p>
+<h2 id="results">Results</h2>
+<p>The effect of the DNC on ridership was a <strong>53%, 39%, and 32%</strong> increase across train, Ubers, and bikeshares. Compared to
+each mode&rsquo;s own baseline, each increase is statistically significant. However, despite the point estimates being far apart,
+the estimates have a high variance so the between-mode comparison is not significant.</p>
+<p>These percentage changes translate to an aggregate increase of <strong>22,000 train rides, 41,000 Uber rides, and 3,000 bike rides</strong>
+near DNC venues and during the event. As noted in the introduction, these are a fraction of the raw observed rides,
+or even the observed week-over-week change, because this method nets out the baseline venue traffic and any common city-wide
+shocks to traffic during the event.</p>
+
+
+<div id="/static/uploads/did_study.html" class="scientific-table">
+    <div id="krfkcmtjlj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#krfkcmtjlj table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#krfkcmtjlj thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#krfkcmtjlj p { margin: 0; padding: 0; }
+ #krfkcmtjlj .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #krfkcmtjlj .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #krfkcmtjlj .gt_title { color: #333333; font-size: 16px; font-weight: initial; padding-top: 6px; padding-bottom: 6px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #krfkcmtjlj .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 5px; padding-bottom: 7px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #krfkcmtjlj .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #krfkcmtjlj .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #krfkcmtjlj .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #krfkcmtjlj .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 16px; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 2px; padding-bottom: 7px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #krfkcmtjlj .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 16px; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #krfkcmtjlj .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #krfkcmtjlj .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #krfkcmtjlj .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; vertical-align: bottom; padding-top: 2px; padding-bottom: 2px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #krfkcmtjlj .gt_spanner_row { border-bottom-style: hidden; }
+ #krfkcmtjlj .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.25px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #krfkcmtjlj .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.25px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; vertical-align: middle; }
+ #krfkcmtjlj .gt_from_md> :first-child { margin-top: 0; }
+ #krfkcmtjlj .gt_from_md> :last-child { margin-bottom: 0; }
+ #krfkcmtjlj .gt_row { padding-top: 2px; padding-bottom: 2px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #krfkcmtjlj .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 16px; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #krfkcmtjlj .gt_indent_1 { text-indent: 5px; }
+ #krfkcmtjlj .gt_indent_2 { text-indent: calc(5px * 2); }
+ #krfkcmtjlj .gt_indent_3 { text-indent: calc(5px * 3); }
+ #krfkcmtjlj .gt_indent_4 { text-indent: calc(5px * 4); }
+ #krfkcmtjlj .gt_indent_5 { text-indent: calc(5px * 5); }
+ #krfkcmtjlj .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #krfkcmtjlj .gt_row_group_first td { border-top-width: 0.25px; }
+ #krfkcmtjlj .gt_row_group_first th { border-top-width: 0.25px; }
+ #krfkcmtjlj .gt_striped { color: #333333; background-color: #F4F4F4; }
+ #krfkcmtjlj .gt_table_body { border-top-style: solid; border-top-width: 0px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #krfkcmtjlj .gt_summary_row { color: #333333; background-color: #FFFFFF; text-transform: inherit; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; }
+ #krfkcmtjlj .gt_first_summary_row { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; }
+ #krfkcmtjlj .gt_last_summary_row_top { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #krfkcmtjlj .gt_grand_summary_row { color: #333333; background-color: #FFFFFF; text-transform: inherit; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; }
+ #krfkcmtjlj .gt_first_grand_summary_row_bottom { border-top-style: double; border-top-width: 6px; border-top-color: #D3D3D3; }
+ #krfkcmtjlj .gt_last_grand_summary_row_top { border-bottom-style: double; border-bottom-width: 6px; border-bottom-color: #D3D3D3; }
+ #krfkcmtjlj .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #krfkcmtjlj .gt_sourcenote { font-size: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #krfkcmtjlj .gt_left { text-align: left; }
+ #krfkcmtjlj .gt_center { text-align: center; }
+ #krfkcmtjlj .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #krfkcmtjlj .gt_font_normal { font-weight: normal; }
+ #krfkcmtjlj .gt_font_bold { font-weight: bold; }
+ #krfkcmtjlj .gt_font_italic { font-style: italic; }
+ #krfkcmtjlj .gt_super { font-size: 65%; }
+ #krfkcmtjlj .gt_footnotes { color: font-color(#FFFFFF); background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #krfkcmtjlj .gt_footnote { margin: 0px; font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; }
+ #krfkcmtjlj .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #krfkcmtjlj .gt_sourcenote { font-size: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #krfkcmtjlj .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #krfkcmtjlj .gt_asterisk { font-size: 100%; vertical-align: 0; }
+ 
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+
+<tr class="gt_col_headings gt_spanner_row">
+  <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id=""></th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="log(rides)">
+    <span class="gt_column_spanner">log(rides)</span>
+  </th>
+</tr>
+<tr class="gt_col_headings">
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="0">(1)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="2">coef</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">treat</th>
+    <td class="gt_row gt_center">0.328** <br> (0.114)</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">treat &times; mode &times;  &times; bike</th>
+    <td class="gt_row gt_center">-0.052 <br> (0.118)</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">treat &times; mode &times;  &times; train</th>
+    <td class="gt_row gt_center">0.097 <br> (0.171)</td>
+  </tr>
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="2">fe</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">unit FE</th>
+    <td class="gt_row gt_center">yes</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">time x transit FE</th>
+    <td class="gt_row gt_center">yes</td>
+  </tr>
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="2">stats</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">Observations</th>
+    <td class="gt_row gt_center">110,026</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">R<sup>2</sup></th>
+    <td class="gt_row gt_center">0.964</td>
+  </tr>
+</tbody>
+<tfoot><tr class="gt_sourcenotes"><td class="gt_sourcenote" colspan="2"><span class="gt_from_md">Significance levels: * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001. Format of coefficient cell: Coefficient   (Std. Error)</span></td></tr></tfoot>
+</table>
+
+</div>
+
+</div>
+<h1 id="robustness-checks">Robustness Checks</h1>
+<h2 id="model-specifications">Model Specifications</h2>
+<p>I run a battery of alternative specifications by changing the model,
+the control group composition, the treatment group composition, and dropping potential confounders. Regression results
+are presented in the next table.</p>
+<ol>
+<li>The main model (Eq 1).</li>
+<li>A more parsimonious fixed effect structure (Eq 2) that pushes transit-specific shocks into the treatment term.</li>
+<li>Drops the CTA Green Line Damen station from the panel.</li>
+<li>Label all census tracts that intersect the venue buffer as &ldquo;treated&rdquo;.</li>
+<li>Drop all units except those within 1 mile of the United Center, McCormick Place, Wrigley Field, Soldier Field, and Rate Field.</li>
+<li>Specification 2, 3, 4, and 5 combined.</li>
+</ol>
+$$\log y_{it} = \beta_1 D_{it} + \beta_2 D_{it} M_i + \alpha_i + \delta_t + \epsilon_{it} \tag{2}$$<p>Motivating (3), this station re-opened on August 5 after being shuttered for 75 years. The timing of the re-opening,
+one week before the DNC, allows a short baseline estimation, but could still confound the results. This station is
+the closest stop to the United Center, so dropping it significantly attenuates the treatment effect.
+Motivating (4), the goal is to capture more relevant units and traffic that might be affected by the event, and
+to increase the treated sample size. Traffic through these units may be unrelated to the DNC, and could affect the result
+in the positive or negative direction.On the other extremen, only 3 tracts are 100% contained in the venue radius.
+Motivating (5), the goal is to capture a more apt control group by restricting the sample to other major sporting venues.</p>
+
+
+<div id="static/uploads/did_battery.html" class="scientific-table">
+    <div id="yfovdtkglx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#yfovdtkglx table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#yfovdtkglx thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#yfovdtkglx p { margin: 0; padding: 0; }
+ #yfovdtkglx .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #yfovdtkglx .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #yfovdtkglx .gt_title { color: #333333; font-size: 16px; font-weight: initial; padding-top: 6px; padding-bottom: 6px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #yfovdtkglx .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 5px; padding-bottom: 7px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #yfovdtkglx .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #yfovdtkglx .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #yfovdtkglx .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #yfovdtkglx .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 16px; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 2px; padding-bottom: 7px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #yfovdtkglx .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 16px; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #yfovdtkglx .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #yfovdtkglx .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #yfovdtkglx .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; vertical-align: bottom; padding-top: 2px; padding-bottom: 2px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #yfovdtkglx .gt_spanner_row { border-bottom-style: hidden; }
+ #yfovdtkglx .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.25px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #yfovdtkglx .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.25px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; vertical-align: middle; }
+ #yfovdtkglx .gt_from_md> :first-child { margin-top: 0; }
+ #yfovdtkglx .gt_from_md> :last-child { margin-bottom: 0; }
+ #yfovdtkglx .gt_row { padding-top: 2px; padding-bottom: 2px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #yfovdtkglx .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 16px; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #yfovdtkglx .gt_indent_1 { text-indent: 5px; }
+ #yfovdtkglx .gt_indent_2 { text-indent: calc(5px * 2); }
+ #yfovdtkglx .gt_indent_3 { text-indent: calc(5px * 3); }
+ #yfovdtkglx .gt_indent_4 { text-indent: calc(5px * 4); }
+ #yfovdtkglx .gt_indent_5 { text-indent: calc(5px * 5); }
+ #yfovdtkglx .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #yfovdtkglx .gt_row_group_first td { border-top-width: 0.25px; }
+ #yfovdtkglx .gt_row_group_first th { border-top-width: 0.25px; }
+ #yfovdtkglx .gt_striped { color: #333333; background-color: #F4F4F4; }
+ #yfovdtkglx .gt_table_body { border-top-style: solid; border-top-width: 0px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #yfovdtkglx .gt_summary_row { color: #333333; background-color: #FFFFFF; text-transform: inherit; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; }
+ #yfovdtkglx .gt_first_summary_row { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; }
+ #yfovdtkglx .gt_last_summary_row_top { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #yfovdtkglx .gt_grand_summary_row { color: #333333; background-color: #FFFFFF; text-transform: inherit; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; }
+ #yfovdtkglx .gt_first_grand_summary_row_bottom { border-top-style: double; border-top-width: 6px; border-top-color: #D3D3D3; }
+ #yfovdtkglx .gt_last_grand_summary_row_top { border-bottom-style: double; border-bottom-width: 6px; border-bottom-color: #D3D3D3; }
+ #yfovdtkglx .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #yfovdtkglx .gt_sourcenote { font-size: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #yfovdtkglx .gt_left { text-align: left; }
+ #yfovdtkglx .gt_center { text-align: center; }
+ #yfovdtkglx .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #yfovdtkglx .gt_font_normal { font-weight: normal; }
+ #yfovdtkglx .gt_font_bold { font-weight: bold; }
+ #yfovdtkglx .gt_font_italic { font-style: italic; }
+ #yfovdtkglx .gt_super { font-size: 65%; }
+ #yfovdtkglx .gt_footnotes { color: font-color(#FFFFFF); background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #yfovdtkglx .gt_footnote { margin: 0px; font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; }
+ #yfovdtkglx .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #yfovdtkglx .gt_sourcenote { font-size: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #yfovdtkglx .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #yfovdtkglx .gt_asterisk { font-size: 100%; vertical-align: 0; }
+ 
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+
+<tr class="gt_col_headings gt_spanner_row">
+  <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id=""></th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="6" scope="colgroup" id="log(rides)">
+    <span class="gt_column_spanner">log(rides)</span>
+  </th>
+</tr>
+<tr class="gt_col_headings">
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="0">(1)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="1">(2)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="2">(3)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="3">(4)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="4">(5)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="5">(6)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="7">coef</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">treat</th>
+    <td class="gt_row gt_center">0.328** <br> (0.114)</td>
+    <td class="gt_row gt_center">0.311** <br> (0.116)</td>
+    <td class="gt_row gt_center">0.328** <br> (0.114)</td>
+    <td class="gt_row gt_center">0.235** <br> (0.082)</td>
+    <td class="gt_row gt_center">0.346** <br> (0.111)</td>
+    <td class="gt_row gt_center">0.161 <br> (0.084)</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">treat &times; mode &times;  &times; bike</th>
+    <td class="gt_row gt_center">-0.052 <br> (0.118)</td>
+    <td class="gt_row gt_center">-0.010 <br> (0.131)</td>
+    <td class="gt_row gt_center">-0.052 <br> (0.118)</td>
+    <td class="gt_row gt_center">0.041 <br> (0.089)</td>
+    <td class="gt_row gt_center">-0.206 <br> (0.139)</td>
+    <td class="gt_row gt_center">0.084 <br> (0.107)</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">treat &times; mode &times;  &times; train</th>
+    <td class="gt_row gt_center">0.097 <br> (0.171)</td>
+    <td class="gt_row gt_center">0.032 <br> (0.182)</td>
+    <td class="gt_row gt_center">-0.004 <br> (0.167)</td>
+    <td class="gt_row gt_center">0.190 <br> (0.151)</td>
+    <td class="gt_row gt_center">0.063 <br> (0.171)</td>
+    <td class="gt_row gt_center">0.032 <br> (0.156)</td>
+  </tr>
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="7">fe</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">unit FE</th>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">time FE</th>
+    <td class="gt_row gt_center">-</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">-</td>
+    <td class="gt_row gt_center">-</td>
+    <td class="gt_row gt_center">-</td>
+    <td class="gt_row gt_center">yes</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">time x transit FE</th>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">-</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">-</td>
+  </tr>
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="7">stats</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">Observations</th>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,010</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">13,127</td>
+    <td class="gt_row gt_center">13,111</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">R<sup>2</sup></th>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.963</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.955</td>
+    <td class="gt_row gt_center">0.952</td>
+  </tr>
+</tbody>
+<tfoot><tr class="gt_sourcenotes"><td class="gt_sourcenote" colspan="7"><span class="gt_from_md">Significance levels: * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001. Format of coefficient cell: Coefficient   (Std. Error)</span></td></tr></tfoot>
+</table>
+
+</div>
+
+</div>
+<p>All alternatives retain a statistically significant main effect except (6).
+The total effect (CATE) for train remains significant for all models except (6).
+The total effect for bikes remains significant for all models except (5).
+All alternatives retain the null result comparing transit modes.</p>
+<h2 id="placebo-test">Placebo Test</h2>
+<p>For a final robustness check, I re-run the main specification (1), marking each pre-treatment week as a virtual treatment period.
+The main effect exceeds each placebo estimate in absolute value and at least a 20% spread. Lending confidence to the result.</p>
+
+
+<div id="static/uploads/placebo_study.html" class="scientific-table">
+    <div id="rmxwjbbbwv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#rmxwjbbbwv table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#rmxwjbbbwv thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#rmxwjbbbwv p { margin: 0; padding: 0; }
+ #rmxwjbbbwv .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #rmxwjbbbwv .gt_title { color: #333333; font-size: 16px; font-weight: initial; padding-top: 6px; padding-bottom: 6px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #rmxwjbbbwv .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 5px; padding-bottom: 7px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #rmxwjbbbwv .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 16px; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 2px; padding-bottom: 7px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #rmxwjbbbwv .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 16px; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #rmxwjbbbwv .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #rmxwjbbbwv .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #rmxwjbbbwv .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; vertical-align: bottom; padding-top: 2px; padding-bottom: 2px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #rmxwjbbbwv .gt_spanner_row { border-bottom-style: hidden; }
+ #rmxwjbbbwv .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.25px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #rmxwjbbbwv .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.25px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.25px; border-bottom-color: black; vertical-align: middle; }
+ #rmxwjbbbwv .gt_from_md> :first-child { margin-top: 0; }
+ #rmxwjbbbwv .gt_from_md> :last-child { margin-bottom: 0; }
+ #rmxwjbbbwv .gt_row { padding-top: 2px; padding-bottom: 2px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #rmxwjbbbwv .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 16px; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #rmxwjbbbwv .gt_indent_1 { text-indent: 5px; }
+ #rmxwjbbbwv .gt_indent_2 { text-indent: calc(5px * 2); }
+ #rmxwjbbbwv .gt_indent_3 { text-indent: calc(5px * 3); }
+ #rmxwjbbbwv .gt_indent_4 { text-indent: calc(5px * 4); }
+ #rmxwjbbbwv .gt_indent_5 { text-indent: calc(5px * 5); }
+ #rmxwjbbbwv .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #rmxwjbbbwv .gt_row_group_first td { border-top-width: 0.25px; }
+ #rmxwjbbbwv .gt_row_group_first th { border-top-width: 0.25px; }
+ #rmxwjbbbwv .gt_striped { color: #333333; background-color: #F4F4F4; }
+ #rmxwjbbbwv .gt_table_body { border-top-style: solid; border-top-width: 0px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #rmxwjbbbwv .gt_summary_row { color: #333333; background-color: #FFFFFF; text-transform: inherit; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; }
+ #rmxwjbbbwv .gt_first_summary_row { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_last_summary_row_top { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_grand_summary_row { color: #333333; background-color: #FFFFFF; text-transform: inherit; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; }
+ #rmxwjbbbwv .gt_first_grand_summary_row_bottom { border-top-style: double; border-top-width: 6px; border-top-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_last_grand_summary_row_top { border-bottom-style: double; border-bottom-width: 6px; border-bottom-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_sourcenote { font-size: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #rmxwjbbbwv .gt_left { text-align: left; }
+ #rmxwjbbbwv .gt_center { text-align: center; }
+ #rmxwjbbbwv .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #rmxwjbbbwv .gt_font_normal { font-weight: normal; }
+ #rmxwjbbbwv .gt_font_bold { font-weight: bold; }
+ #rmxwjbbbwv .gt_font_italic { font-style: italic; }
+ #rmxwjbbbwv .gt_super { font-size: 65%; }
+ #rmxwjbbbwv .gt_footnotes { color: font-color(#FFFFFF); background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_footnote { margin: 0px; font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; }
+ #rmxwjbbbwv .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #rmxwjbbbwv .gt_sourcenote { font-size: 10px; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #rmxwjbbbwv .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #rmxwjbbbwv .gt_asterisk { font-size: 100%; vertical-align: 0; }
+ 
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+
+<tr class="gt_col_headings gt_spanner_row">
+  <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">
+    <span>&nbsp</span>
+  </th>
+  <th class="gt_center gt_columns_bottom_border gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="13" scope="colgroup">
+    <span class="gt_column_spanner">log(rides)</span>
+  </th>
+</tr>
+<tr class="gt_col_headings gt_spanner_row">
+  <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id=""></th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--0">
+    <span class="gt_column_spanner">Week -0</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--1">
+    <span class="gt_column_spanner">Week -1</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--2">
+    <span class="gt_column_spanner">Week -2</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--3">
+    <span class="gt_column_spanner">Week -3</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--4">
+    <span class="gt_column_spanner">Week -4</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--5">
+    <span class="gt_column_spanner">Week -5</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--6">
+    <span class="gt_column_spanner">Week -6</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--7">
+    <span class="gt_column_spanner">Week -7</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--8">
+    <span class="gt_column_spanner">Week -8</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--9">
+    <span class="gt_column_spanner">Week -9</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--10">
+    <span class="gt_column_spanner">Week -10</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--11">
+    <span class="gt_column_spanner">Week -11</span>
+  </th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="1" scope="col" id="Week--12">
+    <span class="gt_column_spanner">Week -12</span>
+  </th>
+</tr>
+<tr class="gt_col_headings">
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="0">(1)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="1">(2)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="2">(3)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="3">(4)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="4">(5)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="5">(6)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="6">(7)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="7">(8)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="8">(9)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="9">(10)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="10">(11)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="11">(12)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="12">(13)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="14">coef</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">treat</th>
+    <td class="gt_row gt_center">0.328** <br> (0.114)</td>
+    <td class="gt_row gt_center">0.057 <br> (0.059)</td>
+    <td class="gt_row gt_center">0.002 <br> (0.040)</td>
+    <td class="gt_row gt_center">0.066 <br> (0.056)</td>
+    <td class="gt_row gt_center">-0.068* <br> (0.033)</td>
+    <td class="gt_row gt_center">-0.103* <br> (0.049)</td>
+    <td class="gt_row gt_center">0.001 <br> (0.030)</td>
+    <td class="gt_row gt_center">-0.082* <br> (0.035)</td>
+    <td class="gt_row gt_center">-0.010 <br> (0.036)</td>
+    <td class="gt_row gt_center">-0.007 <br> (0.036)</td>
+    <td class="gt_row gt_center">0.030 <br> (0.049)</td>
+    <td class="gt_row gt_center">-0.030 <br> (0.027)</td>
+    <td class="gt_row gt_center">-0.081 <br> (0.055)</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">treat &times; mode &times;  &times; bike</th>
+    <td class="gt_row gt_center">-0.052 <br> (0.118)</td>
+    <td class="gt_row gt_center">-0.016 <br> (0.064)</td>
+    <td class="gt_row gt_center">0.024 <br> (0.028)</td>
+    <td class="gt_row gt_center">0.049 <br> (0.040)</td>
+    <td class="gt_row gt_center">0.106* <br> (0.041)</td>
+    <td class="gt_row gt_center">0.172*** <br> (0.049)</td>
+    <td class="gt_row gt_center">-0.128 <br> (0.070)</td>
+    <td class="gt_row gt_center">-0.109 <br> (0.079)</td>
+    <td class="gt_row gt_center">-0.036 <br> (0.065)</td>
+    <td class="gt_row gt_center">-0.046 <br> (0.034)</td>
+    <td class="gt_row gt_center">-0.012 <br> (0.042)</td>
+    <td class="gt_row gt_center">0.015 <br> (0.028)</td>
+    <td class="gt_row gt_center">-0.092 <br> (0.048)</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">treat &times; mode &times;  &times; train</th>
+    <td class="gt_row gt_center">0.097 <br> (0.171)</td>
+    <td class="gt_row gt_center">-0.142 <br> (0.071)</td>
+    <td class="gt_row gt_center">-0.078 <br> (0.066)</td>
+    <td class="gt_row gt_center">-0.108 <br> (0.058)</td>
+    <td class="gt_row gt_center">0.040 <br> (0.042)</td>
+    <td class="gt_row gt_center">0.092 <br> (0.056)</td>
+    <td class="gt_row gt_center">-0.034 <br> (0.037)</td>
+    <td class="gt_row gt_center">0.063 <br> (0.049)</td>
+    <td class="gt_row gt_center">-0.001 <br> (0.045)</td>
+    <td class="gt_row gt_center">-0.083 <br> (0.048)</td>
+    <td class="gt_row gt_center">-0.070 <br> (0.053)</td>
+    <td class="gt_row gt_center">0.055 <br> (0.041)</td>
+    <td class="gt_row gt_center">0.094 <br> (0.055)</td>
+  </tr>
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="14">fe</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">unit</th>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">time x transit</th>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+    <td class="gt_row gt_center">yes</td>
+  </tr>
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="14">stats</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">Observations</th>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+    <td class="gt_row gt_center">110,026</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">R<sup>2</sup></th>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+    <td class="gt_row gt_center">0.964</td>
+  </tr>
+</tbody>
+<tfoot><tr class="gt_sourcenotes"><td class="gt_sourcenote" colspan="14"><span class="gt_from_md">Significance levels: * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001. Format of coefficient cell: Coefficient   (Std. Error)</span></td></tr></tfoot>
+</table>
+
+</div>
+
+</div>
+<h1 id="discussion">Discussion</h1>
+<p>This study estimates the causal effect of the 2024 Chicago Democratic National Convention on transit usage.
+It recovers a significant proportion of the pre-post difference in rides (e.g. week-over-week changes),
+but takes care to rule out confounding variables that affect ridership. To do so, these methods impose a limited scope,
+and only produce a causal estimate for a small part of the city, even though the event possibly had a larger footprint.</p>
+<p>The parallel trends test, placebo test, and alternate specifications all give credibility to the internal
+validity of the results. The external validity is weaker since the event city and venues were specifically
+selected and designed to accomodate crowds. While accurate in attributing impacts to this specific event,
+the results do not necessarily generalize to other cities or event spaces.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://democrats.org/news/dnc-announces-chicago-to-host-2024-democratic-national-convention/">https://democrats.org/news/dnc-announces-chicago-to-host-2024-democratic-national-convention/</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://www.buzzfeednews.com/article/leticiamiranda/amazon-hq2-finalist-cities-incentives-airport-lounge">https://www.buzzfeednews.com/article/leticiamiranda/amazon-hq2-finalist-cities-incentives-airport-lounge</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://www.duckworth.senate.gov/news/in-the-news/how-chicago-landed-the-2024-democratic-national-convention">https://www.duckworth.senate.gov/news/in-the-news/how-chicago-landed-the-2024-democratic-national-convention</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://www.nytimes.com/2023/04/11/us/politics/democratic-national-convention-chicago.html">https://www.nytimes.com/2023/04/11/us/politics/democratic-national-convention-chicago.html</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Code available on my <a href="https://github.com/eric-mc2/DNCTransit">github</a>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>I describe the panel data preparation in more detail <a href="../transit-panel/index.html">here</a>.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>I test variations of this model in the <a href="#Robustness-Checks">robustness</a> section.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/data-science">data science</a></li>
+    
+      <li><a class="tag" href="/tags/econometrics">econometrics</a></li>
+    
+      <li><a class="tag" href="/tags/panel-data">panel data</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+    <section><span style="color: #999999;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+      
+    </section>
+  </div>
+  
+  
+<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js" integrity="sha384-EYn4rWu1DHvYD0sSSSbMEtXQmMl58CFJd897806+RT1jJVYbhuZlZMN6yG9nCyFa" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/smoothscroll-anchor-polyfill@1.3.2/dist/index.min.js" integrity="sha384-EY9NBEHCFbZANmPcTm7CgG8OhsFILy0VBLG85pF6OIpP42NVbZVNsFOc23PYTCkB" crossorigin="anonymous"></script>
+
+<script async src="/js/resume.js"></script>
+  
+  
+  
+  
+</body>
+</html>

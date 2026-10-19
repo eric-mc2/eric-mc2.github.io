@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://eric-mc2.github.io/projects/dnc-transit-study/</loc>
+    <lastmod>2026-08-12T12:00:00-06:00</lastmod>
+    <priority>0.8</priority>
+  </url><url>
     <loc>https://eric-mc2.github.io/projects/prompt-tuning/</loc>
     <lastmod>2026-01-02T00:00:00-05:00</lastmod>
     <priority>0.8</priority>
@@ -18,24 +22,12 @@
     <lastmod>2025-03-18T10:34:18-05:00</lastmod>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://eric-mc2.github.io/projects/dnc-attendance/</loc>
-    <lastmod>2025-02-01T10:47:51-06:00</lastmod>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://eric-mc2.github.io/projects/dnc-effect-results/</loc>
-    <lastmod>2025-01-08T10:47:51-06:00</lastmod>
-    <priority>0.8</priority>
-  </url><url>
     <loc>https://eric-mc2.github.io/projects/3rd-grade-reading/</loc>
     <lastmod>2024-12-27T00:00:00-06:00</lastmod>
     <priority>0.8</priority>
   </url><url>
     <loc>https://eric-mc2.github.io/projects/527-explorer/</loc>
     <lastmod>2024-12-03T00:00:00-06:00</lastmod>
-    <priority>0.8</priority>
-  </url><url>
-    <loc>https://eric-mc2.github.io/projects/dnc-effect/</loc>
-    <lastmod>2024-11-19T10:47:51-06:00</lastmod>
     <priority>0.8</priority>
   </url><url>
     <loc>https://eric-mc2.github.io/projects/transit-panel/</loc>
@@ -46,10 +38,25 @@
     <lastmod>2024-02-29T00:00:00+00:00</lastmod>
     <priority>0.8</priority>
   </url><url>
-    <loc>https://eric-mc2.github.io/tags/ai/</loc>
-    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
+    <loc>https://eric-mc2.github.io/tags/data-science/</loc>
+    <lastmod>2026-08-12T12:00:00-06:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/econometrics/</loc>
+    <lastmod>2026-08-12T12:00:00-06:00</lastmod>
   </url><url>
     <loc>https://eric-mc2.github.io/</loc>
+    <lastmod>2026-08-12T12:00:00-06:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/panel-data/</loc>
+    <lastmod>2026-08-12T12:00:00-06:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/projects/</loc>
+    <lastmod>2026-08-12T12:00:00-06:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/</loc>
+    <lastmod>2026-08-12T12:00:00-06:00</lastmod>
+  </url><url>
+    <loc>https://eric-mc2.github.io/tags/ai/</loc>
     <lastmod>2026-01-02T00:00:00-05:00</lastmod>
   </url><url>
     <loc>https://eric-mc2.github.io/tags/llm/</loc>
@@ -58,13 +65,7 @@
     <loc>https://eric-mc2.github.io/tags/model-evaluations/</loc>
     <lastmod>2026-01-02T00:00:00-05:00</lastmod>
   </url><url>
-    <loc>https://eric-mc2.github.io/projects/</loc>
-    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
-  </url><url>
     <loc>https://eric-mc2.github.io/tags/prompt-engineering/</loc>
-    <lastmod>2026-01-02T00:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://eric-mc2.github.io/tags/</loc>
     <lastmod>2026-01-02T00:00:00-05:00</lastmod>
   </url><url>
     <loc>https://eric-mc2.github.io/tags/anthropic-api/</loc>
@@ -105,15 +106,6 @@
   </url><url>
     <loc>https://eric-mc2.github.io/tags/media-analysis/</loc>
     <lastmod>2025-03-18T10:34:18-05:00</lastmod>
-  </url><url>
-    <loc>https://eric-mc2.github.io/tags/data-science/</loc>
-    <lastmod>2025-02-01T10:47:51-06:00</lastmod>
-  </url><url>
-    <loc>https://eric-mc2.github.io/tags/econometrics/</loc>
-    <lastmod>2025-02-01T10:47:51-06:00</lastmod>
-  </url><url>
-    <loc>https://eric-mc2.github.io/tags/panel-data/</loc>
-    <lastmod>2025-02-01T10:47:51-06:00</lastmod>
   </url><url>
     <loc>https://eric-mc2.github.io/tags/dashboard/</loc>
     <lastmod>2024-12-27T00:00:00-06:00</lastmod>
