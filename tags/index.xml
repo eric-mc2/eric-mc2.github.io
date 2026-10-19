@@ -6,29 +6,8 @@
     <description>Recent content in Tags on Eric Chandler</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Aug 2026 12:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 02 Jan 2026 00:00:00 -0500</lastBuildDate>
     <atom:link href="https://eric-mc2.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Data Science</title>
-      <link>https://eric-mc2.github.io/tags/data-science/</link>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/tags/data-science/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Econometrics</title>
-      <link>https://eric-mc2.github.io/tags/econometrics/</link>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/tags/econometrics/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Panel Data</title>
-      <link>https://eric-mc2.github.io/tags/panel-data/</link>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 -0600</pubDate>
-      <guid>https://eric-mc2.github.io/tags/panel-data/</guid>
-      <description></description>
-    </item>
     <item>
       <title>AI</title>
       <link>https://eric-mc2.github.io/tags/ai/</link>
@@ -139,6 +118,27 @@
       <link>https://eric-mc2.github.io/tags/media-analysis/</link>
       <pubDate>Tue, 18 Mar 2025 10:34:18 -0500</pubDate>
       <guid>https://eric-mc2.github.io/tags/media-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Science</title>
+      <link>https://eric-mc2.github.io/tags/data-science/</link>
+      <pubDate>Fri, 28 Feb 2025 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/data-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Econometrics</title>
+      <link>https://eric-mc2.github.io/tags/econometrics/</link>
+      <pubDate>Fri, 28 Feb 2025 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/econometrics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Panel Data</title>
+      <link>https://eric-mc2.github.io/tags/panel-data/</link>
+      <pubDate>Fri, 28 Feb 2025 10:47:51 -0600</pubDate>
+      <guid>https://eric-mc2.github.io/tags/panel-data/</guid>
       <description></description>
     </item>
     <item>
